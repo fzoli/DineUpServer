@@ -1,8 +1,7 @@
-package com.dineup;
+package com.dineup.servlet;
 
 import com.dineup.ejb.RestaurantDataSource;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.dineup.gson.GsonFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -18,10 +17,6 @@ public class RestaurantJsonServlet extends HttpServlet {
     @EJB
     private RestaurantDataSource dataSource;
     
-    private static final Gson GSON = new GsonBuilder()
-            .setPrettyPrinting()
-            .create();
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -32,7 +27,7 @@ public class RestaurantJsonServlet extends HttpServlet {
             out.println("<title>Restaurants</title>");            
             out.println("</head>");
             out.println("<body><pre>");
-            out.println(GSON.toJson(dataSource.getRestaurants()));
+            out.println(GsonFactory.getInstance().toJson(dataSource.getRestaurants()));
             out.println("</pre></body>");
             out.println("</html>");
         }
