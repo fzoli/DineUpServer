@@ -12,7 +12,11 @@ class RestaurantExclusionStrategy implements ExclusionStrategy {
 
     @Override
     public boolean shouldSkipField(FieldAttributes f) {
-        return (f.getName().equals("key"));
+        String className = f.getClass().getCanonicalName();
+        if (className != null && className.startsWith("Restaurant")) {
+            return (f.getName().equals("key"));
+        }
+        return false;
     }
 
 }
