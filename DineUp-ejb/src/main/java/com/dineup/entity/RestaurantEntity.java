@@ -4,13 +4,13 @@ import com.dineup.dom.Coordinate;
 import com.dineup.dom.Restaurant;
 import com.dineup.dom.RestaurantLocale;
 import java.io.Serializable;
-import java.util.Collections;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,7 +20,7 @@ public class RestaurantEntity implements Restaurant, Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id
-    @Column(name = "key")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
@@ -41,6 +41,9 @@ public class RestaurantEntity implements Restaurant, Serializable {
     
     @Column(name = "address")
     private String address;
+    
+    @OneToMany(mappedBy = "restaurant")
+    private List<RestaurantLocaleEntity> locales;
     
     public RestaurantEntity() {
     }
@@ -91,11 +94,6 @@ public class RestaurantEntity implements Restaurant, Serializable {
     }
 
     @Override
-    public List<RestaurantLocale> getLocales() {
-        return Collections.emptyList(); // TODO
-    }
-
-    @Override
     public Coordinate getCoordinate() {
         return new Coordinate(latitude, longitude);
     }
@@ -107,6 +105,11 @@ public class RestaurantEntity implements Restaurant, Serializable {
     public void setCoordinate(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
+    }
+    
+    @Override
+    public List<RestaurantLocale> getLocales() {
+        return (List) locales;
     }
     
 }
