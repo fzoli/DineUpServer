@@ -27,7 +27,7 @@ public class DefaultRestaurantDataSource implements RestaurantDataSource {
         CriteriaQuery<RestaurantEntity> query = builder.createQuery(RestaurantEntity.class);
         Root<RestaurantEntity> root = query.from(RestaurantEntity.class);
         query.orderBy(
-            builder.asc(root.get(RestaurantEntity_.key))
+            builder.asc(root.get(RestaurantEntity_.id))
         );
         List<RestaurantEntity> restaurants = getManager().createQuery(query).getResultList();
         return (List) restaurants;

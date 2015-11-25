@@ -1,17 +1,16 @@
 package com.dineup.entity;
 
+import com.dineup.dom.Coordinate;
 import com.dineup.dom.Restaurant;
+import com.dineup.dom.RestaurantLocale;
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
-import java.util.Locale.Category;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,66 +22,91 @@ public class RestaurantEntity implements Restaurant, Serializable {
     @Id
     @Column(name = "key")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer key;
-    
-    @Column(name="id", unique = true, nullable = false)
-    private String id;
+    private Integer id;
 
-    @Column(name="name", nullable = false)
-    private String name; // TODO: locale?
-    
-    // TODO: it should be enum or an other entity
     @Column(name = "type", nullable = false)
     private String type;
     
     @Column(name = "photo_url", nullable = false)
     private String photoUrl;
     
-    @Column(name = "description")
-    private String description; // TODO: locale?
-    
-    // TODO: latitude and longitude is a Coordinate
     @Column(name = "latitude")
     private double latitude;
     
     @Column(name = "longitude")
     private double longitude;
     
-    // TODO: isn't it calculated?
     @Column(name = "rating")
     private int rating;
-    
-    @Column(name = "openHours")
-    private String openHours; // TODO: locale?
     
     @Column(name = "address")
     private String address;
     
-    @ManyToMany
-    @JoinTable(
-      name="restaurant_categories",
-      joinColumns={@JoinColumn(name="restaurant", referencedColumnName="key")},
-      inverseJoinColumns={@JoinColumn(name="category", referencedColumnName="key")})
-    private List<Category> categories;
-    
     public RestaurantEntity() {
-    }
-
-    public Integer getKey() {
-        return key;
-    }
-
-    public void setKey(Integer key) {
-        this.key = key;
     }
     
     @Override
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
+    }
+
+    @Override
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @Override
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
+    @Override
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @Override
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    @Override
+    public List<RestaurantLocale> getLocales() {
+        return Collections.emptyList(); // TODO
+    }
+
+    @Override
+    public Coordinate getCoordinate() {
+        return new Coordinate(latitude, longitude);
+    }
+    
+    public void setCoordinate(Coordinate coordinate) {
+        setCoordinate(coordinate.getLatitude(), coordinate.getLongitude());
+    }
+    
+    public void setCoordinate(double latitude, double longitude) {
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
     
 }
