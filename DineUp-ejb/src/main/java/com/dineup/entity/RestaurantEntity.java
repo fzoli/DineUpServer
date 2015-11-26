@@ -119,6 +119,7 @@ public class RestaurantEntity implements Restaurant, Serializable {
         return (List) locales;
     }
 
+    @Override
     public List<Category> getCategories() {
         return (List) categories;
     }
