@@ -1,8 +1,8 @@
 package com.dineup.gson;
 
-import com.dineup.dom.Categories;
-import com.dineup.dom.Category;
-import com.dineup.dom.CategoryLocale;
+import com.dineup.dom.Option;
+import com.dineup.dom.OptionLocale;
+import com.dineup.dom.Options;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
@@ -10,30 +10,28 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import java.lang.reflect.Type;
 
-class CategorySerializer implements JsonSerializer<Category>, CategoryFields {
+class OptionSerializer implements JsonSerializer<Option>, OptionFields {
 
     private final Localization localization;
-    
-    public CategorySerializer(Localization localization) {
+
+    public OptionSerializer(Localization localization) {
         this.localization = localization;
     }
-
+    
     @Override
-    public JsonElement serialize(Category category, Type type, JsonSerializationContext context) {
-        if (category == null) {
+    public JsonElement serialize(Option option, Type type, JsonSerializationContext context) {
+        if (option == null) {
             return JsonNull.INSTANCE;
         }
         JsonObject object = new JsonObject();
-        object.addProperty(ID, category.getId());
-        object.addProperty(PHOTO_URL, category.getPhotoUrl());
-        CategoryLocale locale = Categories.getLocale(category, localization.getLanguageCode());
+        OptionLocale locale = Options.getLocale(option, localization.getLanguageCode());
         if (locale != null) {
             object.addProperty(NAME, locale.getName());
         }
         else {
             object.add(NAME, JsonNull.INSTANCE);
         }
-        object.add(FOODS, context.serialize(category.getFoods()));
+        object.add(PRICES, context.serialize(option.getPrices()));
         return object;
     }
     

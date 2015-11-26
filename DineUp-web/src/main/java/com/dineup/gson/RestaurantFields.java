@@ -1,6 +1,6 @@
 package com.dineup.gson;
 
-public interface RestaurantFields {
+interface RestaurantFields {
     String ID = "id";
     String COORDINATE = "coordinate";
     String ADDRESS = "address";

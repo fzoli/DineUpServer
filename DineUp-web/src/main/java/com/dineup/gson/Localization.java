@@ -1,4 +1,4 @@
-package com.dineup.dom;
+package com.dineup.gson;
 
 public class Localization {
     

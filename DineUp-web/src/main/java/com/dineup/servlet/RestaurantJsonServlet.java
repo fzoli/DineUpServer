@@ -2,7 +2,7 @@ package com.dineup.servlet;
 
 import com.dineup.ejb.RestaurantDataSource;
 import com.dineup.gson.GsonFactory;
-import com.dineup.dom.Localization;
+import com.dineup.gson.Localization;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;

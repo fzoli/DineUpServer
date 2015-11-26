@@ -1,6 +1,6 @@
 package com.dineup.gson;
 
-public interface CategoryFields {
+interface CategoryFields {
     String ID = "id";
     String PHOTO_URL = "photoUrl";
     String FOODS = "foods";

@@ -1,5 +1,6 @@
 package com.dineup.entity;
 
+import com.dineup.dom.Extra;
 import com.dineup.dom.Food;
 import com.dineup.dom.FoodLocale;
 import com.dineup.dom.Price;
@@ -72,17 +73,14 @@ public class FoodEntity implements Food, Serializable {
         return (List) locales;
     }
 
-    public void setLocales(List<FoodLocaleEntity> locales) {
-        this.locales = locales;
-    }
-
     @Override
     public List<Price> getPrices() {
         return (List) prices;
     }
 
-    public void setPrices(List<FoodPriceEntity> prices) {
-        this.prices = prices;
+    @Override
+    public List<Extra> getExtras() {
+        return (List) extras;
     }
 
 }

@@ -7,4 +7,5 @@ public interface Food {
     public String getPhotoUrl();
     public List<FoodLocale> getLocales();
     public List<Price> getPrices();
+    public List<Extra> getExtras();
 }

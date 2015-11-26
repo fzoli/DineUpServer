@@ -8,7 +8,7 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import java.lang.reflect.Type;
 
-public class PriceSerializer implements JsonSerializer<Price>, PriceFields {
+class PriceSerializer implements JsonSerializer<Price>, PriceFields {
 
     @Override
     public JsonElement serialize(Price price, Type type, JsonSerializationContext context) {
