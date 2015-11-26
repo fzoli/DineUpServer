@@ -1,5 +1,6 @@
 package com.dineup.entity;
 
+import com.dineup.dom.Category;
 import com.dineup.dom.Coordinate;
 import com.dineup.dom.Restaurant;
 import com.dineup.dom.RestaurantLocale;
@@ -118,8 +119,8 @@ public class RestaurantEntity implements Restaurant, Serializable {
         return (List) locales;
     }
 
-    public List<CategoryEntity> getCategories() {
-        return categories;
+    public List<Category> getCategories() {
+        return (List) categories;
     }
 
     public List<ExtraEntity> getExtras() {

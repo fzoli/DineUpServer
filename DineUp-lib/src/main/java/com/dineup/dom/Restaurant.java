@@ -10,4 +10,5 @@ public interface Restaurant {
     public Coordinate getCoordinate();
     public int getRating();
     public List<RestaurantLocale> getLocales();
+    public List<Category> getCategories();
 }

@@ -1,6 +1,9 @@
 package com.dineup.entity;
 
 import com.dineup.dom.Category;
+import com.dineup.dom.CategoryLocale;
+import com.dineup.dom.Food;
+
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
@@ -36,5 +39,41 @@ public class CategoryEntity implements Category, Serializable {
     
     @OneToMany(mappedBy = "category")
     private List<FoodEntity> foods;
-    
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public RestaurantEntity getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(RestaurantEntity restaurant) {
+        this.restaurant = restaurant;
+    }
+
+    @Override
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
+    @Override
+    public List<CategoryLocale> getLocales() {
+        return (List) locales;
+    }
+
+    @Override
+    public List<Food> getFoods() {
+        return (List) foods;
+    }
+
 }

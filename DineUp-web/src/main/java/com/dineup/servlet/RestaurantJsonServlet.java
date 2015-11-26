@@ -26,17 +26,9 @@ public class RestaurantJsonServlet extends HttpServlet {
         String currencyCode = request.getParameter("currency");
         if (currencyCode == null) currencyCode = "HUF";
         Gson gson = GsonFactory.createInstance(new Locale(languageCode, currencyCode));
-        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("application/json;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Restaurants</title>");
-            out.println("</head>");
-            out.println("<body><pre>");
             out.println(gson.toJson(dataSource.getRestaurants()));
-            out.println("</pre></body>");
-            out.println("</html>");
         }
     }
 
