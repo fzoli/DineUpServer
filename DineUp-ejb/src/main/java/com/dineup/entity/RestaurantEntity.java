@@ -45,6 +45,12 @@ public class RestaurantEntity implements Restaurant, Serializable {
     @OneToMany(mappedBy = "restaurant")
     private List<RestaurantLocaleEntity> locales;
     
+    @OneToMany(mappedBy = "restaurant")
+    private List<CategoryEntity> categories;
+    
+    @OneToMany(mappedBy = "restaurant")
+    private List<ExtraEntity> extras;
+    
     public RestaurantEntity() {
     }
     
@@ -110,6 +116,14 @@ public class RestaurantEntity implements Restaurant, Serializable {
     @Override
     public List<RestaurantLocale> getLocales() {
         return (List) locales;
+    }
+
+    public List<CategoryEntity> getCategories() {
+        return categories;
+    }
+
+    public List<ExtraEntity> getExtras() {
+        return extras;
     }
     
 }

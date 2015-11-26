@@ -1,7 +1,5 @@
 package com.dineup.entity;
 
-import com.dineup.dom.Category;
-import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,10 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "category")
-public class CategoryEntity implements Category, Serializable {
-    
-    private static final long serialVersionUID = 1L;
+@Table(name = "extra")
+public class ExtraEntity {
     
     @Id
     @Column(name = "id")
@@ -28,13 +24,13 @@ public class CategoryEntity implements Category, Serializable {
     @JoinColumn(name = "restaurant", nullable = false)
     private RestaurantEntity restaurant;
     
-    @Column(name = "photo_url", nullable = false)
-    private String photoUrl;
+    @Column(name = "type", nullable = false)
+    private String type;
     
-    @OneToMany(mappedBy = "category")
-    private List<CategoryLocaleEntity> locales;
+    @OneToMany(mappedBy = "extra")
+    private List<ExtraLocaleEntity> locales;
     
-    @OneToMany(mappedBy = "category")
-    private List<FoodEntity> foods;
+    @OneToMany(mappedBy = "extra")
+    private List<OptionEntity> options;
     
 }
