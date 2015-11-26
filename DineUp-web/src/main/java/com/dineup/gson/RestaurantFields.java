@@ -7,6 +7,7 @@ public interface RestaurantFields {
     String PHOTO_URL = "photoUrl";
     String RATING = "rating";
     String TYPE = "type";
+    String CATEGORIES = "categories";
     
     String NAME = "name";
     String DESCRIPTION = "description";

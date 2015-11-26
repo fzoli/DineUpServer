@@ -31,6 +31,7 @@ public class RestaurantSerializer implements JsonSerializer<Restaurant>, Restaur
         object.addProperty(ADDRESS, restaurant.getAddress());
         object.addProperty(PHOTO_URL, restaurant.getPhotoUrl());
         object.add(COORDINATE, context.serialize(restaurant.getCoordinate()));
+        object.add(CATEGORIES, context.serialize(restaurant.getCategories()));
         RestaurantLocale restaurantLocale = Restaurants.getLocale(restaurant, locale.getLanguageCode());
         if (restaurantLocale != null) {
             object.addProperty(NAME, restaurantLocale.getName());
