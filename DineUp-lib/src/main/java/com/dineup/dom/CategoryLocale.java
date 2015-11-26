@@ -1,6 +1,5 @@
 package com.dineup.dom;
 
-public interface CategoryLocale {
-    public String getLanguageCode();
+public interface CategoryLocale extends Locale {
     public String getName();
 }

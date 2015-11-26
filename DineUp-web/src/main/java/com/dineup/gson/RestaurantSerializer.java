@@ -1,6 +1,6 @@
 package com.dineup.gson;
 
-import com.dineup.dom.Locale;
+import com.dineup.dom.Localization;
 import com.dineup.dom.Restaurant;
 import com.dineup.dom.RestaurantLocale;
 import com.dineup.dom.Restaurants;
@@ -13,10 +13,10 @@ import java.lang.reflect.Type;
 
 public class RestaurantSerializer implements JsonSerializer<Restaurant>, RestaurantFields {
     
-    private final Locale locale;
+    private final Localization localization;
     
-    public RestaurantSerializer(Locale locale) {
-        this.locale = locale;
+    public RestaurantSerializer(Localization localization) {
+        this.localization = localization;
     }
     
     @Override
@@ -32,7 +32,7 @@ public class RestaurantSerializer implements JsonSerializer<Restaurant>, Restaur
         object.addProperty(PHOTO_URL, restaurant.getPhotoUrl());
         object.add(COORDINATE, context.serialize(restaurant.getCoordinate()));
         object.add(CATEGORIES, context.serialize(restaurant.getCategories()));
-        RestaurantLocale restaurantLocale = Restaurants.getLocale(restaurant, locale.getLanguageCode());
+        RestaurantLocale restaurantLocale = Restaurants.getLocale(restaurant, localization.getLanguageCode());
         if (restaurantLocale != null) {
             object.addProperty(NAME, restaurantLocale.getName());
             object.addProperty(DESCRIPTION, restaurantLocale.getDescription());

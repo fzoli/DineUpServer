@@ -2,7 +2,7 @@ package com.dineup.servlet;
 
 import com.dineup.ejb.RestaurantDataSource;
 import com.dineup.gson.GsonFactory;
-import com.dineup.dom.Locale;
+import com.dineup.dom.Localization;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -25,7 +25,7 @@ public class RestaurantJsonServlet extends HttpServlet {
         if (languageCode == null) languageCode = "hu";
         String currencyCode = request.getParameter("currency");
         if (currencyCode == null) currencyCode = "HUF";
-        Gson gson = GsonFactory.createInstance(new Locale(languageCode, currencyCode));
+        Gson gson = GsonFactory.createInstance(new Localization(languageCode, currencyCode));
         response.setContentType("application/json;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             out.println(gson.toJson(dataSource.getRestaurants()));

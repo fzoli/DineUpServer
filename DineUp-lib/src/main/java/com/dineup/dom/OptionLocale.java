@@ -1,6 +1,5 @@
 package com.dineup.dom;
 
-public interface OptionLocale {
-    public String getLanguageCode();
+public interface OptionLocale extends Locale {
     public String getName();
 }
