@@ -1,5 +1,10 @@
 package com.dineup.entity;
 
+import com.dineup.dom.Extra;
+import com.dineup.dom.ExtraLocale;
+import com.dineup.dom.Option;
+
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,8 +18,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "extra")
-public class ExtraEntity {
-    
+public class ExtraEntity implements Extra, Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,5 +39,40 @@ public class ExtraEntity {
     
     @OneToMany(mappedBy = "extra")
     private List<OptionEntity> options;
-    
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public RestaurantEntity getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(RestaurantEntity restaurant) {
+        this.restaurant = restaurant;
+    }
+
+    @Override
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @Override
+    public List<ExtraLocale> getLocales() {
+        return (List) locales;
+    }
+
+    @Override
+    public List<Option> getOptions() {
+        return (List) options;
+    }
+
 }

@@ -1,5 +1,10 @@
 package com.dineup.entity;
 
+import com.dineup.dom.Food;
+import com.dineup.dom.FoodLocale;
+import com.dineup.dom.Price;
+
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,8 +20,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "food")
-public class FoodEntity {
-    
+public class FoodEntity implements Food, Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,5 +48,41 @@ public class FoodEntity {
       joinColumns={@JoinColumn(name="food", referencedColumnName="id")},
       inverseJoinColumns={@JoinColumn(name="extra", referencedColumnName="id")})
     private List<ExtraEntity> extras;
-    
+
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    @Override
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
+    @Override
+    public List<FoodLocale> getLocales() {
+        return (List) locales;
+    }
+
+    public void setLocales(List<FoodLocaleEntity> locales) {
+        this.locales = locales;
+    }
+
+    @Override
+    public List<Price> getPrices() {
+        return (List) prices;
+    }
+
+    public void setPrices(List<FoodPriceEntity> prices) {
+        this.prices = prices;
+    }
+
 }

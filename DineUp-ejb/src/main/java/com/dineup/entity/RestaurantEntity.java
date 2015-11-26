@@ -56,7 +56,7 @@ public class RestaurantEntity implements Restaurant, Serializable {
     }
     
     @Override
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

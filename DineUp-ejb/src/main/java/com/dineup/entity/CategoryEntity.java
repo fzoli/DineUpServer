@@ -41,7 +41,7 @@ public class CategoryEntity implements Category, Serializable {
     private List<FoodEntity> foods;
 
     @Override
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

@@ -3,7 +3,7 @@ package com.dineup.dom;
 import java.util.List;
 
 public interface Restaurant {
-    public int getId();
+    public Integer getId();
     public String getType();
     public String getPhotoUrl();
     public String getAddress();
