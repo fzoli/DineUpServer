@@ -12,10 +12,10 @@ import java.lang.reflect.Type;
 
 class ExtraSerializer implements JsonSerializer<Extra>, ExtraFields {
 
-    private final Localization localization;
+    private final SerializerConfig serializerConfig;
     
-    public ExtraSerializer(Localization localization) {
-        this.localization = localization;
+    public ExtraSerializer(SerializerConfig serializerConfig) {
+        this.serializerConfig = serializerConfig;
     }
 
     @Override
@@ -25,7 +25,7 @@ class ExtraSerializer implements JsonSerializer<Extra>, ExtraFields {
         }
         JsonObject object = new JsonObject();
         object.addProperty(TYPE, extra.getType());
-        ExtraLocale locale = Extras.getLocale(extra, localization.getLanguageCode());
+        ExtraLocale locale = Extras.getLocale(extra, serializerConfig.getLanguageCode());
         if (locale != null) {
             object.addProperty(NAME, locale.getName());
         }

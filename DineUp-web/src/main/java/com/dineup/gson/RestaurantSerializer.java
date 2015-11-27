@@ -12,10 +12,10 @@ import java.lang.reflect.Type;
 
 class RestaurantSerializer implements JsonSerializer<Restaurant>, RestaurantFields {
     
-    private final Localization localization;
+    private final SerializerConfig serializerConfig;
     
-    public RestaurantSerializer(Localization localization) {
-        this.localization = localization;
+    public RestaurantSerializer(SerializerConfig serializerConfig) {
+        this.serializerConfig = serializerConfig;
     }
     
     @Override
@@ -29,7 +29,7 @@ class RestaurantSerializer implements JsonSerializer<Restaurant>, RestaurantFiel
         object.addProperty(TYPE, restaurant.getType());
         object.addProperty(ADDRESS, restaurant.getAddress());
         object.addProperty(PHOTO_URL, restaurant.getPhotoUrl());
-        RestaurantLocale restaurantLocale = Restaurants.getLocale(restaurant, localization.getLanguageCode());
+        RestaurantLocale restaurantLocale = Restaurants.getLocale(restaurant, serializerConfig.getLanguageCode());
         if (restaurantLocale != null) {
             object.addProperty(NAME, restaurantLocale.getName());
             object.addProperty(DESCRIPTION, restaurantLocale.getDescription());

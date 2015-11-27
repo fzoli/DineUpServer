@@ -12,10 +12,10 @@ import java.lang.reflect.Type;
 
 class FoodSerializer implements JsonSerializer<Food>, FoodFields {
 
-    private final Localization localization;
+    private final SerializerConfig serializerConfig;
     
-    public FoodSerializer(Localization localization) {
-        this.localization = localization;
+    public FoodSerializer(SerializerConfig serializerConfig) {
+        this.serializerConfig = serializerConfig;
     }
 
     @Override
@@ -26,7 +26,7 @@ class FoodSerializer implements JsonSerializer<Food>, FoodFields {
         JsonObject object = new JsonObject();
         object.addProperty(ID, food.getId());
         object.addProperty(PHOTO_URL, food.getPhotoUrl());
-        FoodLocale locale = Foods.getLocale(food, localization.getLanguageCode());
+        FoodLocale locale = Foods.getLocale(food, serializerConfig.getLanguageCode());
         if (locale != null) {
             object.addProperty(NAME, locale.getName());
             object.addProperty(DESCRIPTION, locale.getDescription());

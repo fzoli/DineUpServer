@@ -12,10 +12,10 @@ import java.lang.reflect.Type;
 
 class OptionSerializer implements JsonSerializer<Option>, OptionFields {
 
-    private final Localization localization;
+    private final SerializerConfig serializerConfig;
 
-    public OptionSerializer(Localization localization) {
-        this.localization = localization;
+    public OptionSerializer(SerializerConfig serializerConfig) {
+        this.serializerConfig = serializerConfig;
     }
     
     @Override
@@ -24,7 +24,7 @@ class OptionSerializer implements JsonSerializer<Option>, OptionFields {
             return JsonNull.INSTANCE;
         }
         JsonObject object = new JsonObject();
-        OptionLocale locale = Options.getLocale(option, localization.getLanguageCode());
+        OptionLocale locale = Options.getLocale(option, serializerConfig.getLanguageCode());
         if (locale != null) {
             object.addProperty(NAME, locale.getName());
         }

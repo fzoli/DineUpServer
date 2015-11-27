@@ -12,10 +12,10 @@ import java.lang.reflect.Type;
 
 class CategorySerializer implements JsonSerializer<Category>, CategoryFields {
 
-    private final Localization localization;
+    private final SerializerConfig serializerConfig;
     
-    public CategorySerializer(Localization localization) {
-        this.localization = localization;
+    public CategorySerializer(SerializerConfig serializerConfig) {
+        this.serializerConfig = serializerConfig;
     }
 
     @Override
@@ -26,7 +26,7 @@ class CategorySerializer implements JsonSerializer<Category>, CategoryFields {
         JsonObject object = new JsonObject();
         object.addProperty(ID, category.getId());
         object.addProperty(PHOTO_URL, category.getPhotoUrl());
-        CategoryLocale locale = Categories.getLocale(category, localization.getLanguageCode());
+        CategoryLocale locale = Categories.getLocale(category, serializerConfig.getLanguageCode());
         if (locale != null) {
             object.addProperty(NAME, locale.getName());
         }
