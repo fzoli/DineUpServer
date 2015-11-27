@@ -12,7 +12,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 @Singleton
-public class DefaultRestaurantDataSource implements RestaurantDataSource {
+public class LiveRestaurantDataSource implements RestaurantDataSource {
 
     @PersistenceContext
     private EntityManager manager;

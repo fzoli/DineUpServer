@@ -6,10 +6,29 @@
   <version>1.0</version>
   <packaging>pom</packaging>
   <name>DineUp</name>
+  <profiles>
+    <profile>
+        <id>live</id>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+        </activation>
+        <properties>
+            <dineup.environment>live</dineup.environment>
+        </properties>
+    </profile>
+    <profile>
+        <id>mock</id>
+        <properties>
+            <dineup.environment>mock</dineup.environment>
+        </properties>
+    </profile>
+  </profiles>
   <modules>
     <module>DineUp-ear</module>
+    <module>DineUp-lib</module>
     <module>DineUp-web</module>
     <module>DineUp-ejb</module>
-    <module>DineUp-lib</module>
+    <module>DineUp-live-ejb</module>
+    <module>DineUp-mock-ejb</module>
   </modules>
 </project>

@@ -13,6 +13,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <dineup.environment.ejb.artifact>DineUp-${dineup.environment}-ejb</dineup.environment.ejb.artifact>
     </properties>
   
     <build>
@@ -40,6 +41,12 @@
     <dependencies>
         <dependency>
             <artifactId>DineUp-ejb</artifactId>
+            <groupId>${project.groupId}</groupId>
+            <version>${project.version}</version>
+            <type>ejb</type>
+        </dependency>
+        <dependency>
+            <artifactId>${dineup.environment.ejb.artifact}</artifactId>
             <groupId>${project.groupId}</groupId>
             <version>${project.version}</version>
             <type>ejb</type>
