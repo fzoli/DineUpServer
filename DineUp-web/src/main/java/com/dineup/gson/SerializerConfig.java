@@ -12,6 +12,10 @@ public class SerializerConfig {
         return "en";
     }
     
+    public boolean isExceptionMessageDisabled() {
+        return false;
+    }
+    
     public String getLanguageCode() {
         return languageCode;
     }

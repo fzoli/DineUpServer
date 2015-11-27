@@ -13,6 +13,7 @@ public class GsonFactory {
     
     public static final Gson createInstance(SerializerConfig serializerConfig) {
         return new GsonBuilder()
+            .registerTypeHierarchyAdapter(Throwable.class, new ThrowableSerializer(serializerConfig.isExceptionMessageDisabled()))
             .registerTypeHierarchyAdapter(Price.class, new PriceSerializer())
             .registerTypeHierarchyAdapter(Restaurant.class, new RestaurantSerializer(serializerConfig))
             .registerTypeHierarchyAdapter(Category.class, new CategorySerializer(serializerConfig))

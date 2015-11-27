@@ -1,5 +1,5 @@
 package com.dineup.response;
 
 public interface ErrorResolver {
-    public Result resolveError(Exception exception);
+    public Error resolveError(Exception exception);
 }

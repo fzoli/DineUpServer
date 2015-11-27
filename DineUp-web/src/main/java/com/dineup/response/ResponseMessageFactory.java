@@ -16,25 +16,25 @@ public final class ResponseMessageFactory {
         catch (Exception exception) {
             return new ResponseMessage(resolveException(exception));
         }
-        catch (Error error) {
+        catch (Throwable error) {
             return new ResponseMessage(resolveError(error));
         }
     }
 
-    private Result resolveException(Exception exception) {
+    private Error resolveException(Exception exception) {
         for (ErrorResolver errorResolver : errorResolvers) {
             if (errorResolver != null) {
-                Result result = errorResolver.resolveError(exception);
-                if (result != null) {
-                    return result;
+                Error error = errorResolver.resolveError(exception);
+                if (error != null) {
+                    return error;
                 }
             }
         }
-        return Result.GENERAL_ERROR;
+        return new Error(Result.GENERAL_ERROR, exception);
     }
 
-    private Result resolveError(Error error) {
-        return Result.FATAL_ERROR;
+    private Error resolveError(Throwable error) {
+        return new Error(Result.FATAL_ERROR, error);
     }
 
 }
