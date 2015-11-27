@@ -20,7 +20,6 @@ public class GsonFactory {
             .registerTypeHierarchyAdapter(Food.class, new FoodSerializer(serializerConfig))
             .registerTypeHierarchyAdapter(Extra.class, new ExtraSerializer(serializerConfig))
             .registerTypeHierarchyAdapter(Option.class, new OptionSerializer(serializerConfig))
-            .setPrettyPrinting()
             .create();
     }
 

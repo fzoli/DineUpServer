@@ -20,7 +20,7 @@ public final class ResponseMessageFactory {
             return new ResponseMessage(resolveError(error));
         }
     }
-
+    
     private Error resolveException(Exception exception) {
         for (ErrorResolver errorResolver : errorResolvers) {
             if (errorResolver != null) {

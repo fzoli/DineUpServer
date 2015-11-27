@@ -7,7 +7,6 @@ import com.dineup.gson.SerializerConfig;
 import com.dineup.response.*;
 import com.google.gson.Gson;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -33,16 +32,13 @@ public class RestaurantJsonServlet extends HttpServlet {
             throws ServletException, IOException {
         SerializerConfig config = SerializerConfigFactory.createInstance(request);
         Gson gson = GsonFactory.createInstance(config);
-        response.setContentType(ContentTypes.JSON);
-        try (PrintWriter out = response.getWriter()) {
-            out.println(gson.toJson(createRestaurantListResponseMessage()));
-        }
+        JsonMessageStreamer.writeJson(gson, response, createRestaurantListResponseMessage());
     }
 
     private ResponseMessage<List<Restaurant>> createRestaurantListResponseMessage() {
         return messageFactory.createMessage(new RestaurantListResponseGenerator(dataSource));
     }
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
