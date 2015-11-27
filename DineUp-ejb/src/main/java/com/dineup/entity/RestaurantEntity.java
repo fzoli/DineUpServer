@@ -43,7 +43,7 @@ public class RestaurantEntity implements Restaurant, Serializable {
     @Column(name = "address")
     private String address;
     
-    @Column(name = "default_currency")
+    @Column(name = "default_currency", nullable = false)
     private String defaultCurrency;
     
     @OneToMany(mappedBy = "restaurant")
