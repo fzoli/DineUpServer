@@ -27,6 +27,9 @@ class CategorySerializer implements JsonSerializer<Category>, CategoryFields {
         object.addProperty(ID, category.getId());
         object.addProperty(PHOTO_URL, category.getPhotoUrl());
         CategoryLocale locale = Categories.getLocale(category, serializerConfig.getLanguageCode());
+        if (locale == null) {
+            locale = Categories.getLocale(category, serializerConfig.getDefaultLanguageCode());
+        }
         if (locale != null) {
             object.addProperty(NAME, locale.getName());
         }

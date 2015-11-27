@@ -43,6 +43,9 @@ public class RestaurantEntity implements Restaurant, Serializable {
     @Column(name = "address")
     private String address;
     
+    @Column(name = "default_currency")
+    private String defaultCurrency;
+    
     @OneToMany(mappedBy = "restaurant")
     private List<RestaurantLocaleEntity> locales;
     
@@ -100,6 +103,15 @@ public class RestaurantEntity implements Restaurant, Serializable {
         this.rating = rating;
     }
 
+    @Override
+    public String getDefaultCurrency() {
+        return defaultCurrency;
+    }
+
+    public void setDefaultCurrency(String defaultCurrency) {
+        this.defaultCurrency = defaultCurrency;
+    }
+    
     @Override
     public Coordinate getCoordinate() {
         return new Coordinate(latitude, longitude);

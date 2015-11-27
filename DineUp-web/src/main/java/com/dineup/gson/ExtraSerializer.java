@@ -26,6 +26,9 @@ class ExtraSerializer implements JsonSerializer<Extra>, ExtraFields {
         JsonObject object = new JsonObject();
         object.addProperty(TYPE, extra.getType());
         ExtraLocale locale = Extras.getLocale(extra, serializerConfig.getLanguageCode());
+        if (locale == null) {
+            locale = Extras.getLocale(extra, serializerConfig.getDefaultLanguageCode());
+        }
         if (locale != null) {
             object.addProperty(NAME, locale.getName());
         }

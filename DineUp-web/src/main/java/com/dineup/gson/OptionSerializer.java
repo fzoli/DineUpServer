@@ -25,6 +25,9 @@ class OptionSerializer implements JsonSerializer<Option>, OptionFields {
         }
         JsonObject object = new JsonObject();
         OptionLocale locale = Options.getLocale(option, serializerConfig.getLanguageCode());
+        if (locale == null) {
+            locale = Options.getLocale(option, serializerConfig.getDefaultLanguageCode());
+        }
         if (locale != null) {
             object.addProperty(NAME, locale.getName());
         }

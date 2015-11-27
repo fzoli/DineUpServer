@@ -7,6 +7,7 @@ public interface Restaurant {
     public String getType();
     public String getPhotoUrl();
     public String getAddress();
+    public String getDefaultCurrency();
     public Coordinate getCoordinate();
     public int getRating();
     public List<RestaurantLocale> getLocales();

@@ -29,11 +29,15 @@ class RestaurantSerializer implements JsonSerializer<Restaurant>, RestaurantFiel
         object.addProperty(TYPE, restaurant.getType());
         object.addProperty(ADDRESS, restaurant.getAddress());
         object.addProperty(PHOTO_URL, restaurant.getPhotoUrl());
-        RestaurantLocale restaurantLocale = Restaurants.getLocale(restaurant, serializerConfig.getLanguageCode());
-        if (restaurantLocale != null) {
-            object.addProperty(NAME, restaurantLocale.getName());
-            object.addProperty(DESCRIPTION, restaurantLocale.getDescription());
-            object.addProperty(OPEN_HOURS, restaurantLocale.getOpenHours());
+        object.addProperty(DEFAULT_CURRENCY, restaurant.getDefaultCurrency());
+        RestaurantLocale locale = Restaurants.getLocale(restaurant, serializerConfig.getLanguageCode());
+        if (locale == null) {
+            locale = Restaurants.getLocale(restaurant, serializerConfig.getDefaultLanguageCode());
+        }
+        if (locale != null) {
+            object.addProperty(NAME, locale.getName());
+            object.addProperty(DESCRIPTION, locale.getDescription());
+            object.addProperty(OPEN_HOURS, locale.getOpenHours());
         }
         else {
             object.add(NAME, JsonNull.INSTANCE);

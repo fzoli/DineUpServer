@@ -27,6 +27,9 @@ class FoodSerializer implements JsonSerializer<Food>, FoodFields {
         object.addProperty(ID, food.getId());
         object.addProperty(PHOTO_URL, food.getPhotoUrl());
         FoodLocale locale = Foods.getLocale(food, serializerConfig.getLanguageCode());
+        if (locale == null) {
+            locale = Foods.getLocale(food, serializerConfig.getDefaultLanguageCode());
+        }
         if (locale != null) {
             object.addProperty(NAME, locale.getName());
             object.addProperty(DESCRIPTION, locale.getDescription());

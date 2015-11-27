@@ -8,6 +8,10 @@ public class SerializerConfig {
         this.languageCode = languageCode;
     }
 
+    public String getDefaultLanguageCode() {
+        return "en";
+    }
+    
     public String getLanguageCode() {
         return languageCode;
     }

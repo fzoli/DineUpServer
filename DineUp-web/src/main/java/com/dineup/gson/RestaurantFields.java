@@ -8,6 +8,7 @@ interface RestaurantFields {
     String RATING = "rating";
     String TYPE = "type";
     String CATEGORIES = "categories";
+    String DEFAULT_CURRENCY = "defaultCurrency";
     
     String NAME = "name";
     String DESCRIPTION = "description";
