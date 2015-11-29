@@ -13,7 +13,6 @@ import com.dineup.rest.element.FoodElement;
 import com.dineup.rest.element.OptionElement;
 import com.dineup.rest.element.RestaurantElement;
 import javax.ws.rs.core.Response;
-import com.dineup.rest.element.TestElement;
 import com.dineup.rest.element.converter.CategoryElementConverter;
 import com.dineup.rest.element.converter.ExtraElementConverter;
 import com.dineup.rest.element.converter.FoodElementConverter;
@@ -31,17 +30,6 @@ public class RestaurantRestResourceBean implements RestaurantRestResource, Heade
     
     @EJB
     private RestaurantDataSource dataSource;
-    
-    @Override
-    public Response getTestResponse(ElementConfig elementConfig) {
-        if (!(elementConfig.getLanguageCode().equals("hu") || elementConfig.getLanguageCode().equals("en"))) {
-            return badRequest("Unknown language code");
-        }
-        String localizedText = elementConfig.getLanguageCode().equals("hu") ? "alma" : "apple";
-        TestElement test = new TestElement(localizedText);
-        GenericEntity<TestElement> entity = new GenericEntity<TestElement>(test) {};
-        return Response.ok(entity).build();
-    }
 
     @Override
     public Response getRestaurants(ElementConfig elementConfig) {

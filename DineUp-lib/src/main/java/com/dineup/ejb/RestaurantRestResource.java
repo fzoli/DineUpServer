@@ -6,7 +6,6 @@ import javax.ejb.Local;
 
 @Local
 public interface RestaurantRestResource {
-    public Response getTestResponse(ElementConfig elementConfig);
     public Response getRestaurants(ElementConfig elementConfig);
     public Response getCategories(ElementConfig elementConfig, Integer restaurantId);
     public Response getFoods(ElementConfig elementConfig, Integer categoryId);
