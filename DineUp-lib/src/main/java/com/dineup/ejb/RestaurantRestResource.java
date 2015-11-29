@@ -8,4 +8,8 @@ import javax.ejb.Local;
 public interface RestaurantRestResource {
     public Response getTestResponse(ElementConfig elementConfig);
     public Response getRestaurants(ElementConfig elementConfig);
+    public Response getCategories(ElementConfig elementConfig, Integer restaurantId);
+    public Response getFoods(ElementConfig elementConfig, Integer categoryId);
+    public Response getExtras(ElementConfig elementConfig, Integer foodId);
+    public Response getOptions(ElementConfig elementConfig, Integer extraId);
 }

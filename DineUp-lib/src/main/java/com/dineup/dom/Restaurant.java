@@ -2,7 +2,7 @@ package com.dineup.dom;
 
 import java.util.List;
 
-public interface Restaurant {
+public interface Restaurant extends LocalizedObject<RestaurantLocale> {
     public Integer getId();
     public String getType();
     public String getPhotoUrl();
@@ -10,6 +10,5 @@ public interface Restaurant {
     public String getDefaultCurrency();
     public Coordinate getCoordinate();
     public int getRating();
-    public List<RestaurantLocale> getLocales();
     public List<Category> getCategories();
 }

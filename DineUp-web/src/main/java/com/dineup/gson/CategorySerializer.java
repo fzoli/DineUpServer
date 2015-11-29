@@ -1,8 +1,8 @@
 package com.dineup.gson;
 
-import com.dineup.dom.Categories;
 import com.dineup.dom.Category;
 import com.dineup.dom.CategoryLocale;
+import com.dineup.dom.Locales;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
@@ -26,9 +26,9 @@ class CategorySerializer implements JsonSerializer<Category>, CategoryFields {
         JsonObject object = new JsonObject();
         object.addProperty(ID, category.getId());
         object.addProperty(PHOTO_URL, category.getPhotoUrl());
-        CategoryLocale locale = Categories.getLocale(category, serializerConfig.getLanguageCode());
+        CategoryLocale locale = Locales.getLocale(category, serializerConfig.getLanguageCode());
         if (locale == null) {
-            locale = Categories.getLocale(category, serializerConfig.getDefaultLanguageCode());
+            locale = Locales.getLocale(category, serializerConfig.getDefaultLanguageCode());
         }
         if (locale != null) {
             object.addProperty(NAME, locale.getName());

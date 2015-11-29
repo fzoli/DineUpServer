@@ -34,6 +34,14 @@
                 <configuration>
                     <version>6</version>
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <modules>
+                        <webModule>
+                            <artifactId>DineUp-web</artifactId>
+                            <groupId>${project.groupId}</groupId>
+                            <contextRoot>${dineup.context_root}</contextRoot>
+                            <bundleFileName>lanitex-web.war</bundleFileName>
+                        </webModule>
+                    </modules>
                 </configuration>
             </plugin>
         </plugins>

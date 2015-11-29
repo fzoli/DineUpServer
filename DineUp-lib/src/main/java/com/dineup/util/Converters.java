@@ -6,11 +6,22 @@ import java.util.List;
 
 public class Converters {
     
+    public static final <In, Out> Out convert(In in, Converter<In, Out> converter) {
+        if (in == null) {
+            return null;
+        }
+        return converter.convert(in);
+    }
+    
     public static final <In, Out> List<Out> convertList(Collection<In> list, Converter<In, Out> converter) {
+        if (list == null) {
+            return null;
+        }
         List<Out> outList = new ArrayList<>();
-        if (list != null) {
-            for (In in : list) {
-                outList.add(converter.convert(in));
+        for (In in : list) {
+            Out out = converter.convert(in);
+            if (out != null) {
+                outList.add(out);
             }
         }
         return outList;

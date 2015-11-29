@@ -3,6 +3,7 @@ package com.dineup.rest.json;
 import com.dineup.ejb.RestaurantRestResource;
 import com.dineup.rest.ElementConfig;
 import com.dineup.rest.RequestPath;
+import com.dineup.rest.RestaurantKeys;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -14,8 +15,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @RequestScoped
-@Path(RequestPath.ROOT_JSON + RequestPath.PATH_RESTAURANTS)
-public class RestaurantResource {
+@Path(RequestPath.ROOT_JSON + RequestPath.PATH_FOODS)
+public class FoodResource {
     
     @Inject
     private RestaurantRestResource resource;
@@ -25,6 +26,9 @@ public class RestaurantResource {
 
     @QueryParam(ElementConfig.Keys.WITH_NESTED_OBJECTS)
     private Boolean withNestedObjects;
+    
+    @QueryParam(RestaurantKeys.CATEGORY_ID)
+    private Integer categoryId;
     
     private ElementConfig createElementConfig() {
         return ElementConfig.newBuilder()
@@ -36,13 +40,13 @@ public class RestaurantResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getResponseByGet() {
-        return resource.getRestaurants(createElementConfig());
+        return resource.getFoods(createElementConfig(), categoryId);
     }
     
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Response getResponseByPost() {
-        return resource.getRestaurants(createElementConfig());
+        return resource.getFoods(createElementConfig(), categoryId);
     }
     
 }

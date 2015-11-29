@@ -1,8 +1,8 @@
 package com.dineup.gson;
 
+import com.dineup.dom.Locales;
 import com.dineup.dom.Option;
 import com.dineup.dom.OptionLocale;
-import com.dineup.dom.Options;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
@@ -24,9 +24,9 @@ class OptionSerializer implements JsonSerializer<Option>, OptionFields {
             return JsonNull.INSTANCE;
         }
         JsonObject object = new JsonObject();
-        OptionLocale locale = Options.getLocale(option, serializerConfig.getLanguageCode());
+        OptionLocale locale = Locales.getLocale(option, serializerConfig.getLanguageCode());
         if (locale == null) {
-            locale = Options.getLocale(option, serializerConfig.getDefaultLanguageCode());
+            locale = Locales.getLocale(option, serializerConfig.getDefaultLanguageCode());
         }
         if (locale != null) {
             object.addProperty(NAME, locale.getName());

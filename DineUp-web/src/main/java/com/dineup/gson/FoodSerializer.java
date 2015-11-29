@@ -2,7 +2,7 @@ package com.dineup.gson;
 
 import com.dineup.dom.Food;
 import com.dineup.dom.FoodLocale;
-import com.dineup.dom.Foods;
+import com.dineup.dom.Locales;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
@@ -26,9 +26,9 @@ class FoodSerializer implements JsonSerializer<Food>, FoodFields {
         JsonObject object = new JsonObject();
         object.addProperty(ID, food.getId());
         object.addProperty(PHOTO_URL, food.getPhotoUrl());
-        FoodLocale locale = Foods.getLocale(food, serializerConfig.getLanguageCode());
+        FoodLocale locale = Locales.getLocale(food, serializerConfig.getLanguageCode());
         if (locale == null) {
-            locale = Foods.getLocale(food, serializerConfig.getDefaultLanguageCode());
+            locale = Locales.getLocale(food, serializerConfig.getDefaultLanguageCode());
         }
         if (locale != null) {
             object.addProperty(NAME, locale.getName());

@@ -2,27 +2,38 @@ package com.dineup.rest.element.converter;
 
 import com.dineup.dom.Restaurant;
 import com.dineup.dom.RestaurantLocale;
-import com.dineup.dom.Restaurants;
 import com.dineup.rest.ElementConfig;
 import com.dineup.rest.element.RestaurantElement;
-import com.dineup.util.Converter;
+import com.dineup.util.Converters;
 
-public class RestaurantElementConverter implements Converter<Restaurant, RestaurantElement> {
+public class RestaurantElementConverter extends BaseLocalizedElementConverter<Restaurant, RestaurantLocale, RestaurantElement> {
 
-    private final ElementConfig elementConfig;
-    
     public RestaurantElementConverter(ElementConfig elementConfig) {
-        this.elementConfig = elementConfig;
+        super(elementConfig);
     }
     
     @Override
-    public RestaurantElement convert(Restaurant obj) {
-        RestaurantLocale l = Restaurants.getLocale(obj, elementConfig.getLanguageCode());
-        if (l == null) l = Restaurants.getLocale(obj, elementConfig.getDefaultLanguageCode());
+    public RestaurantElement convert(Restaurant o) {
+        if (o == null) {
+            return null;
+        }
         RestaurantElement e = new RestaurantElement();
+        RestaurantLocale l = getLocale(o);
         if (l != null) {
             e.name = l.getName();
+            e.description = l.getDescription();
+            e.openHours = l.getOpenHours();
         }
+        if (elementConfig.withNestedObjects()) {
+            e.categories = Converters.convertList(o.getCategories(), new CategoryElementConverter(elementConfig));
+        }
+        e.address = o.getAddress();
+        e.coordinate = Converters.convert(o.getCoordinate(), new CoordinateElementConverter(elementConfig));
+        e.defaultCurrency = o.getDefaultCurrency();
+        e.id = o.getId();
+        e.photoUrl = o.getPhotoUrl();
+        e.rating = o.getRating();
+        e.type = o.getType();
         return e;
     }
     

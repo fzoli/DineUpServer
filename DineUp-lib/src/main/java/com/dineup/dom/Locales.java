@@ -4,6 +4,10 @@ import java.util.List;
 
 public class Locales {
 
+    public static <L extends Locale, T extends LocalizedObject<L>> L getLocale(T obj, String languageCode) {
+        return getLocale(obj.getLocales(), languageCode);
+    }
+    
     public static <T extends Locale> T getLocale(List<T> locales, String languageCode) {
         if (languageCode == null) {
             return null;

@@ -2,8 +2,7 @@ package com.dineup.dom;
 
 import java.util.List;
 
-public interface Extra {
+public interface Extra extends LocalizedObject<ExtraLocale> {
     public String getType();
-    public List<ExtraLocale> getLocales();
     public List<Option> getOptions();
 }

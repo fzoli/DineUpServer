@@ -2,7 +2,7 @@ package com.dineup.gson;
 
 import com.dineup.dom.Extra;
 import com.dineup.dom.ExtraLocale;
-import com.dineup.dom.Extras;
+import com.dineup.dom.Locales;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
@@ -25,9 +25,9 @@ class ExtraSerializer implements JsonSerializer<Extra>, ExtraFields {
         }
         JsonObject object = new JsonObject();
         object.addProperty(TYPE, extra.getType());
-        ExtraLocale locale = Extras.getLocale(extra, serializerConfig.getLanguageCode());
+        ExtraLocale locale = Locales.getLocale(extra, serializerConfig.getLanguageCode());
         if (locale == null) {
-            locale = Extras.getLocale(extra, serializerConfig.getDefaultLanguageCode());
+            locale = Locales.getLocale(extra, serializerConfig.getDefaultLanguageCode());
         }
         if (locale != null) {
             object.addProperty(NAME, locale.getName());
