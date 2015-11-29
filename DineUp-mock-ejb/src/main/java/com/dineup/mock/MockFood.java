@@ -5,15 +5,17 @@ import com.dineup.dom.Extra;
 import com.dineup.dom.Food;
 import com.dineup.dom.FoodLocale;
 import com.dineup.dom.Price;
-import java.util.ArrayList;
+import com.dineup.ejb.RestaurantDataSource;
 import java.util.Collections;
 import java.util.List;
 
 public class MockFood implements Food, MockDatas {
 
+    private final RestaurantDataSource dataSource;
     private final int id;
     
-    public MockFood(int id) {
+    public MockFood(RestaurantDataSource dataSource, int id) {
+        this.dataSource = dataSource;
         this.id = id;
     }
 
@@ -39,11 +41,7 @@ public class MockFood implements Food, MockDatas {
 
     @Override
     public List<Extra> getExtras() {
-        List<Extra> list = new ArrayList<>(NUMBER_OF_EXTRAS);
-        for (int i = 0; i < NUMBER_OF_FOODS; i++) {
-            list.add(new MockExtra(i));
-        }
-        return Collections.unmodifiableList(list);
+        return dataSource.getExtras(id);
     }
     
 }

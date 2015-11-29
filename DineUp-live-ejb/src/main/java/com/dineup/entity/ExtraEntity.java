@@ -2,6 +2,7 @@ package com.dineup.entity;
 
 import com.dineup.dom.Extra;
 import com.dineup.dom.ExtraLocale;
+import com.dineup.dom.Food;
 import com.dineup.dom.Option;
 
 import java.io.Serializable;
@@ -12,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -40,6 +43,13 @@ public class ExtraEntity implements Extra, Serializable {
     @OneToMany(mappedBy = "extra")
     private List<OptionEntity> options;
 
+    @ManyToMany
+    @JoinTable(
+      name="food_extras",
+      joinColumns={@JoinColumn(name="extra", referencedColumnName="id")},
+      inverseJoinColumns={@JoinColumn(name="food", referencedColumnName="id")})
+    private List<FoodEntity> foods;
+    
     public Integer getId() {
         return id;
     }
@@ -73,6 +83,10 @@ public class ExtraEntity implements Extra, Serializable {
     @Override
     public List<Option> getOptions() {
         return (List) options;
+    }
+
+    public List<Food> getFoods() {
+        return (List) foods;
     }
 
 }

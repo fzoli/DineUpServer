@@ -5,16 +5,18 @@ import com.dineup.dom.Category;
 import com.dineup.dom.Coordinate;
 import com.dineup.dom.Restaurant;
 import com.dineup.dom.RestaurantLocale;
-import java.util.ArrayList;
+import com.dineup.ejb.RestaurantDataSource;
 import java.util.Collections;
 import java.util.List;
 
 public class MockRestaurant implements Restaurant, MockDatas {
     
+    private final RestaurantDataSource dataSource;
     private final int id;
     
-    public MockRestaurant(int id) {
+    public MockRestaurant(RestaurantDataSource dataSource, int id) {
         this.id = id;
+        this.dataSource = dataSource;
     }
 
     @Override
@@ -59,11 +61,7 @@ public class MockRestaurant implements Restaurant, MockDatas {
 
     @Override
     public List<Category> getCategories() {
-        List<Category> list = new ArrayList<>(NUMBER_OF_CATEGORIES);
-        for (int i = 0; i < NUMBER_OF_CATEGORIES; i++) {
-            list.add(new MockCategory(i));
-        }
-        return Collections.unmodifiableList(list);
+        return dataSource.getCategories(id);
     }
     
 }

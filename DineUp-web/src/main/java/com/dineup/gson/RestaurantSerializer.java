@@ -45,7 +45,9 @@ class RestaurantSerializer implements JsonSerializer<Restaurant>, RestaurantFiel
             object.add(OPEN_HOURS, JsonNull.INSTANCE);
         }
         object.add(COORDINATE, context.serialize(restaurant.getCoordinate()));
-        object.add(CATEGORIES, context.serialize(restaurant.getCategories()));
+        if (serializerConfig.withNestedObjects()) {
+            object.add(CATEGORIES, context.serialize(restaurant.getCategories()));
+        }
         return object;
     }
     

@@ -36,7 +36,9 @@ class CategorySerializer implements JsonSerializer<Category>, CategoryFields {
         else {
             object.add(NAME, JsonNull.INSTANCE);
         }
-        object.add(FOODS, context.serialize(category.getFoods()));
+        if (serializerConfig.withNestedObjects()) {
+            object.add(FOODS, context.serialize(category.getFoods()));
+        }
         return object;
     }
     

@@ -21,20 +21,20 @@ public final class ResponseMessageFactory {
         }
     }
     
-    private Error resolveException(Exception exception) {
+    private ErrorBundle resolveException(Exception exception) {
         for (ErrorResolver errorResolver : errorResolvers) {
             if (errorResolver != null) {
-                Error error = errorResolver.resolveError(exception);
+                ErrorBundle error = errorResolver.resolveError(exception);
                 if (error != null) {
                     return error;
                 }
             }
         }
-        return new Error(Result.GENERAL_ERROR, exception);
+        return new ErrorBundle(Result.GENERAL_ERROR, exception);
     }
 
-    private Error resolveError(Throwable error) {
-        return new Error(Result.FATAL_ERROR, error);
+    private ErrorBundle resolveError(Throwable error) {
+        return new ErrorBundle(Result.FATAL_ERROR, error);
     }
 
 }

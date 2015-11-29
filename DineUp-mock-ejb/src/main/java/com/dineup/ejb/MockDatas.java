@@ -3,10 +3,10 @@ package com.dineup.ejb;
 public interface MockDatas {
     
     int NUMBER_OF_RESTAURANTS = 200;
-    int NUMBER_OF_CATEGORIES = 10;
+    int NUMBER_OF_CATEGORIES = 20;
     int NUMBER_OF_FOODS = 40;
     int NUMBER_OF_EXTRAS = 10;
-    int NUMBER_OF_OPTIONS = 5;
+    int NUMBER_OF_OPTIONS = 10;
     
     String CURRENCY = "HUF";
     String IMAGE_URL_FORMAT = "http://dummyimage.com/600x400/000/fff.jpg&text=%s";

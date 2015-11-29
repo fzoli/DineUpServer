@@ -1,11 +1,11 @@
 package com.dineup.response;
 
-public class Error {
+public class ErrorBundle {
     
     private final Result result;
     private final Throwable throwable;
 
-    public Error(Result result, Throwable throwable) {
+    public ErrorBundle(Result result, Throwable throwable) {
         this.result = result;
         this.throwable = throwable;
     }

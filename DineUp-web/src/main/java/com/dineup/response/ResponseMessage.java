@@ -12,7 +12,7 @@ public class ResponseMessage<Response> {
         this.error = null;
     }
 
-    ResponseMessage(Error error) {
+    ResponseMessage(ErrorBundle error) {
         this.error = error.getThrowable();
         this.result = error.getResult();
         this.response = null;

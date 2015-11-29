@@ -39,7 +39,9 @@ class FoodSerializer implements JsonSerializer<Food>, FoodFields {
             object.add(DESCRIPTION, JsonNull.INSTANCE);
         }
         object.add(PRICES, context.serialize(food.getPrices()));
-        object.add(EXTRAS, context.serialize(food.getExtras()));
+        if (serializerConfig.withNestedObjects()) {
+            object.add(EXTRAS, context.serialize(food.getExtras()));
+        }
         return object;
     }
     

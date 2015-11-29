@@ -35,7 +35,9 @@ class ExtraSerializer implements JsonSerializer<Extra>, ExtraFields {
         else {
             object.add(NAME, JsonNull.INSTANCE);
         }
-        object.add(OPTIONS, context.serialize(extra.getOptions()));
+        if (serializerConfig.withNestedObjects()) {
+            object.add(OPTIONS, context.serialize(extra.getOptions()));
+        }
         return object;
     }
     
