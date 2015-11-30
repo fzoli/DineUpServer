@@ -37,6 +37,7 @@ public class OptionEntity implements Option, Serializable {
     @OneToMany(mappedBy = "option")
     private List<OptionPriceEntity> prices;
 
+    @Override
     public Integer getId() {
         return id;
     }

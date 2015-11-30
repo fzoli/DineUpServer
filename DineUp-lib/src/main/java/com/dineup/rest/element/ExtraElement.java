@@ -28,6 +28,11 @@ public class ExtraElement {
     }
     
     @XmlElement
+    public Integer getId() {
+        return extra.getId();
+    }
+    
+    @XmlElement
     public String getName() {
         ExtraLocale l = getLocale();
         return l == null ? null : l.getName();

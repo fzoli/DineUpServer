@@ -1,0 +1,103 @@
+[
+  {
+    "id": 0, 
+    "name": "Category name 0", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Category0"
+  }, 
+  {
+    "id": 1, 
+    "name": "Category name 1", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Category1"
+  }, 
+  {
+    "id": 2, 
+    "name": "Category name 2", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Category2"
+  }, 
+  {
+    "id": 3, 
+    "name": "Category name 3", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Category3"
+  }, 
+  {
+    "id": 4, 
+    "name": "Category name 4", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Category4"
+  }, 
+  {
+    "id": 5, 
+    "name": "Category name 5", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Category5"
+  }, 
+  {
+    "id": 6, 
+    "name": "Category name 6", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Category6"
+  }, 
+  {
+    "id": 7, 
+    "name": "Category name 7", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Category7"
+  }, 
+  {
+    "id": 8, 
+    "name": "Category name 8", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Category8"
+  }, 
+  {
+    "id": 9, 
+    "name": "Category name 9", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Category9"
+  }, 
+  {
+    "id": 10, 
+    "name": "Category name 10", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Category10"
+  }, 
+  {
+    "id": 11, 
+    "name": "Category name 11", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Category11"
+  }, 
+  {
+    "id": 12, 
+    "name": "Category name 12", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Category12"
+  }, 
+  {
+    "id": 13, 
+    "name": "Category name 13", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Category13"
+  }, 
+  {
+    "id": 14, 
+    "name": "Category name 14", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Category14"
+  }, 
+  {
+    "id": 15, 
+    "name": "Category name 15", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Category15"
+  }, 
+  {
+    "id": 16, 
+    "name": "Category name 16", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Category16"
+  }, 
+  {
+    "id": 17, 
+    "name": "Category name 17", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Category17"
+  }, 
+  {
+    "id": 18, 
+    "name": "Category name 18", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Category18"
+  }, 
+  {
+    "id": 19, 
+    "name": "Category name 19", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Category19"
+  }
+]
+

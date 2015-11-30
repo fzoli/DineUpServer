@@ -9,12 +9,18 @@ import java.util.Collections;
 import java.util.List;
 
 public class MockOption implements Option, MockDatas {
+    
     private final int id;
     
     public MockOption(RestaurantDataSource dataSource, int id) {
         this.id = id;
     }
 
+    @Override
+    public Integer getId() {
+        return id;
+    }
+    
     @Override
     public List<Price> getPrices() {
         return (List) Collections.singletonList(new MockPrice());

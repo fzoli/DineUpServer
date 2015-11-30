@@ -19,6 +19,11 @@ public class MockExtra implements Extra, MockDatas {
     }
 
     @Override
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
     public String getType() {
         return EXTRA_TYPES[id % EXTRA_TYPES.length];
     }

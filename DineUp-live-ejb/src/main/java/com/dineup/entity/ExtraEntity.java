@@ -50,6 +50,7 @@ public class ExtraEntity implements Extra, Serializable {
       inverseJoinColumns={@JoinColumn(name="food", referencedColumnName="id")})
     private List<FoodEntity> foods;
     
+    @Override
     public Integer getId() {
         return id;
     }

@@ -1,0 +1,3003 @@
+[
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 0.0, 
+      "longitude": 0.0
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 0", 
+    "id": 0, 
+    "name": "Restaurant name 0", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant0", 
+    "rating": 0, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 3.14, 
+      "longitude": 6.28
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 1", 
+    "id": 1, 
+    "name": "Restaurant name 1", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant1", 
+    "rating": 0, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 6.28, 
+      "longitude": 12.56
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 2", 
+    "id": 2, 
+    "name": "Restaurant name 2", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant2", 
+    "rating": 1, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 9.42, 
+      "longitude": 18.84
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 3", 
+    "id": 3, 
+    "name": "Restaurant name 3", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant3", 
+    "rating": 1, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 12.56, 
+      "longitude": 25.12
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 4", 
+    "id": 4, 
+    "name": "Restaurant name 4", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant4", 
+    "rating": 2, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 15.700000000000001, 
+      "longitude": 31.400000000000002
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 5", 
+    "id": 5, 
+    "name": "Restaurant name 5", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant5", 
+    "rating": 2, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 18.84, 
+      "longitude": 37.68
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 6", 
+    "id": 6, 
+    "name": "Restaurant name 6", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant6", 
+    "rating": 3, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 21.98, 
+      "longitude": 43.96
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 7", 
+    "id": 7, 
+    "name": "Restaurant name 7", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant7", 
+    "rating": 3, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 25.12, 
+      "longitude": 50.24
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 8", 
+    "id": 8, 
+    "name": "Restaurant name 8", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant8", 
+    "rating": 4, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 28.26, 
+      "longitude": 56.52
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 9", 
+    "id": 9, 
+    "name": "Restaurant name 9", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant9", 
+    "rating": 4, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 31.400000000000002, 
+      "longitude": 62.800000000000004
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 10", 
+    "id": 10, 
+    "name": "Restaurant name 10", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant10", 
+    "rating": 5, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 34.54, 
+      "longitude": 69.08
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 11", 
+    "id": 11, 
+    "name": "Restaurant name 11", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant11", 
+    "rating": 5, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 37.68, 
+      "longitude": 75.36
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 12", 
+    "id": 12, 
+    "name": "Restaurant name 12", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant12", 
+    "rating": 6, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 40.82, 
+      "longitude": 81.64
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 13", 
+    "id": 13, 
+    "name": "Restaurant name 13", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant13", 
+    "rating": 6, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 43.96, 
+      "longitude": 87.92
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 14", 
+    "id": 14, 
+    "name": "Restaurant name 14", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant14", 
+    "rating": 7, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 47.1, 
+      "longitude": 94.2
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 15", 
+    "id": 15, 
+    "name": "Restaurant name 15", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant15", 
+    "rating": 7, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 50.24, 
+      "longitude": 100.48
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 16", 
+    "id": 16, 
+    "name": "Restaurant name 16", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant16", 
+    "rating": 8, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 53.38, 
+      "longitude": 106.76
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 17", 
+    "id": 17, 
+    "name": "Restaurant name 17", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant17", 
+    "rating": 8, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 56.52, 
+      "longitude": 113.04
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 18", 
+    "id": 18, 
+    "name": "Restaurant name 18", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant18", 
+    "rating": 9, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 59.660000000000004, 
+      "longitude": 119.32000000000001
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 19", 
+    "id": 19, 
+    "name": "Restaurant name 19", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant19", 
+    "rating": 9, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 62.800000000000004, 
+      "longitude": 125.60000000000001
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 20", 
+    "id": 20, 
+    "name": "Restaurant name 20", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant20", 
+    "rating": 10, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 65.94, 
+      "longitude": 131.88
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 21", 
+    "id": 21, 
+    "name": "Restaurant name 21", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant21", 
+    "rating": 10, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 69.08, 
+      "longitude": 138.16
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 22", 
+    "id": 22, 
+    "name": "Restaurant name 22", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant22", 
+    "rating": 11, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 72.22, 
+      "longitude": 144.44
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 23", 
+    "id": 23, 
+    "name": "Restaurant name 23", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant23", 
+    "rating": 11, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 75.36, 
+      "longitude": 150.72
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 24", 
+    "id": 24, 
+    "name": "Restaurant name 24", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant24", 
+    "rating": 12, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 78.5, 
+      "longitude": 157.0
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 25", 
+    "id": 25, 
+    "name": "Restaurant name 25", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant25", 
+    "rating": 12, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 81.64, 
+      "longitude": 163.28
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 26", 
+    "id": 26, 
+    "name": "Restaurant name 26", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant26", 
+    "rating": 13, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 84.78, 
+      "longitude": 169.56
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 27", 
+    "id": 27, 
+    "name": "Restaurant name 27", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant27", 
+    "rating": 13, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 87.92, 
+      "longitude": 175.84
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 28", 
+    "id": 28, 
+    "name": "Restaurant name 28", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant28", 
+    "rating": 14, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 1.0600000000000023, 
+      "longitude": 2.1200000000000045
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 29", 
+    "id": 29, 
+    "name": "Restaurant name 29", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant29", 
+    "rating": 14, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 4.200000000000003, 
+      "longitude": 8.400000000000006
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 30", 
+    "id": 30, 
+    "name": "Restaurant name 30", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant30", 
+    "rating": 15, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 7.340000000000003, 
+      "longitude": 14.680000000000007
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 31", 
+    "id": 31, 
+    "name": "Restaurant name 31", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant31", 
+    "rating": 15, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 10.480000000000004, 
+      "longitude": 20.960000000000008
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 32", 
+    "id": 32, 
+    "name": "Restaurant name 32", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant32", 
+    "rating": 16, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 13.620000000000005, 
+      "longitude": 27.24000000000001
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 33", 
+    "id": 33, 
+    "name": "Restaurant name 33", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant33", 
+    "rating": 16, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 16.760000000000005, 
+      "longitude": 33.52000000000001
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 34", 
+    "id": 34, 
+    "name": "Restaurant name 34", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant34", 
+    "rating": 17, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 19.900000000000006, 
+      "longitude": 39.80000000000001
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 35", 
+    "id": 35, 
+    "name": "Restaurant name 35", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant35", 
+    "rating": 17, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 23.040000000000006, 
+      "longitude": 46.08000000000001
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 36", 
+    "id": 36, 
+    "name": "Restaurant name 36", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant36", 
+    "rating": 18, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 26.180000000000007, 
+      "longitude": 52.360000000000014
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 37", 
+    "id": 37, 
+    "name": "Restaurant name 37", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant37", 
+    "rating": 18, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 29.320000000000007, 
+      "longitude": 58.640000000000015
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 38", 
+    "id": 38, 
+    "name": "Restaurant name 38", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant38", 
+    "rating": 19, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 32.46000000000001, 
+      "longitude": 64.92000000000002
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 39", 
+    "id": 39, 
+    "name": "Restaurant name 39", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant39", 
+    "rating": 19, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 35.60000000000001, 
+      "longitude": 71.20000000000002
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 40", 
+    "id": 40, 
+    "name": "Restaurant name 40", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant40", 
+    "rating": 20, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 38.74000000000001, 
+      "longitude": 77.48000000000002
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 41", 
+    "id": 41, 
+    "name": "Restaurant name 41", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant41", 
+    "rating": 20, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 41.879999999999995, 
+      "longitude": 83.75999999999999
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 42", 
+    "id": 42, 
+    "name": "Restaurant name 42", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant42", 
+    "rating": 21, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 45.02000000000001, 
+      "longitude": 90.04000000000002
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 43", 
+    "id": 43, 
+    "name": "Restaurant name 43", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant43", 
+    "rating": 21, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 48.16, 
+      "longitude": 96.32
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 44", 
+    "id": 44, 
+    "name": "Restaurant name 44", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant44", 
+    "rating": 22, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 51.30000000000001, 
+      "longitude": 102.60000000000002
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 45", 
+    "id": 45, 
+    "name": "Restaurant name 45", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant45", 
+    "rating": 22, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 54.44, 
+      "longitude": 108.88
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 46", 
+    "id": 46, 
+    "name": "Restaurant name 46", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant46", 
+    "rating": 23, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 57.58000000000001, 
+      "longitude": 115.16000000000003
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 47", 
+    "id": 47, 
+    "name": "Restaurant name 47", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant47", 
+    "rating": 23, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 60.72, 
+      "longitude": 121.44
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 48", 
+    "id": 48, 
+    "name": "Restaurant name 48", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant48", 
+    "rating": 24, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 63.860000000000014, 
+      "longitude": 127.72000000000003
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 49", 
+    "id": 49, 
+    "name": "Restaurant name 49", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant49", 
+    "rating": 24, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 67.0, 
+      "longitude": 134.0
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 50", 
+    "id": 50, 
+    "name": "Restaurant name 50", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant50", 
+    "rating": 25, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 70.14000000000001, 
+      "longitude": 140.28000000000003
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 51", 
+    "id": 51, 
+    "name": "Restaurant name 51", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant51", 
+    "rating": 25, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 73.28, 
+      "longitude": 146.56
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 52", 
+    "id": 52, 
+    "name": "Restaurant name 52", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant52", 
+    "rating": 26, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 76.42000000000002, 
+      "longitude": 152.84000000000003
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 53", 
+    "id": 53, 
+    "name": "Restaurant name 53", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant53", 
+    "rating": 26, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 79.56, 
+      "longitude": 159.12
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 54", 
+    "id": 54, 
+    "name": "Restaurant name 54", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant54", 
+    "rating": 27, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 82.70000000000002, 
+      "longitude": 165.40000000000003
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 55", 
+    "id": 55, 
+    "name": "Restaurant name 55", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant55", 
+    "rating": 27, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 85.84, 
+      "longitude": 171.68
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 56", 
+    "id": 56, 
+    "name": "Restaurant name 56", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant56", 
+    "rating": 28, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 88.98000000000002, 
+      "longitude": 177.96000000000004
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 57", 
+    "id": 57, 
+    "name": "Restaurant name 57", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant57", 
+    "rating": 28, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 2.1200000000000045, 
+      "longitude": 4.240000000000009
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 58", 
+    "id": 58, 
+    "name": "Restaurant name 58", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant58", 
+    "rating": 29, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 5.260000000000019, 
+      "longitude": 10.520000000000039
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 59", 
+    "id": 59, 
+    "name": "Restaurant name 59", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant59", 
+    "rating": 29, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 8.400000000000006, 
+      "longitude": 16.80000000000001
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 60", 
+    "id": 60, 
+    "name": "Restaurant name 60", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant60", 
+    "rating": 30, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 11.54000000000002, 
+      "longitude": 23.08000000000004
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 61", 
+    "id": 61, 
+    "name": "Restaurant name 61", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant61", 
+    "rating": 30, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 14.680000000000007, 
+      "longitude": 29.360000000000014
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 62", 
+    "id": 62, 
+    "name": "Restaurant name 62", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant62", 
+    "rating": 31, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 17.82000000000002, 
+      "longitude": 35.64000000000004
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 63", 
+    "id": 63, 
+    "name": "Restaurant name 63", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant63", 
+    "rating": 31, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 20.960000000000008, 
+      "longitude": 41.920000000000016
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 64", 
+    "id": 64, 
+    "name": "Restaurant name 64", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant64", 
+    "rating": 32, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 24.099999999999994, 
+      "longitude": 48.19999999999999
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 65", 
+    "id": 65, 
+    "name": "Restaurant name 65", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant65", 
+    "rating": 32, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 27.24000000000001, 
+      "longitude": 54.48000000000002
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 66", 
+    "id": 66, 
+    "name": "Restaurant name 66", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant66", 
+    "rating": 33, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 30.379999999999995, 
+      "longitude": 60.75999999999999
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 67", 
+    "id": 67, 
+    "name": "Restaurant name 67", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant67", 
+    "rating": 33, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 33.52000000000001, 
+      "longitude": 67.04000000000002
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 68", 
+    "id": 68, 
+    "name": "Restaurant name 68", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant68", 
+    "rating": 34, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 36.66, 
+      "longitude": 73.32
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 69", 
+    "id": 69, 
+    "name": "Restaurant name 69", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant69", 
+    "rating": 34, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 39.80000000000001, 
+      "longitude": 79.60000000000002
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 70", 
+    "id": 70, 
+    "name": "Restaurant name 70", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant70", 
+    "rating": 35, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 42.94, 
+      "longitude": 85.88
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 71", 
+    "id": 71, 
+    "name": "Restaurant name 71", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant71", 
+    "rating": 35, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 46.08000000000001, 
+      "longitude": 92.16000000000003
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 72", 
+    "id": 72, 
+    "name": "Restaurant name 72", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant72", 
+    "rating": 36, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 49.22, 
+      "longitude": 98.44
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 73", 
+    "id": 73, 
+    "name": "Restaurant name 73", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant73", 
+    "rating": 36, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 52.360000000000014, 
+      "longitude": 104.72000000000003
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 74", 
+    "id": 74, 
+    "name": "Restaurant name 74", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant74", 
+    "rating": 37, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 55.5, 
+      "longitude": 111.0
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 75", 
+    "id": 75, 
+    "name": "Restaurant name 75", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant75", 
+    "rating": 37, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 58.640000000000015, 
+      "longitude": 117.28000000000003
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 76", 
+    "id": 76, 
+    "name": "Restaurant name 76", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant76", 
+    "rating": 38, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 61.78, 
+      "longitude": 123.56
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 77", 
+    "id": 77, 
+    "name": "Restaurant name 77", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant77", 
+    "rating": 38, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 64.92000000000002, 
+      "longitude": 129.84000000000003
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 78", 
+    "id": 78, 
+    "name": "Restaurant name 78", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant78", 
+    "rating": 39, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 68.06, 
+      "longitude": 136.12
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 79", 
+    "id": 79, 
+    "name": "Restaurant name 79", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant79", 
+    "rating": 39, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 71.20000000000002, 
+      "longitude": 142.40000000000003
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 80", 
+    "id": 80, 
+    "name": "Restaurant name 80", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant80", 
+    "rating": 40, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 74.34, 
+      "longitude": 148.68
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 81", 
+    "id": 81, 
+    "name": "Restaurant name 81", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant81", 
+    "rating": 40, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 77.48000000000002, 
+      "longitude": 154.96000000000004
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 82", 
+    "id": 82, 
+    "name": "Restaurant name 82", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant82", 
+    "rating": 41, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 80.62, 
+      "longitude": 161.24
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 83", 
+    "id": 83, 
+    "name": "Restaurant name 83", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant83", 
+    "rating": 41, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 83.75999999999999, 
+      "longitude": 167.51999999999998
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 84", 
+    "id": 84, 
+    "name": "Restaurant name 84", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant84", 
+    "rating": 42, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 86.90000000000003, 
+      "longitude": 173.80000000000007
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 85", 
+    "id": 85, 
+    "name": "Restaurant name 85", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant85", 
+    "rating": 42, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 0.040000000000020464, 
+      "longitude": 0.08000000000004093
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 86", 
+    "id": 86, 
+    "name": "Restaurant name 86", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant86", 
+    "rating": 43, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 3.180000000000007, 
+      "longitude": 6.360000000000014
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 87", 
+    "id": 87, 
+    "name": "Restaurant name 87", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant87", 
+    "rating": 43, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 6.319999999999993, 
+      "longitude": 12.639999999999986
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 88", 
+    "id": 88, 
+    "name": "Restaurant name 88", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant88", 
+    "rating": 44, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 9.460000000000036, 
+      "longitude": 18.920000000000073
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 89", 
+    "id": 89, 
+    "name": "Restaurant name 89", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant89", 
+    "rating": 44, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 12.600000000000023, 
+      "longitude": 25.200000000000045
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 90", 
+    "id": 90, 
+    "name": "Restaurant name 90", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant90", 
+    "rating": 45, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 15.740000000000009, 
+      "longitude": 31.480000000000018
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 91", 
+    "id": 91, 
+    "name": "Restaurant name 91", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant91", 
+    "rating": 45, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 18.879999999999995, 
+      "longitude": 37.75999999999999
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 92", 
+    "id": 92, 
+    "name": "Restaurant name 92", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant92", 
+    "rating": 46, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 22.02000000000004, 
+      "longitude": 44.04000000000008
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 93", 
+    "id": 93, 
+    "name": "Restaurant name 93", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant93", 
+    "rating": 46, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 25.160000000000025, 
+      "longitude": 50.32000000000005
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 94", 
+    "id": 94, 
+    "name": "Restaurant name 94", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant94", 
+    "rating": 47, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 28.30000000000001, 
+      "longitude": 56.60000000000002
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 95", 
+    "id": 95, 
+    "name": "Restaurant name 95", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant95", 
+    "rating": 47, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 31.439999999999998, 
+      "longitude": 62.879999999999995
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 96", 
+    "id": 96, 
+    "name": "Restaurant name 96", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant96", 
+    "rating": 48, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 34.579999999999984, 
+      "longitude": 69.15999999999997
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 97", 
+    "id": 97, 
+    "name": "Restaurant name 97", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant97", 
+    "rating": 48, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 37.72000000000003, 
+      "longitude": 75.44000000000005
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 98", 
+    "id": 98, 
+    "name": "Restaurant name 98", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant98", 
+    "rating": 49, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 40.860000000000014, 
+      "longitude": 81.72000000000003
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 99", 
+    "id": 99, 
+    "name": "Restaurant name 99", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant99", 
+    "rating": 49, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 44.0, 
+      "longitude": 88.0
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 100", 
+    "id": 100, 
+    "name": "Restaurant name 100", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant100", 
+    "rating": 50, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 47.139999999999986, 
+      "longitude": 94.27999999999997
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 101", 
+    "id": 101, 
+    "name": "Restaurant name 101", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant101", 
+    "rating": 50, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 50.28000000000003, 
+      "longitude": 100.56000000000006
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 102", 
+    "id": 102, 
+    "name": "Restaurant name 102", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant102", 
+    "rating": 51, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 53.420000000000016, 
+      "longitude": 106.84000000000003
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 103", 
+    "id": 103, 
+    "name": "Restaurant name 103", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant103", 
+    "rating": 51, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 56.56, 
+      "longitude": 113.12
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 104", 
+    "id": 104, 
+    "name": "Restaurant name 104", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant104", 
+    "rating": 52, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 59.69999999999999, 
+      "longitude": 119.39999999999998
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 105", 
+    "id": 105, 
+    "name": "Restaurant name 105", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant105", 
+    "rating": 52, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 62.84000000000003, 
+      "longitude": 125.68000000000006
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 106", 
+    "id": 106, 
+    "name": "Restaurant name 106", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant106", 
+    "rating": 53, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 65.98000000000002, 
+      "longitude": 131.96000000000004
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 107", 
+    "id": 107, 
+    "name": "Restaurant name 107", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant107", 
+    "rating": 53, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 69.12, 
+      "longitude": 138.24
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 108", 
+    "id": 108, 
+    "name": "Restaurant name 108", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant108", 
+    "rating": 54, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 72.25999999999999, 
+      "longitude": 144.51999999999998
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 109", 
+    "id": 109, 
+    "name": "Restaurant name 109", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant109", 
+    "rating": 54, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 75.40000000000003, 
+      "longitude": 150.80000000000007
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 110", 
+    "id": 110, 
+    "name": "Restaurant name 110", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant110", 
+    "rating": 55, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 78.54000000000002, 
+      "longitude": 157.08000000000004
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 111", 
+    "id": 111, 
+    "name": "Restaurant name 111", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant111", 
+    "rating": 55, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 81.68, 
+      "longitude": 163.36
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 112", 
+    "id": 112, 
+    "name": "Restaurant name 112", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant112", 
+    "rating": 56, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 84.82, 
+      "longitude": 169.64
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 113", 
+    "id": 113, 
+    "name": "Restaurant name 113", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant113", 
+    "rating": 56, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 87.96000000000004, 
+      "longitude": 175.92000000000007
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 114", 
+    "id": 114, 
+    "name": "Restaurant name 114", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant114", 
+    "rating": 57, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 1.1000000000000227, 
+      "longitude": 2.2000000000000455
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 115", 
+    "id": 115, 
+    "name": "Restaurant name 115", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant115", 
+    "rating": 57, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 4.240000000000009, 
+      "longitude": 8.480000000000018
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 116", 
+    "id": 116, 
+    "name": "Restaurant name 116", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant116", 
+    "rating": 58, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 7.3799999999999955, 
+      "longitude": 14.759999999999991
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 117", 
+    "id": 117, 
+    "name": "Restaurant name 117", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant117", 
+    "rating": 58, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 10.520000000000039, 
+      "longitude": 21.040000000000077
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 118", 
+    "id": 118, 
+    "name": "Restaurant name 118", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant118", 
+    "rating": 59, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 13.660000000000025, 
+      "longitude": 27.32000000000005
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 119", 
+    "id": 119, 
+    "name": "Restaurant name 119", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant119", 
+    "rating": 59, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 16.80000000000001, 
+      "longitude": 33.60000000000002
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 120", 
+    "id": 120, 
+    "name": "Restaurant name 120", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant120", 
+    "rating": 60, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 19.939999999999998, 
+      "longitude": 39.879999999999995
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 121", 
+    "id": 121, 
+    "name": "Restaurant name 121", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant121", 
+    "rating": 60, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 23.08000000000004, 
+      "longitude": 46.16000000000008
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 122", 
+    "id": 122, 
+    "name": "Restaurant name 122", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant122", 
+    "rating": 61, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 26.220000000000027, 
+      "longitude": 52.440000000000055
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 123", 
+    "id": 123, 
+    "name": "Restaurant name 123", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant123", 
+    "rating": 61, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 29.360000000000014, 
+      "longitude": 58.72000000000003
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 124", 
+    "id": 124, 
+    "name": "Restaurant name 124", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant124", 
+    "rating": 62, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 32.5, 
+      "longitude": 65.0
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 125", 
+    "id": 125, 
+    "name": "Restaurant name 125", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant125", 
+    "rating": 62, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 35.64000000000004, 
+      "longitude": 71.28000000000009
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 126", 
+    "id": 126, 
+    "name": "Restaurant name 126", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant126", 
+    "rating": 63, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 38.78000000000003, 
+      "longitude": 77.56000000000006
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 127", 
+    "id": 127, 
+    "name": "Restaurant name 127", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant127", 
+    "rating": 63, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 41.920000000000016, 
+      "longitude": 83.84000000000003
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 128", 
+    "id": 128, 
+    "name": "Restaurant name 128", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant128", 
+    "rating": 64, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 45.06, 
+      "longitude": 90.12
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 129", 
+    "id": 129, 
+    "name": "Restaurant name 129", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant129", 
+    "rating": 64, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 48.19999999999999, 
+      "longitude": 96.39999999999998
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 130", 
+    "id": 130, 
+    "name": "Restaurant name 130", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant130", 
+    "rating": 65, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 51.34000000000003, 
+      "longitude": 102.68000000000006
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 131", 
+    "id": 131, 
+    "name": "Restaurant name 131", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant131", 
+    "rating": 65, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 54.48000000000002, 
+      "longitude": 108.96000000000004
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 132", 
+    "id": 132, 
+    "name": "Restaurant name 132", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant132", 
+    "rating": 66, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 57.620000000000005, 
+      "longitude": 115.24000000000001
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 133", 
+    "id": 133, 
+    "name": "Restaurant name 133", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant133", 
+    "rating": 66, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 60.75999999999999, 
+      "longitude": 121.51999999999998
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 134", 
+    "id": 134, 
+    "name": "Restaurant name 134", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant134", 
+    "rating": 67, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 63.900000000000034, 
+      "longitude": 127.80000000000007
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 135", 
+    "id": 135, 
+    "name": "Restaurant name 135", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant135", 
+    "rating": 67, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 67.04000000000002, 
+      "longitude": 134.08000000000004
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 136", 
+    "id": 136, 
+    "name": "Restaurant name 136", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant136", 
+    "rating": 68, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 70.18, 
+      "longitude": 140.36
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 137", 
+    "id": 137, 
+    "name": "Restaurant name 137", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant137", 
+    "rating": 68, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 73.32, 
+      "longitude": 146.64
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 138", 
+    "id": 138, 
+    "name": "Restaurant name 138", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant138", 
+    "rating": 69, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 76.46000000000004, 
+      "longitude": 152.92000000000007
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 139", 
+    "id": 139, 
+    "name": "Restaurant name 139", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant139", 
+    "rating": 69, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 79.60000000000002, 
+      "longitude": 159.20000000000005
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 140", 
+    "id": 140, 
+    "name": "Restaurant name 140", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant140", 
+    "rating": 70, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 82.74000000000001, 
+      "longitude": 165.48000000000002
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 141", 
+    "id": 141, 
+    "name": "Restaurant name 141", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant141", 
+    "rating": 70, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 85.88, 
+      "longitude": 171.76
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 142", 
+    "id": 142, 
+    "name": "Restaurant name 142", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant142", 
+    "rating": 71, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 89.02000000000004, 
+      "longitude": 178.04000000000008
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 143", 
+    "id": 143, 
+    "name": "Restaurant name 143", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant143", 
+    "rating": 71, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 2.160000000000025, 
+      "longitude": 4.32000000000005
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 144", 
+    "id": 144, 
+    "name": "Restaurant name 144", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant144", 
+    "rating": 72, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 5.300000000000011, 
+      "longitude": 10.600000000000023
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 145", 
+    "id": 145, 
+    "name": "Restaurant name 145", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant145", 
+    "rating": 72, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 8.439999999999998, 
+      "longitude": 16.879999999999995
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 146", 
+    "id": 146, 
+    "name": "Restaurant name 146", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant146", 
+    "rating": 73, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 11.580000000000041, 
+      "longitude": 23.160000000000082
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 147", 
+    "id": 147, 
+    "name": "Restaurant name 147", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant147", 
+    "rating": 73, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 14.720000000000027, 
+      "longitude": 29.440000000000055
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 148", 
+    "id": 148, 
+    "name": "Restaurant name 148", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant148", 
+    "rating": 74, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 17.860000000000014, 
+      "longitude": 35.72000000000003
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 149", 
+    "id": 149, 
+    "name": "Restaurant name 149", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant149", 
+    "rating": 74, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 21.0, 
+      "longitude": 42.0
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 150", 
+    "id": 150, 
+    "name": "Restaurant name 150", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant150", 
+    "rating": 75, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 24.140000000000043, 
+      "longitude": 48.280000000000086
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 151", 
+    "id": 151, 
+    "name": "Restaurant name 151", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant151", 
+    "rating": 75, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 27.28000000000003, 
+      "longitude": 54.56000000000006
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 152", 
+    "id": 152, 
+    "name": "Restaurant name 152", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant152", 
+    "rating": 76, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 30.420000000000016, 
+      "longitude": 60.84000000000003
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 153", 
+    "id": 153, 
+    "name": "Restaurant name 153", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant153", 
+    "rating": 76, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 33.56, 
+      "longitude": 67.12
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 154", 
+    "id": 154, 
+    "name": "Restaurant name 154", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant154", 
+    "rating": 77, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 36.700000000000045, 
+      "longitude": 73.40000000000009
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 155", 
+    "id": 155, 
+    "name": "Restaurant name 155", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant155", 
+    "rating": 77, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 39.84000000000003, 
+      "longitude": 79.68000000000006
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 156", 
+    "id": 156, 
+    "name": "Restaurant name 156", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant156", 
+    "rating": 78, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 42.98000000000002, 
+      "longitude": 85.96000000000004
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 157", 
+    "id": 157, 
+    "name": "Restaurant name 157", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant157", 
+    "rating": 78, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 46.120000000000005, 
+      "longitude": 92.24000000000001
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 158", 
+    "id": 158, 
+    "name": "Restaurant name 158", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant158", 
+    "rating": 79, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 49.26000000000005, 
+      "longitude": 98.5200000000001
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 159", 
+    "id": 159, 
+    "name": "Restaurant name 159", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant159", 
+    "rating": 79, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 52.400000000000034, 
+      "longitude": 104.80000000000007
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 160", 
+    "id": 160, 
+    "name": "Restaurant name 160", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant160", 
+    "rating": 80, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 55.54000000000002, 
+      "longitude": 111.08000000000004
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 161", 
+    "id": 161, 
+    "name": "Restaurant name 161", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant161", 
+    "rating": 80, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 58.68000000000001, 
+      "longitude": 117.36000000000001
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 162", 
+    "id": 162, 
+    "name": "Restaurant name 162", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant162", 
+    "rating": 81, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 61.81999999999999, 
+      "longitude": 123.63999999999999
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 163", 
+    "id": 163, 
+    "name": "Restaurant name 163", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant163", 
+    "rating": 81, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 64.96000000000004, 
+      "longitude": 129.92000000000007
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 164", 
+    "id": 164, 
+    "name": "Restaurant name 164", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant164", 
+    "rating": 82, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 68.10000000000002, 
+      "longitude": 136.20000000000005
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 165", 
+    "id": 165, 
+    "name": "Restaurant name 165", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant165", 
+    "rating": 82, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 71.24000000000001, 
+      "longitude": 142.48000000000002
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 166", 
+    "id": 166, 
+    "name": "Restaurant name 166", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant166", 
+    "rating": 83, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 74.38, 
+      "longitude": 148.76
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 167", 
+    "id": 167, 
+    "name": "Restaurant name 167", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant167", 
+    "rating": 83, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 77.51999999999998, 
+      "longitude": 155.03999999999996
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 168", 
+    "id": 168, 
+    "name": "Restaurant name 168", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant168", 
+    "rating": 84, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 80.65999999999997, 
+      "longitude": 161.31999999999994
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 169", 
+    "id": 169, 
+    "name": "Restaurant name 169", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant169", 
+    "rating": 84, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 83.80000000000007, 
+      "longitude": 167.60000000000014
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 170", 
+    "id": 170, 
+    "name": "Restaurant name 170", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant170", 
+    "rating": 85, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 86.94000000000005, 
+      "longitude": 173.8800000000001
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 171", 
+    "id": 171, 
+    "name": "Restaurant name 171", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant171", 
+    "rating": 85, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 0.08000000000004093, 
+      "longitude": 0.16000000000008185
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 172", 
+    "id": 172, 
+    "name": "Restaurant name 172", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant172", 
+    "rating": 86, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 3.2200000000000273, 
+      "longitude": 6.440000000000055
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 173", 
+    "id": 173, 
+    "name": "Restaurant name 173", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant173", 
+    "rating": 86, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 6.360000000000014, 
+      "longitude": 12.720000000000027
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 174", 
+    "id": 174, 
+    "name": "Restaurant name 174", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant174", 
+    "rating": 87, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 9.5, 
+      "longitude": 19.0
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 175", 
+    "id": 175, 
+    "name": "Restaurant name 175", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant175", 
+    "rating": 87, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 12.639999999999986, 
+      "longitude": 25.279999999999973
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 176", 
+    "id": 176, 
+    "name": "Restaurant name 176", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant176", 
+    "rating": 88, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 15.779999999999973, 
+      "longitude": 31.559999999999945
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 177", 
+    "id": 177, 
+    "name": "Restaurant name 177", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant177", 
+    "rating": 88, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 18.920000000000073, 
+      "longitude": 37.840000000000146
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 178", 
+    "id": 178, 
+    "name": "Restaurant name 178", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant178", 
+    "rating": 89, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 22.06000000000006, 
+      "longitude": 44.12000000000012
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 179", 
+    "id": 179, 
+    "name": "Restaurant name 179", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant179", 
+    "rating": 89, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 25.200000000000045, 
+      "longitude": 50.40000000000009
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 180", 
+    "id": 180, 
+    "name": "Restaurant name 180", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant180", 
+    "rating": 90, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 28.340000000000032, 
+      "longitude": 56.680000000000064
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 181", 
+    "id": 181, 
+    "name": "Restaurant name 181", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant181", 
+    "rating": 90, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 31.480000000000018, 
+      "longitude": 62.960000000000036
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 182", 
+    "id": 182, 
+    "name": "Restaurant name 182", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant182", 
+    "rating": 91, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 34.620000000000005, 
+      "longitude": 69.24000000000001
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 183", 
+    "id": 183, 
+    "name": "Restaurant name 183", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant183", 
+    "rating": 91, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 37.75999999999999, 
+      "longitude": 75.51999999999998
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 184", 
+    "id": 184, 
+    "name": "Restaurant name 184", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant184", 
+    "rating": 92, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 40.89999999999998, 
+      "longitude": 81.79999999999995
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 185", 
+    "id": 185, 
+    "name": "Restaurant name 185", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant185", 
+    "rating": 92, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 44.04000000000008, 
+      "longitude": 88.08000000000015
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 186", 
+    "id": 186, 
+    "name": "Restaurant name 186", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant186", 
+    "rating": 93, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 47.180000000000064, 
+      "longitude": 94.36000000000013
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 187", 
+    "id": 187, 
+    "name": "Restaurant name 187", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant187", 
+    "rating": 93, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 50.32000000000005, 
+      "longitude": 100.6400000000001
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 188", 
+    "id": 188, 
+    "name": "Restaurant name 188", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant188", 
+    "rating": 94, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 53.460000000000036, 
+      "longitude": 106.92000000000007
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 189", 
+    "id": 189, 
+    "name": "Restaurant name 189", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant189", 
+    "rating": 94, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 56.60000000000002, 
+      "longitude": 113.20000000000005
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 190", 
+    "id": 190, 
+    "name": "Restaurant name 190", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant190", 
+    "rating": 95, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 59.74000000000001, 
+      "longitude": 119.48000000000002
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 191", 
+    "id": 191, 
+    "name": "Restaurant name 191", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant191", 
+    "rating": 95, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 62.879999999999995, 
+      "longitude": 125.75999999999999
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 192", 
+    "id": 192, 
+    "name": "Restaurant name 192", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant192", 
+    "rating": 96, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 66.01999999999998, 
+      "longitude": 132.03999999999996
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 193", 
+    "id": 193, 
+    "name": "Restaurant name 193", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant193", 
+    "rating": 96, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 69.15999999999997, 
+      "longitude": 138.31999999999994
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 194", 
+    "id": 194, 
+    "name": "Restaurant name 194", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant194", 
+    "rating": 97, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 72.30000000000007, 
+      "longitude": 144.60000000000014
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 195", 
+    "id": 195, 
+    "name": "Restaurant name 195", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant195", 
+    "rating": 97, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 75.44000000000005, 
+      "longitude": 150.8800000000001
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 196", 
+    "id": 196, 
+    "name": "Restaurant name 196", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant196", 
+    "rating": 98, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm h\u00e1rom", 
+    "coordinate": {
+      "latitude": 78.58000000000004, 
+      "longitude": 157.16000000000008
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 197", 
+    "id": 197, 
+    "name": "Restaurant name 197", 
+    "openHours": "Wednesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant197", 
+    "rating": 98, 
+    "type": "RestaurantB"
+  }, 
+  {
+    "address": "C\u00edm egy", 
+    "coordinate": {
+      "latitude": 81.72000000000003, 
+      "longitude": 163.44000000000005
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 198", 
+    "id": 198, 
+    "name": "Restaurant name 198", 
+    "openHours": "Monday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant198", 
+    "rating": 99, 
+    "type": "RestaurantA"
+  }, 
+  {
+    "address": "C\u00edm kett\u0151", 
+    "coordinate": {
+      "latitude": 84.86000000000001, 
+      "longitude": 169.72000000000003
+    }, 
+    "defaultCurrency": "HUF", 
+    "description": "Restaurant description 199", 
+    "id": 199, 
+    "name": "Restaurant name 199", 
+    "openHours": "Tuesday 24h", 
+    "photoUrl": "http://dummyimage.com/600x400/000/fff.jpg&text=Restaurant199", 
+    "rating": 99, 
+    "type": "RestaurantB"
+  }
+]
+

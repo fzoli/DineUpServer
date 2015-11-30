@@ -28,6 +28,11 @@ public class OptionElement {
     }
     
     @XmlElement
+    public Integer getId() {
+        return option.getId();
+    }
+    
+    @XmlElement
     public String getName() {
         OptionLocale l = getLocale();
         return l == null ? null : l.getName();
@@ -35,9 +40,6 @@ public class OptionElement {
 
     @XmlElement
     public List<PriceElement> getPrices() {
-        if (!elementConfig.withNestedObjects()) {
-            return null;
-        }
         return Converters.convertList(option.getPrices(), new PriceElementConverter(elementConfig));
     }
     
