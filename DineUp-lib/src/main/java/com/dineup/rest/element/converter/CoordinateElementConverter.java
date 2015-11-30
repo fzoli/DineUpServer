@@ -11,11 +11,8 @@ public class CoordinateElementConverter extends BaseElementConverter<Coordinate,
     }
 
     @Override
-    public CoordinateElement convert(Coordinate obj) {
-        CoordinateElement e = new CoordinateElement();
-        e.latitude = obj.getLatitude();
-        e.longitude = obj.getLongitude();
-        return e;
+    public CoordinateElement safeConvert(Coordinate coordinate) {
+        return new CoordinateElement(elementConfig, coordinate);
     }
     
 }

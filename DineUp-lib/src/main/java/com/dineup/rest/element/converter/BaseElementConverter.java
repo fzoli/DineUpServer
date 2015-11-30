@@ -10,5 +10,15 @@ abstract class BaseElementConverter<In, Out> implements Converter<In, Out> {
     protected BaseElementConverter(ElementConfig elementConfig) {
         this.elementConfig = elementConfig;
     }
+
+    @Override
+    public final Out convert(In obj) {
+        if (obj == null) {
+            return null;
+        }
+        return safeConvert(obj);
+    }
+    
+    protected abstract Out safeConvert(In obj);
     
 }

@@ -1,5 +1,9 @@
 package com.dineup.rest;
 
+import com.dineup.dom.Locale;
+import com.dineup.dom.Locales;
+import com.dineup.dom.LocalizedObject;
+
 public class ElementConfig {
 
     public interface Keys {
@@ -31,6 +35,12 @@ public class ElementConfig {
         return withNestedObjects;
     }
 
+    public <ObjectType extends LocalizedObject<LocaleType>, LocaleType extends Locale> LocaleType getLocale(ObjectType object) {
+        LocaleType l = Locales.getLocale(object, getLanguageCode());
+        if (l == null) l = Locales.getLocale(object, getDefaultLanguageCode());
+        return l;
+    }
+    
     @Override
     public String toString() {
         return String.format("ElementConfig[languageCode=%s; withNestedObjects=%s]", languageCode, withNestedObjects);

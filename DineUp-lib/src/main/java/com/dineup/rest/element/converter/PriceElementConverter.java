@@ -11,14 +11,8 @@ public class PriceElementConverter extends BaseElementConverter<Price, PriceElem
     }
 
     @Override
-    public PriceElement convert(Price o) {
-        if (o == null) {
-            return null;
-        }
-        PriceElement e = new PriceElement();
-        e.amount = o.getAmount();
-        e.currency = o.getCurrency();
-        return e;
+    public PriceElement safeConvert(Price price) {
+        return new PriceElement(elementConfig, price);
     }
     
 }
