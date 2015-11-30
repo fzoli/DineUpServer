@@ -6,6 +6,7 @@ import com.dineup.rest.ElementConfig;
 import com.dineup.rest.element.converter.FoodElementConverter;
 import com.dineup.util.Converters;
 import java.util.List;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -27,7 +28,7 @@ public class CategoryElement {
         return elementConfig.getLocale(category);
     }
     
-    @XmlElement
+    @XmlAttribute
     public Integer getId() {
         return category.getId();
     }

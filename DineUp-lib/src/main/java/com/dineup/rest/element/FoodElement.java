@@ -7,6 +7,7 @@ import com.dineup.rest.element.converter.ExtraElementConverter;
 import com.dineup.rest.element.converter.PriceElementConverter;
 import com.dineup.util.Converters;
 import java.util.List;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -28,7 +29,7 @@ public class FoodElement {
         return elementConfig.getLocale(food);
     }
     
-    @XmlElement
+    @XmlAttribute
     public Integer getId() {
         return food.getId();
     }

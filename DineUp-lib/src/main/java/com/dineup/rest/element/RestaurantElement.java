@@ -7,6 +7,7 @@ import com.dineup.rest.element.converter.CategoryElementConverter;
 import com.dineup.rest.element.converter.CoordinateElementConverter;
 import com.dineup.util.Converters;
 import java.util.List;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -29,7 +30,7 @@ public class RestaurantElement {
         return elementConfig.getLocale(restaurant);
     }
     
-    @XmlElement
+    @XmlAttribute
     public Integer getId() {
         return restaurant.getId();
     }
