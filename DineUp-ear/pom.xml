@@ -39,7 +39,6 @@
                             <artifactId>DineUp-web</artifactId>
                             <groupId>${project.groupId}</groupId>
                             <contextRoot>${dineup.web.context_root}</contextRoot>
-                            <bundleFileName>lanitex-web.war</bundleFileName>
                         </webModule>
                     </modules>
                 </configuration>
