@@ -2,7 +2,7 @@ package com.dineup;
 
 public final class BuildConfig {
 
-    public static final String CONTEXT_ROOT = "${dineup.context_root}";
+    public static final String SOAP_SERVICE_NAME = "${dineup.soap.service_name}";
     
     private BuildConfig() {
     }

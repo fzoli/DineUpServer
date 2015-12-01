@@ -7,7 +7,9 @@
   <packaging>pom</packaging>
   <name>DineUp</name>
   <properties>
-      <dineup.context_root>DineUp</dineup.context_root>
+      <dineup.web.context_root>/DineUp</dineup.web.context_root>
+      <dineup.web.rest.root>/rest</dineup.web.rest.root>
+      <dineup.soap.service_name>DineUpService</dineup.soap.service_name>
   </properties>
   <profiles>
     <profile>
