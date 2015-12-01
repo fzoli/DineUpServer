@@ -6,6 +6,9 @@
   <version>1.0</version>
   <packaging>pom</packaging>
   <name>DineUp</name>
+  <properties>
+      <dineup.context_root>DineUp</dineup.context_root>
+  </properties>
   <profiles>
     <profile>
         <id>live</id>
@@ -20,7 +23,6 @@
         <id>mock</id>
         <properties>
             <dineup.environment>mock</dineup.environment>
-            <dineup.context_root>/DineUp</dineup.context_root>
         </properties>
     </profile>
   </profiles>

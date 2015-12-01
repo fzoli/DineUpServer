@@ -14,11 +14,11 @@ import javax.jws.WebService;
 
 /**
  * Sample SOAP Web Service Code
- * WSDL: http://localhost:8080/soap/Restaurant?wsdl
- * XSD: http://localhost:8080/soap/Restaurant?xsd=1
+ * WSDL: http://localhost:8080/DineUp/soap/Restaurant?wsdl
+ * XSD: http://localhost:8080/DineUp/soap/Restaurant?xsd=1
  */
 @Singleton
-@WebService(serviceName = "soap", name = "Restaurant", targetNamespace = "http://soap.dineup.com")
+@WebService(name = "Restaurant", serviceName = SoapKeys.SERVICE_NAME, targetNamespace = SoapKeys.NAMESPACE)
 @LocalBean
 public class RestaurantSoapBean {
     

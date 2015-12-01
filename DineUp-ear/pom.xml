@@ -38,7 +38,7 @@
                         <webModule>
                             <artifactId>DineUp-web</artifactId>
                             <groupId>${project.groupId}</groupId>
-                            <contextRoot>${dineup.context_root}</contextRoot>
+                            <contextRoot>/${dineup.context_root}</contextRoot>
                             <bundleFileName>lanitex-web.war</bundleFileName>
                         </webModule>
                     </modules>
