@@ -1,7 +1,9 @@
 package com.dineup.rest.json;
 
+import com.dineup.ejb.rest.ServiceRestResource;
 import com.dineup.rest.RequestPath;
-import com.dineup.rest.element.ServiceElement;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -9,23 +11,23 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+@RequestScoped
 @Path(RequestPath.ROOT_JSON + RequestPath.PATH_SERVICE)
 public class ServiceResource {
+    
+    @Inject
+    private ServiceRestResource resource;
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getResponseByGet() {
-        return createResponse();
+        return resource.getService();
     }
     
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Response getResponseByPost() {
-        return createResponse();
-    }
-    
-    private Response createResponse() {
-        return Response.ok(new ServiceElement()).build();
+        return resource.getService();
     }
     
 }

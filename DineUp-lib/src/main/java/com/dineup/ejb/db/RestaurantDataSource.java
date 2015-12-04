@@ -1,4 +1,4 @@
-package com.dineup.ejb;
+package com.dineup.ejb.db;
 
 import com.dineup.dom.Category;
 import com.dineup.dom.Extra;

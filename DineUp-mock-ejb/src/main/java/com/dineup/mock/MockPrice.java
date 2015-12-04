@@ -1,6 +1,6 @@
 package com.dineup.mock;
 
-import com.dineup.ejb.MockDatas;
+import com.dineup.ejb.db.MockDatas;
 import com.dineup.dom.Price;
 import java.math.BigDecimal;
 

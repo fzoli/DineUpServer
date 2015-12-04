@@ -1,6 +1,6 @@
 package com.dineup.rest.json;
 
-import com.dineup.ejb.RestaurantRestResource;
+import com.dineup.ejb.rest.RestaurantRestResource;
 import com.dineup.rest.ElementConfig;
 import com.dineup.rest.RequestPath;
 import com.dineup.rest.RestaurantKeys;

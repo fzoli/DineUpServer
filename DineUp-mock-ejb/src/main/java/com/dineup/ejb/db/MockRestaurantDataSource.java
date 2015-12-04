@@ -1,5 +1,6 @@
-package com.dineup.ejb;
+package com.dineup.ejb.db;
 
+import com.dineup.ejb.db.RestaurantDataSource;
 import com.dineup.dom.*;
 import com.dineup.mock.*;
 

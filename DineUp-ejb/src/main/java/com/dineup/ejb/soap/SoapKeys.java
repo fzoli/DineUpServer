@@ -1,4 +1,4 @@
-package com.dineup.ejb;
+package com.dineup.ejb.soap;
 
 import com.dineup.BuildConfig;
 

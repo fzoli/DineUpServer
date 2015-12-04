@@ -1,7 +1,8 @@
 package com.dineup.rest.xml;
 
+import com.dineup.ejb.rest.ServiceRestResource;
 import com.dineup.rest.RequestPath;
-import com.dineup.rest.element.ServiceElement;
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -12,20 +13,19 @@ import javax.ws.rs.core.Response;
 @Path(RequestPath.ROOT_XML + RequestPath.PATH_SERVICE)
 public class ServiceResource {
     
+    @Inject
+    private ServiceRestResource resource;
+    
     @GET
     @Produces(MediaType.APPLICATION_XML)
     public Response getResponseByGet() {
-        return createResponse();
+        return resource.getService();
     }
     
     @POST
     @Produces(MediaType.APPLICATION_XML)
     public Response getResponseByPost() {
-        return createResponse();
-    }
-    
-    private Response createResponse() {
-        return Response.ok(new ServiceElement()).build();
+        return resource.getService();
     }
     
 }

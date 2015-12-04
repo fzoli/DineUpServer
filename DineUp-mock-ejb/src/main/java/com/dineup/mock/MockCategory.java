@@ -1,10 +1,10 @@
 package com.dineup.mock;
 
-import com.dineup.ejb.MockDatas;
+import com.dineup.ejb.db.MockDatas;
 import com.dineup.dom.Category;
 import com.dineup.dom.CategoryLocale;
 import com.dineup.dom.Food;
-import com.dineup.ejb.RestaurantDataSource;
+import com.dineup.ejb.db.RestaurantDataSource;
 import java.util.Collections;
 import java.util.List;
 

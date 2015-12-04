@@ -1,4 +1,4 @@
-package com.dineup.ejb;
+package com.dineup.ejb.rest;
 
 import com.dineup.dom.Category;
 import com.dineup.dom.Extra;
@@ -6,6 +6,7 @@ import com.dineup.dom.Food;
 import com.dineup.dom.Option;
 import com.dineup.rest.HeaderKeys;
 import com.dineup.dom.Restaurant;
+import com.dineup.ejb.db.RestaurantDataSource;
 import com.dineup.rest.ElementConfig;
 import com.dineup.rest.element.CategoryElement;
 import com.dineup.rest.element.ExtraElement;

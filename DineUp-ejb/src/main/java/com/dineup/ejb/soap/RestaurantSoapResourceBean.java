@@ -1,6 +1,7 @@
-package com.dineup.ejb;
+package com.dineup.ejb.soap;
 
 import com.dineup.dom.Restaurant;
+import com.dineup.ejb.db.RestaurantDataSource;
 import com.dineup.rest.ElementConfig;
 import com.dineup.rest.element.RestaurantElement;
 import com.dineup.rest.element.converter.RestaurantElementConverter;
@@ -20,7 +21,7 @@ import javax.jws.WebService;
 @Singleton
 @WebService(name = "Restaurant", serviceName = SoapKeys.SERVICE_NAME, targetNamespace = SoapKeys.NAMESPACE)
 @LocalBean
-public class RestaurantSoapBean {
+public class RestaurantSoapResourceBean {
     
     @EJB
     private RestaurantDataSource dataSource;

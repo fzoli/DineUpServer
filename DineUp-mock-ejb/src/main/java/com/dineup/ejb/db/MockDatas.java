@@ -1,4 +1,4 @@
-package com.dineup.ejb;
+package com.dineup.ejb.db;
 
 public interface MockDatas {
     

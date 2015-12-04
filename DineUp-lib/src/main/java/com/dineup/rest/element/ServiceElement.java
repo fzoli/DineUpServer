@@ -1,5 +1,6 @@
 package com.dineup.rest.element;
 
+import com.dineup.rest.ServiceConfig;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -7,7 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class ServiceElement {
     
     @XmlElement
-    public int protocolVersion = 1;
+    public int protocolVersion = ServiceConfig.PROTOCOL_VERSION;
 
     public ServiceElement() {
     }

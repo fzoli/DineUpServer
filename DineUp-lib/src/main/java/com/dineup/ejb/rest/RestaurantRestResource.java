@@ -1,4 +1,4 @@
-package com.dineup.ejb;
+package com.dineup.ejb.rest;
 
 import com.dineup.rest.ElementConfig;
 import javax.ws.rs.core.Response;
