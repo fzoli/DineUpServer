@@ -23,12 +23,20 @@ public class RestaurantResource {
     @QueryParam(ElementConfig.Keys.LANGUAGE_CODE)
     private String languageCode;
 
+    @QueryParam(ElementConfig.Keys.LATITUDE)
+    private Double latitude;
+    
+    @QueryParam(ElementConfig.Keys.LONGITUDE)
+    private Double longitude;
+    
     @QueryParam(ElementConfig.Keys.WITH_NESTED_OBJECTS)
     private Boolean withNestedObjects;
     
     private ElementConfig createElementConfig() {
         return ElementConfig.newBuilder()
                 .languageCode(languageCode)
+                .latitude(latitude)
+                .longitude(longitude)
                 .withNestedObjects(withNestedObjects)
                 .build();
     }

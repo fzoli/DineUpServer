@@ -1,10 +1,15 @@
 package com.dineup.rest.element;
 
+import com.dineup.dom.Coordinate;
+import com.dineup.dom.Coordinates;
 import com.dineup.dom.Restaurant;
+import com.dineup.dom.RestaurantComment;
+import com.dineup.dom.RestaurantComments;
 import com.dineup.dom.RestaurantLocale;
 import com.dineup.rest.ElementConfig;
 import com.dineup.rest.element.converter.CategoryElementConverter;
 import com.dineup.rest.element.converter.CoordinateElementConverter;
+import com.dineup.rest.element.converter.RestaurantCommentElementConverter;
 import com.dineup.util.Converters;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -35,6 +40,13 @@ public class RestaurantElement {
         return restaurant.getId();
     }
 
+    @XmlElement
+    public Double getDistance() {
+        Coordinate restaurantCoordinate = restaurant.getCoordinate();
+        Coordinate configCoordinate = elementConfig.createCoordinate();
+        return Coordinates.getDistanceInMeter(restaurantCoordinate, configCoordinate);
+    }
+    
     @XmlElement
     public String getType() {
         return restaurant.getType();
@@ -79,7 +91,7 @@ public class RestaurantElement {
     }
 
     @XmlElement
-    public int getRating() {
+    public double getRating() {
         return restaurant.getRating();
     }
 
@@ -89,6 +101,15 @@ public class RestaurantElement {
             return null;
         }
         return Converters.convertList(restaurant.getCategories(), new CategoryElementConverter(elementConfig));
+    }
+    
+    @XmlElement
+    public List<RestaurantCommentElement> getComments() {
+        if (!elementConfig.withNestedObjects()) {
+            return null;
+        }
+        List<RestaurantComment> sortedComments = RestaurantComments.getSortedComments(restaurant.getComments(), elementConfig.getPreferredLanguageCode());
+        return Converters.convertList(sortedComments, new RestaurantCommentElementConverter(elementConfig));
     }
     
 }

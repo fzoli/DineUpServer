@@ -6,8 +6,9 @@ public class Exceptions {
         if (throwable == null) {
             return null;
         }
-        if (throwable.getCause() != null) {
-            return getRootCause(throwable.getCause());
+        Throwable cause = throwable.getCause();
+        if (cause != null && cause != throwable) {
+            return getRootCause(cause);
         }
         return throwable;
     }

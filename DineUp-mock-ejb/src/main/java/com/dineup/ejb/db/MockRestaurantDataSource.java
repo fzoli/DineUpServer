@@ -1,6 +1,5 @@
 package com.dineup.ejb.db;
 
-import com.dineup.ejb.db.RestaurantDataSource;
 import com.dineup.dom.*;
 import com.dineup.mock.*;
 
@@ -24,6 +23,15 @@ public class MockRestaurantDataSource implements RestaurantDataSource, MockDatas
         return Collections.unmodifiableList(list);
     }
 
+    @Override
+    public List<RestaurantComment> getRestaurantComments(int restaurantId) {
+        List<RestaurantComment> list = new ArrayList<>(NUMBER_OF_RESTAURANT_COMMENTS);
+        for (int i = 0; i < NUMBER_OF_RESTAURANT_COMMENTS; i++) {
+            list.add(new MockRestaurantComment(this, i));
+        }
+        return Collections.unmodifiableList(list);
+    }
+    
     @Override
     public List<Category> getCategories(int restaurantId) {
         List<Category> list = new ArrayList<>(NUMBER_OF_CATEGORIES);

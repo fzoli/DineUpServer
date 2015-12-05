@@ -1,11 +1,12 @@
 package com.dineup.ejb.db;
 
-import com.dineup.ejb.db.RestaurantDataSource;
 import com.dineup.dom.Category;
 import com.dineup.dom.Extra;
 import com.dineup.dom.Food;
 import com.dineup.dom.Option;
 import com.dineup.dom.Restaurant;
+import com.dineup.dom.RestaurantComment;
+import com.dineup.dom.RestaurantComments;
 import com.dineup.entity.CategoryEntity;
 import com.dineup.entity.CategoryEntity_;
 import com.dineup.entity.ExtraEntity;
@@ -14,6 +15,8 @@ import com.dineup.entity.FoodEntity;
 import com.dineup.entity.FoodEntity_;
 import com.dineup.entity.OptionEntity;
 import com.dineup.entity.OptionEntity_;
+import com.dineup.entity.RestaurantCommentEntity;
+import com.dineup.entity.RestaurantCommentEntity_;
 import com.dineup.entity.RestaurantEntity;
 import com.dineup.entity.RestaurantEntity_;
 import java.util.List;
@@ -45,6 +48,16 @@ public class LiveRestaurantDataSource implements RestaurantDataSource {
         return (List) resultList;
     }
 
+    @Override
+    public List<RestaurantComment> getRestaurantComments(int restaurantId) {
+        CriteriaBuilder builder = getManager().getCriteriaBuilder();
+        CriteriaQuery<RestaurantCommentEntity> query = builder.createQuery(RestaurantCommentEntity.class);
+        Root<RestaurantCommentEntity> root = query.from(RestaurantCommentEntity.class);
+        query.where(builder.equal(root.get(RestaurantCommentEntity_.restaurant).get(RestaurantEntity_.id), restaurantId));
+        List<RestaurantCommentEntity> resultList = getManager().createQuery(query).getResultList();
+        return (List) resultList;
+    }
+    
     @Override
     public List<Category> getCategories(int restaurantId) {
         CriteriaBuilder builder = getManager().getCriteriaBuilder();

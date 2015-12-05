@@ -4,6 +4,7 @@ import com.dineup.ejb.db.MockDatas;
 import com.dineup.dom.Category;
 import com.dineup.dom.Coordinate;
 import com.dineup.dom.Restaurant;
+import com.dineup.dom.RestaurantComment;
 import com.dineup.dom.RestaurantLocale;
 import com.dineup.ejb.db.RestaurantDataSource;
 import java.util.Collections;
@@ -50,7 +51,7 @@ public class MockRestaurant implements Restaurant, MockDatas {
     }
 
     @Override
-    public int getRating() {
+    public double getRating() {
         return id / 2;
     }
 
@@ -62,6 +63,11 @@ public class MockRestaurant implements Restaurant, MockDatas {
     @Override
     public List<Category> getCategories() {
         return dataSource.getCategories(id);
+    }
+
+    @Override
+    public List<RestaurantComment> getComments() {
+        return dataSource.getRestaurantComments(id);
     }
     
 }

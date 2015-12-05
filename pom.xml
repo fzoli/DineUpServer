@@ -9,7 +9,7 @@
   <properties>
       <dineup.web.context_root>/DineUp</dineup.web.context_root>
       <dineup.web.rest.root>/rest</dineup.web.rest.root>
-      <dineup.soap.service_name>DineUpService</dineup.soap.service_name>
+      <dineup.ejb.soap.service_name>DineUpService</dineup.ejb.soap.service_name>
   </properties>
   <profiles>
     <profile>

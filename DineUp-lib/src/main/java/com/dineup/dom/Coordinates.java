@@ -2,7 +2,10 @@ package com.dineup.dom;
 
 public class Coordinates {
 
-    public static double getDistanceInMeter(Coordinate coordinateA, Coordinate coordinateB) {
+    public static Double getDistanceInMeter(Coordinate coordinateA, Coordinate coordinateB) {
+        if (coordinateA == null || coordinateB == null) {
+            return null;
+        }
         double pk = (double) (180/3.14169);
         double a1 = coordinateA.getLatitude() / pk;
         double a2 = coordinateA.getLongitude() / pk;

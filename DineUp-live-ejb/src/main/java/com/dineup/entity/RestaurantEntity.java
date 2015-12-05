@@ -3,6 +3,7 @@ package com.dineup.entity;
 import com.dineup.dom.Category;
 import com.dineup.dom.Coordinate;
 import com.dineup.dom.Restaurant;
+import com.dineup.dom.RestaurantComment;
 import com.dineup.dom.RestaurantLocale;
 import java.io.Serializable;
 import java.util.List;
@@ -38,7 +39,7 @@ public class RestaurantEntity implements Restaurant, Serializable {
     private double longitude;
     
     @Column(name = "rating")
-    private int rating;
+    private double rating;
     
     @Column(name = "address")
     private String address;
@@ -54,6 +55,9 @@ public class RestaurantEntity implements Restaurant, Serializable {
     
     @OneToMany(mappedBy = "restaurant")
     private List<ExtraEntity> extras;
+    
+    @OneToMany(mappedBy = "restaurant")
+    private List<RestaurantCommentEntity> comments;
     
     public RestaurantEntity() {
     }
@@ -95,7 +99,7 @@ public class RestaurantEntity implements Restaurant, Serializable {
     }
 
     @Override
-    public int getRating() {
+    public double getRating() {
         return rating;
     }
 
@@ -131,6 +135,11 @@ public class RestaurantEntity implements Restaurant, Serializable {
         return (List) locales;
     }
 
+    @Override
+    public List<RestaurantComment> getComments() {
+        return (List) comments;
+    }
+    
     @Override
     public List<Category> getCategories() {
         return (List) categories;

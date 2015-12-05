@@ -9,6 +9,7 @@ public interface Restaurant extends LocalizedObject<RestaurantLocale> {
     public String getAddress();
     public String getDefaultCurrency();
     public Coordinate getCoordinate();
-    public int getRating();
+    public double getRating();
     public List<Category> getCategories();
+    public List<RestaurantComment> getComments();
 }

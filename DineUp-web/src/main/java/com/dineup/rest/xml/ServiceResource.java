@@ -2,6 +2,7 @@ package com.dineup.rest.xml;
 
 import com.dineup.ejb.rest.ServiceRestResource;
 import com.dineup.rest.RequestPath;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -10,6 +11,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+@RequestScoped
 @Path(RequestPath.ROOT_XML + RequestPath.PATH_SERVICE)
 public class ServiceResource {
     
