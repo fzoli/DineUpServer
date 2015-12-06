@@ -1,6 +1,9 @@
 package com.dineup.ejb.profile;
 
+import com.dineup.BuildConfig;
 import com.dineup.dom.Profile;
+import com.dineup.rest.ProfileKeys;
+import com.dineup.rest.RequestPath;
 import javax.annotation.Nullable;
 
 final class GoogleProfileManager implements ProfileManager {
@@ -23,7 +26,18 @@ final class GoogleProfileManager implements ProfileManager {
 
     @Override
     public String getProfilePhotoUrl(String userId) {
-        return "TODO";
+        if (userId == null) {
+            return null;
+        }
+        return BuildConfig.WEB_CONTEXT_ROOT + BuildConfig.WEB_REST_ROOT + RequestPath.PATH_GOOGLE_PROFILE_PHOTO + "?" + ProfileKeys.USER_ID + "=" + userId;
+    }
+
+    @Override
+    public String resolveProfilePhotoUrl(String userId) throws Exception {
+        String requestUrl = String.format("https://www.googleapis.com/plus/v1/people/%s?fields=image&key=%s", userId, BuildConfig.GOOGLE_API_KEY);
+        // TODO:
+        // Parse response: {"image": {"url": "https://lh3.googleusercontent.com/-OkM...AANA/ltpH4BFZ2as/photo.jpg?sz=50"}}
+        return "https://lh3.googleusercontent.com/-OkM...AANA/ltpH4BFZ2as/photo.jpg?sz=50";
     }
     
     @Override

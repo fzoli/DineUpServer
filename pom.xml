@@ -10,6 +10,7 @@
       <dineup.web.context_root>/DineUp</dineup.web.context_root>
       <dineup.web.rest.root>/rest</dineup.web.rest.root>
       <dineup.ejb.soap.service_name>DineUpService</dineup.ejb.soap.service_name>
+      <dineup.google.api_key>TODO</dineup.google.api_key>
   </properties>
   <profiles>
     <profile>

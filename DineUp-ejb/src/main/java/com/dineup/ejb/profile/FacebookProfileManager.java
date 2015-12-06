@@ -30,6 +30,11 @@ final class FacebookProfileManager implements ProfileManager {
     }
     
     @Override
+    public String resolveProfilePhotoUrl(String userId) throws Exception {
+        throw new UnsupportedOperationException("Not used.");
+    }
+    
+    @Override
     public ProfileResult getProfile() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
