@@ -4,19 +4,18 @@ import java.util.Date;
 
 public interface Person {
     
-    public enum Sex {
-        MALE, FEMALE, OTHER;
+    public enum Gender {
+        MALE, FEMALE;
     }
     
     public interface Name {
-        public String getTitle();
         public String getFirstName();
         public String getMiddleName();
         public String getLastName();
     }
     
     public Name getName();
-    public Sex getSex();
+    public Gender getGender();
     public Date getBirthDate();
     
 }

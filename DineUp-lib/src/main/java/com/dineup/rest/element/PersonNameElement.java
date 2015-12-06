@@ -1,6 +1,7 @@
 package com.dineup.rest.element;
 
 import com.dineup.dom.Person;
+import com.dineup.dom.Persons;
 import com.dineup.rest.ElementConfig;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -18,11 +19,6 @@ public class PersonNameElement {
 
     public PersonNameElement() {
     }
-    
-    @XmlElement
-    public String getTitle() {
-        return name.getTitle();
-    }
 
     @XmlElement
     public String getFirstName() {
@@ -37,6 +33,11 @@ public class PersonNameElement {
     @XmlElement
     public String getLastName() {
         return name.getLastName();
+    }
+    
+    @XmlElement
+    public String getFullName() {
+        return Persons.getFullName(name, elementConfig.getPreferredLanguageCode());
     }
     
 }

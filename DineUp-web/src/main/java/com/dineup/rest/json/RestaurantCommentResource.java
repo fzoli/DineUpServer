@@ -21,6 +21,12 @@ public class RestaurantCommentResource {
     @Inject
     private RestaurantRestResource resource;
     
+    @QueryParam(ElementConfig.Keys.FACEBOOK_ACCESS_TOKEN)
+    private String facebookAccessToken;
+    
+    @QueryParam(ElementConfig.Keys.GOOGLE_ACCESS_TOKEN)
+    private String googleAccessToken;
+    
     @QueryParam(ElementConfig.Keys.LANGUAGE_CODE)
     private String languageCode;
     
@@ -34,6 +40,8 @@ public class RestaurantCommentResource {
         return ElementConfig.newBuilder()
                 .languageCode(languageCode)
                 .withNestedObjects(withNestedObjects)
+                .facebookAccessToken(facebookAccessToken)
+                .googleAccessToken(googleAccessToken)
                 .build();
     }
     

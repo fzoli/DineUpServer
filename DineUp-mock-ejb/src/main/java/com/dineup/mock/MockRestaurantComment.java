@@ -2,19 +2,25 @@ package com.dineup.mock;
 
 import com.dineup.dom.Person;
 import com.dineup.dom.Profile;
+import com.dineup.dom.Profiles;
 import com.dineup.dom.RestaurantComment;
 import com.dineup.ejb.db.MockDatas;
 import com.dineup.ejb.db.RestaurantDataSource;
+import com.dineup.ejb.profile.ProfileDescriptor;
+import com.dineup.ejb.profile.ProfileManager;
+import com.dineup.ejb.profile.ProfileManagerFactory;
 import java.util.Calendar;
 import java.util.Date;
 
 public class MockRestaurantComment implements RestaurantComment, MockDatas {
 
     private final RestaurantDataSource dataSource;
+    private final ProfileManagerFactory factory;
     private final int id;
     
     
-    public MockRestaurantComment(RestaurantDataSource dataSource, int id) {
+    public MockRestaurantComment(RestaurantDataSource dataSource, ProfileManagerFactory factory, int id) {
+        this.factory = factory;
         this.dataSource = dataSource;
         this.id = id;
     }
@@ -35,7 +41,12 @@ public class MockRestaurantComment implements RestaurantComment, MockDatas {
 
             @Override
             public Profile.Type getType() {
-                return Type.GOOGLE_PLUS;
+                return id % 2 == 0 ? Type.GOOGLE_PLUS : Type.FACEBOOK;
+            }
+
+            @Override
+            public ProfileManager createProfileManager(ProfileDescriptor descriptor) {
+                return Profiles.createProfileManager(this, factory, descriptor);
             }
 
             @Override
@@ -44,11 +55,6 @@ public class MockRestaurantComment implements RestaurantComment, MockDatas {
                     @Override
                     public Person.Name getName() {
                         return new Name() {
-
-                            @Override
-                            public String getTitle() {
-                                return "title";
-                            }
 
                             @Override
                             public String getFirstName() {
@@ -68,8 +74,8 @@ public class MockRestaurantComment implements RestaurantComment, MockDatas {
                     }
 
                     @Override
-                    public Person.Sex getSex() {
-                        return Sex.MALE;
+                    public Person.Gender getGender() {
+                        return Gender.MALE;
                     }
 
                     @Override
@@ -83,18 +89,13 @@ public class MockRestaurantComment implements RestaurantComment, MockDatas {
                     }
                 };
             }
-
-            @Override
-            public String getPhotoUrl() {
-                return String.format(IMAGE_URL_FORMAT, "Photo"+id);
-            }
             
         };
     }
 
     @Override
     public boolean isProfilePublic() {
-        return id % 2 == 0;
+        return id % 3 == 0;
     }
 
     @Override

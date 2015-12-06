@@ -1,16 +1,21 @@
 package com.dineup.ejb.db;
 
 import com.dineup.dom.*;
+import com.dineup.ejb.profile.ProfileManagerFactory;
 import com.dineup.mock.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Singleton;
 
 @Singleton
 public class MockRestaurantDataSource implements RestaurantDataSource, MockDatas {
 
+    @EJB
+    private ProfileManagerFactory profileManagerFactory;
+    
     public MockRestaurantDataSource() {
     }
 
@@ -27,7 +32,7 @@ public class MockRestaurantDataSource implements RestaurantDataSource, MockDatas
     public List<RestaurantComment> getRestaurantComments(int restaurantId) {
         List<RestaurantComment> list = new ArrayList<>(NUMBER_OF_RESTAURANT_COMMENTS);
         for (int i = 0; i < NUMBER_OF_RESTAURANT_COMMENTS; i++) {
-            list.add(new MockRestaurantComment(this, i));
+            list.add(new MockRestaurantComment(this, profileManagerFactory, i));
         }
         return Collections.unmodifiableList(list);
     }

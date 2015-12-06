@@ -6,7 +6,7 @@ import com.dineup.dom.Food;
 import com.dineup.dom.Option;
 import com.dineup.dom.Restaurant;
 import com.dineup.dom.RestaurantComment;
-import com.dineup.dom.RestaurantComments;
+import com.dineup.ejb.profile.ProfileManagerFactory;
 import com.dineup.entity.CategoryEntity;
 import com.dineup.entity.CategoryEntity_;
 import com.dineup.entity.ExtraEntity;
@@ -20,6 +20,7 @@ import com.dineup.entity.RestaurantCommentEntity_;
 import com.dineup.entity.RestaurantEntity;
 import com.dineup.entity.RestaurantEntity_;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,6 +35,9 @@ public class LiveRestaurantDataSource implements RestaurantDataSource {
     @PersistenceContext
     private EntityManager manager;
 
+    @EJB
+    private ProfileManagerFactory profileManagerFactory;
+    
     private EntityManager getManager() {
         return manager;
     }
@@ -55,6 +59,9 @@ public class LiveRestaurantDataSource implements RestaurantDataSource {
         Root<RestaurantCommentEntity> root = query.from(RestaurantCommentEntity.class);
         query.where(builder.equal(root.get(RestaurantCommentEntity_.restaurant).get(RestaurantEntity_.id), restaurantId));
         List<RestaurantCommentEntity> resultList = getManager().createQuery(query).getResultList();
+        for (RestaurantCommentEntity entity : resultList) {
+            entity.getProfile().setFactory(profileManagerFactory); // TODO: replace this ugly solution
+        }
         return (List) resultList;
     }
     

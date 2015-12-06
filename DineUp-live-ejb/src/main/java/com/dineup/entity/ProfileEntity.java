@@ -3,6 +3,10 @@ package com.dineup.entity;
 import com.dineup.dom.Person;
 import com.dineup.dom.Person.Name;
 import com.dineup.dom.Profile;
+import com.dineup.dom.Profiles;
+import com.dineup.ejb.profile.ProfileDescriptor;
+import com.dineup.ejb.profile.ProfileManager;
+import com.dineup.ejb.profile.ProfileManagerFactory;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -38,16 +42,10 @@ public class ProfileEntity implements Profile, Serializable {
     
     @Column(name = "user_id", nullable = false)
     private String userId;
-
-    @Column(name = "photoUrl")
-    private String photoUrl;
     
-    @Column(name = "sex")
+    @Column(name = "gender")
     @Enumerated(EnumType.STRING)
-    private Person.Sex sex;
-    
-    @Column(name = "title")
-    private String title;
+    private Person.Gender gender;
     
     @Column(name = "first_name")
     private String firstName;
@@ -67,6 +65,17 @@ public class ProfileEntity implements Profile, Serializable {
     
     private transient final ProfilePerson profilePerson = new ProfilePerson();
     private transient final ProfileName profileName = new ProfileName();
+    
+    private transient ProfileManagerFactory factory;
+
+    public void setFactory(ProfileManagerFactory factory) {
+        this.factory = factory;
+    }
+
+    @Override
+    public ProfileManager createProfileManager(ProfileDescriptor descriptor) {
+        return Profiles.createProfileManager(this, factory, descriptor);
+    }
 
     public Integer getId() {
         return id;
@@ -102,15 +111,6 @@ public class ProfileEntity implements Profile, Serializable {
     public void setType(Type type) {
         this.type = type;
     }
-
-    @Override
-    public String getPhotoUrl() {
-        return photoUrl;
-    }
-
-    public void setPhotoUrl(String photoUrl) {
-        this.photoUrl = photoUrl;
-    }
     
     @Override
     public ProfilePerson getPerson() {
@@ -132,12 +132,12 @@ public class ProfileEntity implements Profile, Serializable {
         }
 
         @Override
-        public Sex getSex() {
-            return sex;
+        public Gender getGender() {
+            return gender;
         }
 
-        public void setSex(Person.Sex sex) {
-            ProfileEntity.this.sex = sex;
+        public void setGender(Person.Gender sex) {
+            ProfileEntity.this.gender = sex;
         }
         
         @Override
@@ -154,15 +154,6 @@ public class ProfileEntity implements Profile, Serializable {
     public final class ProfileName implements Name {
 
         private ProfileName() {
-        }
-
-        @Override
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            ProfileEntity.this.title = title;
         }
         
         @Override

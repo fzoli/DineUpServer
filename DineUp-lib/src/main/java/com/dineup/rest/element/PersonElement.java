@@ -26,8 +26,8 @@ public class PersonElement {
     }
     
     @XmlElement
-    public String getSex() {
-        return person.getSex().name();
+    public String getGender() {
+        return person.getGender().name();
     }
     
     @XmlElement

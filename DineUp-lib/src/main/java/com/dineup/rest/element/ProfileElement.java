@@ -1,6 +1,8 @@
 package com.dineup.rest.element;
 
 import com.dineup.dom.Profile;
+import com.dineup.ejb.profile.ProfileDescriptor;
+import com.dineup.ejb.profile.ProfileManager;
 import com.dineup.rest.ElementConfig;
 import com.dineup.rest.element.converter.PersonElementConverter;
 import com.dineup.util.Converters;
@@ -33,13 +35,18 @@ public class ProfileElement {
     }
     
     @XmlElement
-    public String getPhotoUrl() {
-        return profile.getPhotoUrl();
+    public PersonElement getPerson() {
+        return Converters.convert(profile.getPerson(), new PersonElementConverter(elementConfig));
     }
     
     @XmlElement
-    public PersonElement getPerson() {
-        return Converters.convert(profile.getPerson(), new PersonElementConverter(elementConfig));
+    public String getPhotoUrl() {
+        ProfileDescriptor descriptor = elementConfig.createProfileDescriptor(profile.getType());
+        ProfileManager profileManager = profile.createProfileManager(descriptor);
+        if (profileManager != null) {
+            return profileManager.getProfilePhotoUrl(profile.getUserId());
+        }
+        return null;
     }
     
 }
