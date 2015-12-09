@@ -1,7 +1,7 @@
 package com.dineup.rest.xml;
 
 import com.dineup.ejb.rest.RestaurantRestResource;
-import com.dineup.rest.ElementConfig;
+import com.dineup.rest.BaseResource;
 import com.dineup.rest.RequestPath;
 import com.dineup.rest.RestaurantKeys;
 import javax.enterprise.context.RequestScoped;
@@ -16,26 +16,13 @@ import javax.ws.rs.core.Response;
 
 @RequestScoped
 @Path(RequestPath.ROOT_XML + RequestPath.PATH_CATEGORIES)
-public class CategoryResource {
+public class CategoryResource extends BaseResource {
     
     @Inject
     private RestaurantRestResource resource;
     
-    @QueryParam(ElementConfig.Keys.LANGUAGE_CODE)
-    private String languageCode;
-
-    @QueryParam(ElementConfig.Keys.WITH_NESTED_OBJECTS)
-    private Boolean withNestedObjects;
-    
     @QueryParam(RestaurantKeys.RESTAURANT_ID)
     private Integer restaurantId;
-    
-    private ElementConfig createElementConfig() {
-        return ElementConfig.newBuilder()
-                .languageCode(languageCode)
-                .withNestedObjects(withNestedObjects)
-                .build();
-    }
     
     @GET
     @Produces(MediaType.APPLICATION_XML)
