@@ -1,8 +1,10 @@
 package com.dineup.ejb.soap;
 
 import com.dineup.dom.Coordinate;
+import com.dineup.rest.ElementContext;
 import com.dineup.dom.Restaurant;
 import com.dineup.ejb.db.RestaurantDataSource;
+import com.dineup.ejb.profile.ProfileManagerFactory;
 import com.dineup.rest.ElementConfig;
 import com.dineup.rest.element.RestaurantElement;
 import com.dineup.rest.element.converter.RestaurantElementConverter;
@@ -27,6 +29,15 @@ public class RestaurantSoapResourceBean {
     @EJB
     private RestaurantDataSource dataSource;
     
+    @EJB
+    private ProfileManagerFactory profileManagerFactory;
+    
+    private ElementContext createElementContext() {
+        return ElementContext.newBuilder()
+                .profileManagerFactory(profileManagerFactory)
+                .build();
+    }
+    
     @WebMethod
     public List<RestaurantElement> getRestaurants(String languageCode, Coordinate coordinate) {
         ElementConfig elementConfig = ElementConfig.newBuilder()
@@ -34,7 +45,7 @@ public class RestaurantSoapResourceBean {
                 .coordinate(coordinate)
                 .build();
         List<Restaurant> objects = dataSource.getRestaurants();
-        List<RestaurantElement> elements = Converters.convertList(objects, new RestaurantElementConverter(elementConfig));
+        List<RestaurantElement> elements = Converters.convertList(objects, new RestaurantElementConverter(createElementContext(), elementConfig));
         return elements;
     }
     

@@ -2,6 +2,7 @@ package com.dineup.rest.element;
 
 import com.dineup.dom.Coordinate;
 import com.dineup.dom.Coordinates;
+import com.dineup.rest.ElementContext;
 import com.dineup.dom.Restaurant;
 import com.dineup.dom.RestaurantComment;
 import com.dineup.dom.RestaurantComments;
@@ -19,6 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "restaurant")
 public class RestaurantElement {
 
+    private ElementContext elementContext;
     private ElementConfig elementConfig;
     private Restaurant restaurant;
 
@@ -26,7 +28,8 @@ public class RestaurantElement {
         // JAXB needs this
     }
 
-    public RestaurantElement(ElementConfig elementConfig, Restaurant restaurant) {
+    public RestaurantElement(ElementContext elementContext, ElementConfig elementConfig, Restaurant restaurant) {
+        this.elementContext = elementContext;
         this.elementConfig = elementConfig;
         this.restaurant = restaurant;
     }
@@ -87,7 +90,7 @@ public class RestaurantElement {
 
     @XmlElement
     public CoordinateElement getCoordinate() {
-        return Converters.convert(restaurant.getCoordinate(), new CoordinateElementConverter(elementConfig));
+        return Converters.convert(restaurant.getCoordinate(), new CoordinateElementConverter(elementContext, elementConfig));
     }
 
     @XmlElement
@@ -100,7 +103,7 @@ public class RestaurantElement {
         if (!elementConfig.withNestedObjects()) {
             return null;
         }
-        return Converters.convertList(restaurant.getCategories(), new CategoryElementConverter(elementConfig));
+        return Converters.convertList(restaurant.getCategories(), new CategoryElementConverter(elementContext, elementConfig));
     }
     
     @XmlElement
@@ -109,7 +112,7 @@ public class RestaurantElement {
             return null;
         }
         List<RestaurantComment> sortedComments = RestaurantComments.getSortedComments(restaurant.getComments(), elementConfig.getPreferredLanguageCode());
-        return Converters.convertList(sortedComments, new RestaurantCommentElementConverter(elementConfig));
+        return Converters.convertList(sortedComments, new RestaurantCommentElementConverter(elementContext, elementConfig));
     }
     
 }

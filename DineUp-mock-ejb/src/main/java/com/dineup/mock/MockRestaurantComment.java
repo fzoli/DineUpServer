@@ -2,12 +2,9 @@ package com.dineup.mock;
 
 import com.dineup.dom.Person;
 import com.dineup.dom.Profile;
-import com.dineup.dom.Profiles;
 import com.dineup.dom.RestaurantComment;
 import com.dineup.ejb.db.MockDatas;
 import com.dineup.ejb.db.RestaurantDataSource;
-import com.dineup.ejb.profile.ProfileDescriptor;
-import com.dineup.ejb.profile.ProfileManager;
 import com.dineup.ejb.profile.ProfileManagerFactory;
 import java.util.Calendar;
 import java.util.Date;
@@ -42,11 +39,6 @@ public class MockRestaurantComment implements RestaurantComment, MockDatas {
             @Override
             public Profile.Type getType() {
                 return id % 2 == 0 ? Type.GOOGLE_PLUS : Type.FACEBOOK;
-            }
-
-            @Override
-            public ProfileManager createProfileManager(ProfileDescriptor descriptor) {
-                return Profiles.createProfileManager(this, factory, descriptor);
             }
 
             @Override

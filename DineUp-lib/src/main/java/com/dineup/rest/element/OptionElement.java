@@ -1,5 +1,6 @@
 package com.dineup.rest.element;
 
+import com.dineup.rest.ElementContext;
 import com.dineup.dom.Option;
 import com.dineup.dom.OptionLocale;
 import com.dineup.rest.ElementConfig;
@@ -13,13 +14,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "option")
 public class OptionElement {
 
+    private ElementContext elementContext;
     private ElementConfig elementConfig;
     private Option option;
     
     public OptionElement() {
     }
 
-    public OptionElement(ElementConfig elementConfig, Option option) {
+    public OptionElement(ElementContext elementContext, ElementConfig elementConfig, Option option) {
+        this.elementContext = elementContext;
         this.elementConfig = elementConfig;
         this.option = option;
     }
@@ -41,7 +44,7 @@ public class OptionElement {
 
     @XmlElement
     public List<PriceElement> getPrices() {
-        return Converters.convertList(option.getPrices(), new PriceElementConverter(elementConfig));
+        return Converters.convertList(option.getPrices(), new PriceElementConverter(elementContext, elementConfig));
     }
     
 }

@@ -2,6 +2,7 @@ package com.dineup.rest.element;
 
 import com.dineup.dom.Category;
 import com.dineup.dom.CategoryLocale;
+import com.dineup.rest.ElementContext;
 import com.dineup.rest.ElementConfig;
 import com.dineup.rest.element.converter.FoodElementConverter;
 import com.dineup.util.Converters;
@@ -13,13 +14,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "category")
 public class CategoryElement {
 
+    private ElementContext elementContext;
     private ElementConfig elementConfig;
     private Category category;
     
     public CategoryElement() {
     }
 
-    public CategoryElement(ElementConfig elementConfig, Category category) {
+    public CategoryElement(ElementContext elementContext, ElementConfig elementConfig, Category category) {
+        this.elementContext = elementContext;
         this.elementConfig = elementConfig;
         this.category = category;
     }
@@ -49,7 +52,7 @@ public class CategoryElement {
         if (!elementConfig.withNestedObjects()) {
             return null;
         }
-        return Converters.convertList(category.getFoods(), new FoodElementConverter(elementConfig));
+        return Converters.convertList(category.getFoods(), new FoodElementConverter(elementContext, elementConfig));
     }
     
 }

@@ -59,9 +59,6 @@ public class LiveRestaurantDataSource implements RestaurantDataSource {
         Root<RestaurantCommentEntity> root = query.from(RestaurantCommentEntity.class);
         query.where(builder.equal(root.get(RestaurantCommentEntity_.restaurant).get(RestaurantEntity_.id), restaurantId));
         List<RestaurantCommentEntity> resultList = getManager().createQuery(query).getResultList();
-        for (RestaurantCommentEntity entity : resultList) {
-            entity.getProfile().setFactory(profileManagerFactory); // TODO: replace this ugly solution
-        }
         return (List) resultList;
     }
     

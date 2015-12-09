@@ -1,5 +1,6 @@
 package com.dineup.rest.element;
 
+import com.dineup.rest.ElementContext;
 import com.dineup.dom.Extra;
 import com.dineup.dom.ExtraLocale;
 import com.dineup.rest.ElementConfig;
@@ -13,13 +14,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "extra")
 public class ExtraElement {
 
+    private ElementContext elementContext;
     private ElementConfig elementConfig;
     private Extra extra;
     
     public ExtraElement() {
     }
 
-    public ExtraElement(ElementConfig elementConfig, Extra extra) {
+    public ExtraElement(ElementContext elementContext, ElementConfig elementConfig, Extra extra) {
+        this.elementContext = elementContext;
         this.elementConfig = elementConfig;
         this.extra = extra;
     }
@@ -49,7 +52,7 @@ public class ExtraElement {
         if (!elementConfig.withNestedObjects()) {
             return null;
         }
-        return Converters.convertList(extra.getOptions(), new OptionElementConverter(elementConfig));
+        return Converters.convertList(extra.getOptions(), new OptionElementConverter(elementContext, elementConfig));
     }
     
 }

@@ -1,6 +1,7 @@
 package com.dineup.rest.element;
 
 import com.dineup.dom.Coordinate;
+import com.dineup.rest.ElementContext;
 import com.dineup.rest.ElementConfig;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -8,13 +9,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "coordinate")
 public class CoordinateElement {
     
+    private ElementContext elementContext;
     private ElementConfig elementConfig;
     private Coordinate coordinate;
 
     public CoordinateElement() {
     }
 
-    public CoordinateElement(ElementConfig elementConfig, Coordinate coordinate) {
+    public CoordinateElement(ElementContext elementContext, ElementConfig elementConfig, Coordinate coordinate) {
+        this.elementContext = elementContext;
         this.elementConfig = elementConfig;
         this.coordinate = coordinate;
     }

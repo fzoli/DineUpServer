@@ -1,5 +1,6 @@
 package com.dineup.rest.element;
 
+import com.dineup.rest.ElementContext;
 import com.dineup.dom.RestaurantComment;
 import com.dineup.rest.ElementConfig;
 import com.dineup.rest.element.converter.ProfileElementConverter;
@@ -11,10 +12,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "comment")
 public class RestaurantCommentElement {
 
+    private ElementContext elementContext;
     private ElementConfig elementConfig;
     private RestaurantComment comment;
     
-    public RestaurantCommentElement(ElementConfig elementConfig, RestaurantComment comment) {
+    public RestaurantCommentElement(ElementContext elementContext, ElementConfig elementConfig, RestaurantComment comment) {
+        this.elementContext = elementContext;
         this.elementConfig = elementConfig;
         this.comment = comment;
     }
@@ -37,7 +40,7 @@ public class RestaurantCommentElement {
         if (!comment.isProfilePublic()) {
             return null;
         }
-        return Converters.convert(comment.getProfile(), new ProfileElementConverter(elementConfig));
+        return Converters.convert(comment.getProfile(), new ProfileElementConverter(elementContext, elementConfig));
     }
     
     @XmlElement

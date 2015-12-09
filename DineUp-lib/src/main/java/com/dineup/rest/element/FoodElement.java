@@ -1,5 +1,6 @@
 package com.dineup.rest.element;
 
+import com.dineup.rest.ElementContext;
 import com.dineup.dom.Food;
 import com.dineup.dom.FoodLocale;
 import com.dineup.rest.ElementConfig;
@@ -14,13 +15,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "food")
 public class FoodElement {
     
+    private ElementContext elementContext;
     private ElementConfig elementConfig;
     private Food food;
     
     public FoodElement() {
     }
 
-    public FoodElement(ElementConfig elementConfig, Food food) {
+    public FoodElement(ElementContext elementContext, ElementConfig elementConfig, Food food) {
+        this.elementContext = elementContext;
         this.elementConfig = elementConfig;
         this.food = food;
     }
@@ -53,7 +56,7 @@ public class FoodElement {
 
     @XmlElement
     public List<PriceElement> getPrices() {
-        return Converters.convertList(food.getPrices(), new PriceElementConverter(elementConfig));
+        return Converters.convertList(food.getPrices(), new PriceElementConverter(elementContext, elementConfig));
     }
 
     @XmlElement
@@ -61,7 +64,7 @@ public class FoodElement {
         if (!elementConfig.withNestedObjects()) {
             return null;
         }
-        return Converters.convertList(food.getExtras(), new ExtraElementConverter(elementConfig));
+        return Converters.convertList(food.getExtras(), new ExtraElementConverter(elementContext, elementConfig));
     }
     
 }

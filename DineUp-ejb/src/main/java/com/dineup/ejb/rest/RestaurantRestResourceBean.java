@@ -1,6 +1,7 @@
 package com.dineup.ejb.rest;
 
 import com.dineup.dom.Category;
+import com.dineup.rest.ElementContext;
 import com.dineup.dom.Extra;
 import com.dineup.dom.Food;
 import com.dineup.dom.Option;
@@ -8,6 +9,7 @@ import com.dineup.rest.HeaderKeys;
 import com.dineup.dom.Restaurant;
 import com.dineup.dom.RestaurantComment;
 import com.dineup.ejb.db.RestaurantDataSource;
+import com.dineup.ejb.profile.ProfileManagerFactory;
 import com.dineup.rest.ElementConfig;
 import com.dineup.rest.element.CategoryElement;
 import com.dineup.rest.element.ExtraElement;
@@ -36,12 +38,21 @@ public class RestaurantRestResourceBean implements RestaurantRestResource, Heade
     @EJB
     private RestaurantDataSource dataSource;
 
+    @EJB
+    private ProfileManagerFactory profileManagerFactory;
+    
+    private ElementContext createElementContext() {
+        return ElementContext.newBuilder()
+                .profileManagerFactory(profileManagerFactory)
+                .build();
+    }
+    
     @Override
     public Response getRestaurants(ElementConfig elementConfig) {
         try {
             elementConfig.validate();
             List<Restaurant> objects = dataSource.getRestaurants();
-            List<RestaurantElement> elements = Converters.convertList(objects, new RestaurantElementConverter(elementConfig));
+            List<RestaurantElement> elements = Converters.convertList(objects, new RestaurantElementConverter(createElementContext(), elementConfig));
             GenericEntity<List<RestaurantElement>> entity = new GenericEntity<List<RestaurantElement>>(elements) {};
             return Response.ok(entity).build();
         }
@@ -58,7 +69,7 @@ public class RestaurantRestResourceBean implements RestaurantRestResource, Heade
         try {
             elementConfig.validate();
             List<RestaurantComment> objects = dataSource.getRestaurantComments(restaurantId);
-            List<RestaurantCommentElement> elements = Converters.convertList(objects, new RestaurantCommentElementConverter(elementConfig));
+            List<RestaurantCommentElement> elements = Converters.convertList(objects, new RestaurantCommentElementConverter(createElementContext(), elementConfig));
             GenericEntity<List<RestaurantCommentElement>> entity = new GenericEntity<List<RestaurantCommentElement>>(elements) {};
             return Response.ok(entity).build();
         }
@@ -75,7 +86,7 @@ public class RestaurantRestResourceBean implements RestaurantRestResource, Heade
         try {
             elementConfig.validate();
             List<Category> objects = dataSource.getCategories(restaurantId);
-            List<CategoryElement> elements = Converters.convertList(objects, new CategoryElementConverter(elementConfig));
+            List<CategoryElement> elements = Converters.convertList(objects, new CategoryElementConverter(createElementContext(), elementConfig));
             GenericEntity<List<CategoryElement>> entity = new GenericEntity<List<CategoryElement>>(elements) {};
             return Response.ok(entity).build();
         }
@@ -92,7 +103,7 @@ public class RestaurantRestResourceBean implements RestaurantRestResource, Heade
         try {
             elementConfig.validate();
             List<Food> objects = dataSource.getFoods(categoryId);
-            List<FoodElement> elements = Converters.convertList(objects, new FoodElementConverter(elementConfig));
+            List<FoodElement> elements = Converters.convertList(objects, new FoodElementConverter(createElementContext(), elementConfig));
             GenericEntity<List<FoodElement>> entity = new GenericEntity<List<FoodElement>>(elements) {};
             return Response.ok(entity).build();
         }
@@ -109,7 +120,7 @@ public class RestaurantRestResourceBean implements RestaurantRestResource, Heade
         try {
             elementConfig.validate();
             List<Extra> objects = dataSource.getExtras(foodId);
-            List<ExtraElement> elements = Converters.convertList(objects, new ExtraElementConverter(elementConfig));
+            List<ExtraElement> elements = Converters.convertList(objects, new ExtraElementConverter(createElementContext(), elementConfig));
             GenericEntity<List<ExtraElement>> entity = new GenericEntity<List<ExtraElement>>(elements) {};
             return Response.ok(entity).build();
         }
@@ -126,7 +137,7 @@ public class RestaurantRestResourceBean implements RestaurantRestResource, Heade
         try {
             elementConfig.validate();
             List<Option> objects = dataSource.getOptions(extraId);
-            List<OptionElement> elements = Converters.convertList(objects, new OptionElementConverter(elementConfig));
+            List<OptionElement> elements = Converters.convertList(objects, new OptionElementConverter(createElementContext(), elementConfig));
             GenericEntity<List<OptionElement>> entity = new GenericEntity<List<OptionElement>>(elements) {};
             return Response.ok(entity).build();
         }

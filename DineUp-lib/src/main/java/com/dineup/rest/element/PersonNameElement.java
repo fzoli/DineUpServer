@@ -1,5 +1,6 @@
 package com.dineup.rest.element;
 
+import com.dineup.rest.ElementContext;
 import com.dineup.dom.Person;
 import com.dineup.dom.Persons;
 import com.dineup.rest.ElementConfig;
@@ -9,10 +10,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "name")
 public class PersonNameElement {
     
+    private ElementContext elementContext;
     private ElementConfig elementConfig;
     private Person.Name name;
 
-    public PersonNameElement(ElementConfig elementConfig, Person.Name name) {
+    public PersonNameElement(ElementContext elementContext, ElementConfig elementConfig, Person.Name name) {
+        this.elementContext = elementContext;
         this.elementConfig = elementConfig;
         this.name = name;
     }

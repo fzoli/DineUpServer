@@ -8,6 +8,9 @@ import com.dineup.dom.Profile;
 import com.dineup.ejb.profile.ProfileDescriptor;
 import com.dineup.rest.exception.InvalidParameterException;
 
+/**
+ * Request scope dependencies used by Elements.
+ */
 public class ElementConfig {
 
     public interface Keys {

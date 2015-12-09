@@ -3,10 +3,6 @@ package com.dineup.entity;
 import com.dineup.dom.Person;
 import com.dineup.dom.Person.Name;
 import com.dineup.dom.Profile;
-import com.dineup.dom.Profiles;
-import com.dineup.ejb.profile.ProfileDescriptor;
-import com.dineup.ejb.profile.ProfileManager;
-import com.dineup.ejb.profile.ProfileManagerFactory;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -65,17 +61,6 @@ public class ProfileEntity implements Profile, Serializable {
     
     private transient final ProfilePerson profilePerson = new ProfilePerson();
     private transient final ProfileName profileName = new ProfileName();
-    
-    private transient ProfileManagerFactory factory;
-
-    public void setFactory(ProfileManagerFactory factory) {
-        this.factory = factory;
-    }
-
-    @Override
-    public ProfileManager createProfileManager(ProfileDescriptor descriptor) {
-        return Profiles.createProfileManager(this, factory, descriptor);
-    }
 
     public Integer getId() {
         return id;
