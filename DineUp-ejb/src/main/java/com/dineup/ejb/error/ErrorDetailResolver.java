@@ -15,7 +15,6 @@ import javax.ws.rs.core.Response;
 public class ErrorDetailResolver {
     
     private static final String DEFAULT_LANGUAGE = "en";
-    private static final String EXCEPTION_PACKAGE = "com.dineup.service.error.exception";
     
     @EJB
     private ErrorLocalizer errorLocalizer;

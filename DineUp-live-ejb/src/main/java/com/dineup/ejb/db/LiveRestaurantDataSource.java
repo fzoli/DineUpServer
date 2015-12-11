@@ -6,7 +6,6 @@ import com.dineup.dom.Food;
 import com.dineup.dom.Option;
 import com.dineup.dom.Restaurant;
 import com.dineup.dom.RestaurantComment;
-import com.dineup.ejb.profile.ProfileManagerFactory;
 import com.dineup.entity.CategoryEntity;
 import com.dineup.entity.CategoryEntity_;
 import com.dineup.entity.ExtraEntity;
@@ -20,7 +19,7 @@ import com.dineup.entity.RestaurantCommentEntity_;
 import com.dineup.entity.RestaurantEntity;
 import com.dineup.entity.RestaurantEntity_;
 import java.util.List;
-import javax.ejb.EJB;
+import javax.annotation.PreDestroy;
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,9 +33,11 @@ public class LiveRestaurantDataSource implements RestaurantDataSource {
 
     @PersistenceContext
     private EntityManager manager;
-
-    @EJB
-    private ProfileManagerFactory profileManagerFactory;
+    
+    @PreDestroy
+    public void destruct() {
+        manager.close(); // Support hot deploy
+    }
     
     private EntityManager getManager() {
         return manager;
