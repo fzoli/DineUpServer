@@ -1,7 +1,7 @@
 package com.dineup.rest.json;
 
 import com.dineup.ejb.rest.ServiceRestResource;
-import com.dineup.rest.RequestPath;
+import com.dineup.service.rest.RequestPath;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;

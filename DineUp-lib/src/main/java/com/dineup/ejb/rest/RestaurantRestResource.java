@@ -1,6 +1,6 @@
 package com.dineup.ejb.rest;
 
-import com.dineup.rest.ElementConfig;
+import com.dineup.service.ElementConfig;
 import javax.ws.rs.core.Response;
 import javax.ejb.Local;
 

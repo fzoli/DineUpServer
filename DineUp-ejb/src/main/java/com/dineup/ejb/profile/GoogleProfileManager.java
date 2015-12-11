@@ -2,8 +2,8 @@ package com.dineup.ejb.profile;
 
 import com.dineup.BuildConfig;
 import com.dineup.dom.Profile;
-import com.dineup.rest.ProfileKeys;
-import com.dineup.rest.RequestPath;
+import com.dineup.service.rest.ProfileKeys;
+import com.dineup.service.rest.RequestPath;
 import javax.annotation.Nullable;
 
 final class GoogleProfileManager implements ProfileManager {

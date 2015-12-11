@@ -1,5 +1,7 @@
 package com.dineup.rest;
 
+import com.dineup.service.rest.ProfileKeys;
+import com.dineup.service.rest.RequestPath;
 import com.dineup.dom.Profile;
 import com.dineup.ejb.profile.ProfileManager;
 import com.dineup.ejb.profile.ProfileManagerFactory;
@@ -13,22 +15,13 @@ import javax.ws.rs.core.Response;
 
 @RequestScoped
 @Path(RequestPath.PATH_GOOGLE_PROFILE_PHOTO)
-public class GoogleProfilePhotoResource {
+public class GoogleProfilePhotoResource extends BaseResource {
     
     @Inject
     private ProfileManagerFactory profileManagerFactory;
     
     @QueryParam(ProfileKeys.USER_ID)
     private String userId;
-    
-    @QueryParam(ElementConfig.Keys.GOOGLE_ACCESS_TOKEN)
-    private String googleAccessToken;
-    
-    private ElementConfig createElementConfig() {
-        return ElementConfig.newBuilder()
-                .googleAccessToken(googleAccessToken)
-                .build();
-    }
     
     @GET
     public Response getResponseByGet() {

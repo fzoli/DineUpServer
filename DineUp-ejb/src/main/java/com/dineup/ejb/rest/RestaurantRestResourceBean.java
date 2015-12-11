@@ -1,32 +1,32 @@
 package com.dineup.ejb.rest;
 
 import com.dineup.dom.Category;
-import com.dineup.rest.ElementContext;
+import com.dineup.service.ElementContext;
 import com.dineup.dom.Extra;
 import com.dineup.dom.Food;
 import com.dineup.dom.Option;
-import com.dineup.rest.HeaderKeys;
+import com.dineup.service.rest.HeaderKeys;
 import com.dineup.dom.Restaurant;
 import com.dineup.dom.RestaurantComment;
 import com.dineup.ejb.db.RestaurantDataSource;
+import com.dineup.ejb.error.ErrorResponseFactory;
 import com.dineup.ejb.profile.ProfileManagerFactory;
-import com.dineup.rest.ElementConfig;
-import com.dineup.rest.element.CategoryElement;
-import com.dineup.rest.element.ExtraElement;
-import com.dineup.rest.element.FoodElement;
-import com.dineup.rest.element.OptionElement;
-import com.dineup.rest.element.RestaurantCommentElement;
-import com.dineup.rest.element.RestaurantElement;
+import com.dineup.service.ElementConfig;
+import com.dineup.service.element.CategoryElement;
+import com.dineup.service.element.ExtraElement;
+import com.dineup.service.element.FoodElement;
+import com.dineup.service.element.OptionElement;
+import com.dineup.service.element.RestaurantCommentElement;
+import com.dineup.service.element.RestaurantElement;
 import javax.ws.rs.core.Response;
-import com.dineup.rest.element.converter.CategoryElementConverter;
-import com.dineup.rest.element.converter.ExtraElementConverter;
-import com.dineup.rest.element.converter.FoodElementConverter;
-import com.dineup.rest.element.converter.OptionElementConverter;
-import com.dineup.rest.element.converter.RestaurantCommentElementConverter;
-import com.dineup.rest.element.converter.RestaurantElementConverter;
-import com.dineup.rest.exception.InvalidParameterException;
+import com.dineup.service.element.converter.CategoryElementConverter;
+import com.dineup.service.element.converter.ExtraElementConverter;
+import com.dineup.service.element.converter.FoodElementConverter;
+import com.dineup.service.element.converter.OptionElementConverter;
+import com.dineup.service.element.converter.RestaurantCommentElementConverter;
+import com.dineup.service.element.converter.RestaurantElementConverter;
+import com.dineup.service.error.exception.UnspecifiedIdentifierException;
 import com.dineup.util.Converters;
-import com.dineup.util.Exceptions;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
@@ -40,6 +40,9 @@ public class RestaurantRestResourceBean implements RestaurantRestResource, Heade
 
     @EJB
     private ProfileManagerFactory profileManagerFactory;
+    
+    @EJB
+    private ErrorResponseFactory errorResponseFactory;
     
     private ElementContext createElementContext() {
         return ElementContext.newBuilder()
@@ -57,16 +60,16 @@ public class RestaurantRestResourceBean implements RestaurantRestResource, Heade
             return Response.ok(entity).build();
         }
         catch (Exception ex) {
-            return serverError(ex);
+            return createErrorResponse(elementConfig, ex);
         }
     }
 
     @Override
     public Response getRestaurantComments(ElementConfig elementConfig, Integer restaurantId) {
-        if (restaurantId == null) {
-            return badRequest("Unspecified restaurantId", /*TODO*/null);
-        }
         try {
+            if (restaurantId == null) {
+                throw new UnspecifiedIdentifierException("Unspecified restaurantId");
+            }
             elementConfig.validate();
             List<RestaurantComment> objects = dataSource.getRestaurantComments(restaurantId);
             List<RestaurantCommentElement> elements = Converters.convertList(objects, new RestaurantCommentElementConverter(createElementContext(), elementConfig));
@@ -74,16 +77,16 @@ public class RestaurantRestResourceBean implements RestaurantRestResource, Heade
             return Response.ok(entity).build();
         }
         catch (Exception ex) {
-            return serverError(ex);
+            return createErrorResponse(elementConfig, ex);
         }
     }
     
     @Override
     public Response getCategories(ElementConfig elementConfig, Integer restaurantId) {
-        if (restaurantId == null) {
-            return badRequest("Unspecified restaurantId", /*TODO*/null);
-        }
         try {
+            if (restaurantId == null) {
+                throw new UnspecifiedIdentifierException("Unspecified restaurantId");
+            }
             elementConfig.validate();
             List<Category> objects = dataSource.getCategories(restaurantId);
             List<CategoryElement> elements = Converters.convertList(objects, new CategoryElementConverter(createElementContext(), elementConfig));
@@ -91,16 +94,16 @@ public class RestaurantRestResourceBean implements RestaurantRestResource, Heade
             return Response.ok(entity).build();
         }
         catch (Exception ex) {
-            return serverError(ex);
+            return createErrorResponse(elementConfig, ex);
         }
     }
     
     @Override
     public Response getFoods(ElementConfig elementConfig, Integer categoryId) {
-        if (categoryId == null) {
-            return badRequest("Unspecified categoryId", /*TODO*/null);
-        }
         try {
+            if (categoryId == null) {
+                throw new UnspecifiedIdentifierException("Unspecified categoryId");
+            }
             elementConfig.validate();
             List<Food> objects = dataSource.getFoods(categoryId);
             List<FoodElement> elements = Converters.convertList(objects, new FoodElementConverter(createElementContext(), elementConfig));
@@ -108,16 +111,16 @@ public class RestaurantRestResourceBean implements RestaurantRestResource, Heade
             return Response.ok(entity).build();
         }
         catch (Exception ex) {
-            return serverError(ex);
+            return createErrorResponse(elementConfig, ex);
         }
     }
     
     @Override
     public Response getExtras(ElementConfig elementConfig, Integer foodId) {
-        if (foodId == null) {
-            return badRequest("Unspecified foodId", /*TODO*/null);
-        }
         try {
+            if (foodId == null) {
+                throw new UnspecifiedIdentifierException("Unspecified foodId");
+            }
             elementConfig.validate();
             List<Extra> objects = dataSource.getExtras(foodId);
             List<ExtraElement> elements = Converters.convertList(objects, new ExtraElementConverter(createElementContext(), elementConfig));
@@ -125,16 +128,16 @@ public class RestaurantRestResourceBean implements RestaurantRestResource, Heade
             return Response.ok(entity).build();
         }
         catch (Exception ex) {
-            return serverError(ex);
+            return createErrorResponse(elementConfig, ex);
         }
     }
 
     @Override
     public Response getOptions(ElementConfig elementConfig, Integer extraId) {
-        if (extraId == null) {
-            return badRequest("Unspecified extraId", /*TODO*/null);
-        }
         try {
+            if (extraId == null) {
+                throw new UnspecifiedIdentifierException("Unspecified extraId");
+            }
             elementConfig.validate();
             List<Option> objects = dataSource.getOptions(extraId);
             List<OptionElement> elements = Converters.convertList(objects, new OptionElementConverter(createElementContext(), elementConfig));
@@ -142,33 +145,12 @@ public class RestaurantRestResourceBean implements RestaurantRestResource, Heade
             return Response.ok(entity).build();
         }
         catch (Exception ex) {
-            return serverError(ex);
+            return createErrorResponse(elementConfig, ex);
         }
     }
     
-    private Response badRequest(String errorMessage, String localizedMessage) {
-        if (localizedMessage == null) {
-            localizedMessage = errorMessage;
-        }
-        return Response.status(Response.Status.BAD_REQUEST)
-                .header(ERROR_MESSAGE, errorMessage)
-                .header(LOCALIZED_ERROR_MESSAGE, localizedMessage)
-                .build();
-    }
-    
-    private Response serverError(Exception ex) {
-        Throwable rootCause = Exceptions.getRootCause(ex);
-        Response.ResponseBuilder builder;
-        if (rootCause instanceof InvalidParameterException) {
-            builder = Response.status(Response.Status.BAD_REQUEST);
-        }
-        else {
-            builder = Response.serverError();
-        }
-        return builder
-                    .header(ERROR_MESSAGE, rootCause.getMessage())
-                    .header(LOCALIZED_ERROR_MESSAGE, rootCause.getLocalizedMessage())
-                    .build();
+    private Response createErrorResponse(ElementConfig elementConfig, Exception ex) {
+        return errorResponseFactory.createResponse(ex, elementConfig.getLanguageCode());
     }
 
 }

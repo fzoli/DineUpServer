@@ -1,25 +1,27 @@
 package com.dineup.rest;
 
+import com.dineup.service.ElementConfig;
+import com.dineup.service.rest.ElementConfigKeys;
 import javax.ws.rs.QueryParam;
 
 public class BaseResource {
     
-    @QueryParam(ElementConfig.Keys.FACEBOOK_ACCESS_TOKEN)
+    @QueryParam(ElementConfigKeys.FACEBOOK_ACCESS_TOKEN)
     private String facebookAccessToken;
     
-    @QueryParam(ElementConfig.Keys.GOOGLE_ACCESS_TOKEN)
+    @QueryParam(ElementConfigKeys.GOOGLE_ACCESS_TOKEN)
     private String googleAccessToken;
     
-    @QueryParam(ElementConfig.Keys.LANGUAGE_CODE)
+    @QueryParam(ElementConfigKeys.LANGUAGE_CODE)
     private String languageCode;
     
-    @QueryParam(ElementConfig.Keys.WITH_NESTED_OBJECTS)
+    @QueryParam(ElementConfigKeys.WITH_NESTED_OBJECTS)
     private Boolean withNestedObjects;
     
-    @QueryParam(ElementConfig.Keys.LATITUDE)
+    @QueryParam(ElementConfigKeys.LATITUDE)
     private Double latitude;
     
-    @QueryParam(ElementConfig.Keys.LONGITUDE)
+    @QueryParam(ElementConfigKeys.LONGITUDE)
     private Double longitude;
     
     public ElementConfig createElementConfig() {
