@@ -7,8 +7,8 @@
         <version>1.0</version>
     </parent>
     
-    <name>DineUp-lib</name>
-    <artifactId>DineUp-lib</artifactId>
+    <name>DineUp-client</name>
+    <artifactId>DineUp-client</artifactId>
     <packaging>jar</packaging>
     
     <properties>
@@ -19,15 +19,29 @@
     
     <dependencies>
         <dependency>
+            <groupId>org.glassfish.jersey.ext.rx</groupId>
+            <artifactId>jersey-rx-client</artifactId>
+            <version>2.22.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson</artifactId>
+            <version>2.22.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-validator</groupId>
+            <artifactId>commons-validator</artifactId>
+            <version>1.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
+        </dependency>
+        <dependency>
             <artifactId>DineUp-utils</artifactId>
             <groupId>${project.groupId}</groupId>
             <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>7.0</version>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

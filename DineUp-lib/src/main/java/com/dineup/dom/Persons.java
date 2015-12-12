@@ -22,7 +22,7 @@ public class Persons {
         }
         List<String> fields = new ArrayList<>(NUMBER_OF_NAME_FIELDS);
         getFullNameProvider(languageCode).putFullNameFields(fields, name);
-        return Strings.concat(fields, " ");
+        return Strings.concat(" ", fields);
     }
     
     private static FullNameProvider getFullNameProvider(String languageCode) {

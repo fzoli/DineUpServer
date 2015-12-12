@@ -36,5 +36,7 @@
     <module>DineUp-ejb</module>
     <module>DineUp-live-ejb</module>
     <module>DineUp-mock-ejb</module>
+    <module>DineUp-utils</module>
+    <module>DineUp-client</module>
   </modules>
 </project>
