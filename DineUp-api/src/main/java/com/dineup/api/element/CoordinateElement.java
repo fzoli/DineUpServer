@@ -1,10 +1,10 @@
-package com.dineup;
+package com.dineup.api.element;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "coordinate")
-public class Coordinate {
+public class CoordinateElement {
 
     @XmlElement
     public double latitude;
@@ -12,7 +12,7 @@ public class Coordinate {
     @XmlElement
     public double longitude;
     
-    public Coordinate() {
+    public CoordinateElement() {
     }
     
 }

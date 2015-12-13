@@ -7,8 +7,8 @@
         <version>1.0</version>
     </parent>
     
-    <name>DineUp-utils</name>
-    <artifactId>DineUp-utils</artifactId>
+    <name>DineUp-base</name>
+    <artifactId>DineUp-base</artifactId>
     <packaging>jar</packaging>
     
     <properties>

@@ -1,4 +1,4 @@
-package com.dineup;
+package com.dineup.api;
 
 import com.dineup.util.Strings;
 import org.apache.commons.validator.routines.UrlValidator;
@@ -8,6 +8,7 @@ public class TargetConfig {
     private final String serverUrl;
     private final String webAppRoot;
     private final String restRoot;
+    private final String languageCode;
 
     private static final String[] validUrlSchemes = {"http", "https"};
     private static final UrlValidator urlValidator = new UrlValidator(validUrlSchemes, UrlValidator.ALLOW_LOCAL_URLS);
@@ -16,9 +17,13 @@ public class TargetConfig {
         if (!urlValidator.isValid(builder.serverUrl)) {
             throw new IllegalArgumentException("Invalid serverUrl");
         }
+        if (builder.languageCode != null && builder.languageCode.length() != 2) {
+            throw new IllegalArgumentException("Invalid languageCode");
+        }
         serverUrl = builder.serverUrl;
         webAppRoot = builder.webAppRoot;
         restRoot = builder.restRoot;
+        languageCode = builder.languageCode;
     }
 
     public static Builder newBuilder() {
@@ -37,6 +42,10 @@ public class TargetConfig {
         return restRoot;
     }
 
+    public String getLanguageCode() {
+        return languageCode;
+    }
+    
     public String getTarget() {
         return Strings.concat("/", getServerUrl(), getWebAppRoot(), getRestRoot());
     }
@@ -46,10 +55,16 @@ public class TargetConfig {
         private String serverUrl;
         private String webAppRoot;
         private String restRoot;
+        private String languageCode;
 
         private Builder() {
         }
 
+        public Builder languageCode(String languageCode) {
+            this.languageCode = languageCode;
+            return this;
+        }
+        
         public Builder serverUrl(String serverUrl) {
             this.serverUrl = serverUrl;
             return this;
@@ -65,7 +80,7 @@ public class TargetConfig {
             return this;
         }
 
-        public com.dineup.TargetConfig build() {
+        public com.dineup.api.TargetConfig build() {
             return new TargetConfig(this);
         }
         

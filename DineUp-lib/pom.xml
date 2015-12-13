@@ -19,7 +19,7 @@
     
     <dependencies>
         <dependency>
-            <artifactId>DineUp-utils</artifactId>
+            <artifactId>DineUp-base</artifactId>
             <groupId>${project.groupId}</groupId>
             <version>${project.version}</version>
         </dependency>
