@@ -1,6 +1,7 @@
 package com.dineup;
 
 import com.dineup.api.DineUpApi;
+import com.dineup.api.DineUpApiFactory;
 import com.dineup.api.TargetConfig;
 import com.dineup.api.dom.Coordinate;
 import com.dineup.api.dom.Restaurant;
@@ -19,7 +20,7 @@ public class Main {
                 .restRoot("/rest")
                 .languageCode("hu")
                 .build();
-        DineUpApi api = new DineUpApi(client, targetConfig);
+        DineUpApi api = DineUpApiFactory.createInstance(client, targetConfig);
         try {
             List<Restaurant> restaurants = api.getRestaurants(new Coordinate(5, 6));
             System.out.println("Number of restaurants: " + restaurants.size());

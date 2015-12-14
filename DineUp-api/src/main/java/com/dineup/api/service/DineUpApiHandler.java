@@ -1,5 +1,6 @@
 package com.dineup.api.service;
 
+import com.dineup.api.DineUpApi;
 import com.dineup.api.TargetConfig;
 import com.dineup.api.dom.Coordinate;
 import com.dineup.api.dom.Restaurant;
@@ -15,7 +16,7 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
-public class DineUpApiHandler {
+public class DineUpApiHandler implements DineUpApi {
 
     private final Executor executor;
     
@@ -23,6 +24,7 @@ public class DineUpApiHandler {
         this.executor = new Executor(client, targetConfig);
     }
     
+    @Override
     public List<Restaurant> getRestaurants(final Coordinate coordinate) throws DetailedException {
         return executor.execute(new GetRestaurants(coordinate));
     }
