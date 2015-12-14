@@ -1,5 +1,6 @@
 package com.dineup.api;
 
+import com.dineup.api.annotation.Nullable;
 import com.dineup.api.dom.Category;
 import com.dineup.api.dom.Coordinate;
 import com.dineup.api.dom.Extra;
@@ -9,7 +10,6 @@ import com.dineup.api.dom.ProfileToken;
 import com.dineup.api.dom.Restaurant;
 import com.dineup.api.dom.RestaurantComment;
 import com.dineup.api.exception.DetailedException;
-import com.sun.istack.internal.Nullable;
 import java.util.List;
 
 public interface DineUpApi {
