@@ -23,6 +23,7 @@ import com.dineup.service.rest.ElementConfigKeys;
 import com.dineup.service.rest.RequestPath;
 import com.dineup.service.rest.RestaurantKeys;
 import com.dineup.util.Lists;
+import com.dineup.util.Strings;
 import com.sun.istack.internal.Nullable;
 import java.util.Collections;
 import java.util.List;
@@ -35,9 +36,11 @@ import javax.ws.rs.core.Response;
 public class DineUpApiHandler implements DineUpApi {
 
     private final Executor executor;
+    private final TargetConfig targetConfig;
     
     public DineUpApiHandler(Client client, TargetConfig targetConfig) {
         this.executor = new Executor(client, targetConfig);
+        this.targetConfig = targetConfig;
     }
     
     @Override
@@ -75,7 +78,7 @@ public class DineUpApiHandler implements DineUpApi {
         return executor.execute(new GetOptions(extra.getId()));
     }
     
-    private static class GetService extends Executable<Service> {
+    private class GetService extends Executable<Service> {
 
         public GetService() {
         }
@@ -98,7 +101,7 @@ public class DineUpApiHandler implements DineUpApi {
         
     }
     
-    private static class GetRestaurants extends Executable<List<Restaurant>> {
+    private class GetRestaurants extends Executable<List<Restaurant>> {
 
         private final Coordinate coordinate;
         
@@ -129,7 +132,7 @@ public class DineUpApiHandler implements DineUpApi {
         
     }
     
-    private static class GetRestaurantComments extends Executable<List<RestaurantComment>> {
+    private class GetRestaurantComments extends Executable<List<RestaurantComment>> {
 
         private final int restaurantId;
         private final ProfileToken profileToken;
@@ -163,13 +166,25 @@ public class DineUpApiHandler implements DineUpApi {
         public List<RestaurantComment> parseResponse(Response response) {
             GenericType<List<RestaurantCommentElement>> type = new GenericType<List<RestaurantCommentElement>>(){};
             List<RestaurantCommentElement> entity = response.readEntity(type);
+            format(entity);
             List<RestaurantComment> list = Lists.convert(entity);
             return Collections.unmodifiableList(list);
         }
         
+        private void format(List<RestaurantCommentElement> entity) {
+            for (RestaurantCommentElement element : entity) {
+                if (element.profile != null) {
+                    String photoUrl = element.profile.photoUrl;
+                    if (photoUrl != null && photoUrl.startsWith("/")) {
+                        element.profile.photoUrl = Strings.concat("/", targetConfig.getServerUrl(), photoUrl);
+                    }
+                }
+            }
+        }
+        
     }
     
-    private static class GetCategories extends Executable<List<Category>> {
+    private class GetCategories extends Executable<List<Category>> {
 
         private final int restaurantId;
         
@@ -197,7 +212,7 @@ public class DineUpApiHandler implements DineUpApi {
         
     }
     
-    private static class GetFoods extends Executable<List<Food>> {
+    private class GetFoods extends Executable<List<Food>> {
 
         private final int categoryId;
         
@@ -225,7 +240,7 @@ public class DineUpApiHandler implements DineUpApi {
         
     }
     
-    private static class GetExtras extends Executable<List<Extra>> {
+    private class GetExtras extends Executable<List<Extra>> {
 
         private final int foodId;
         
@@ -253,7 +268,7 @@ public class DineUpApiHandler implements DineUpApi {
         
     }
     
-    private static class GetOptions extends Executable<List<Option>> {
+    private class GetOptions extends Executable<List<Option>> {
 
         private final int extraId;
         
