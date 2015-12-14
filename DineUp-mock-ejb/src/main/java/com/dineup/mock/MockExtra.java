@@ -29,6 +29,7 @@ public class MockExtra implements Extra, MockDatas {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<ExtraLocale> getLocales() {
         return (List) Collections.singletonList(new MockExtraLocale(id));
     }

@@ -1,12 +1,13 @@
 package com.dineup.api.service.element;
 
 import com.dineup.api.dom.Person;
+import java.io.Serializable;
 import java.util.Date;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "person")
-public class PersonElement implements Person {
+public class PersonElement implements Person, Serializable {
 
     @XmlElement
     public Date birthDate;

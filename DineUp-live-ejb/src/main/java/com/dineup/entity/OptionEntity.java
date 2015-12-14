@@ -3,6 +3,7 @@ package com.dineup.entity;
 import com.dineup.dom.Option;
 import com.dineup.dom.OptionLocale;
 import com.dineup.dom.Price;
+import com.dineup.util.Lists;
 
 import java.io.Serializable;
 import java.util.List;
@@ -56,12 +57,12 @@ public class OptionEntity implements Option, Serializable {
 
     @Override
     public List<Price> getPrices() {
-        return (List) prices;
+        return Lists.convert(prices);
     }
 
     @Override
     public List<OptionLocale> getLocales() {
-        return (List) locales;
+        return Lists.convert(locales);
     }
 
 }

@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class RestaurantElement implements Restaurant, Serializable {
     
     @XmlAttribute
-    public Integer id;
+    public int id;
     
     @XmlElement
     public String languageCode;
@@ -47,7 +47,7 @@ public class RestaurantElement implements Restaurant, Serializable {
     public double rating;
 
     @Override
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 

@@ -29,6 +29,7 @@ public class MockCategory implements Category, MockDatas {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<CategoryLocale> getLocales() {
         return (List)Collections.singletonList(new MockCategoryLocale(id));
     }

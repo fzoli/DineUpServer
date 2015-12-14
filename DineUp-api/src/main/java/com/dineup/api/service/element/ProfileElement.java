@@ -2,12 +2,13 @@ package com.dineup.api.service.element;
 
 import com.dineup.api.dom.Person;
 import com.dineup.api.dom.Profile;
+import java.io.Serializable;
 import java.util.Date;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "profile")
-public class ProfileElement implements Profile {
+public class ProfileElement implements Profile, Serializable {
     
     @XmlElement
     public Date lastSync;

@@ -2,7 +2,7 @@ package com.dineup.api.dom;
 
 public interface Restaurant {
     
-    public Integer getId();
+    public int getId();
     
     public String getLanguageCode();
     

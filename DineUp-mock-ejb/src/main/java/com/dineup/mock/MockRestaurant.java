@@ -56,6 +56,7 @@ public class MockRestaurant implements Restaurant, MockDatas {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<RestaurantLocale> getLocales() {
         return (List) Collections.singletonList(new MockRestaurantLocale(id));
     }

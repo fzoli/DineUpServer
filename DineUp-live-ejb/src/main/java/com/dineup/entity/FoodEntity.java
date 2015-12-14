@@ -4,6 +4,7 @@ import com.dineup.dom.Extra;
 import com.dineup.dom.Food;
 import com.dineup.dom.FoodLocale;
 import com.dineup.dom.Price;
+import com.dineup.util.Lists;
 
 import java.io.Serializable;
 import java.util.List;
@@ -70,17 +71,17 @@ public class FoodEntity implements Food, Serializable {
 
     @Override
     public List<FoodLocale> getLocales() {
-        return (List) locales;
+        return Lists.convert(locales);
     }
 
     @Override
     public List<Price> getPrices() {
-        return (List) prices;
+        return Lists.convert(prices);
     }
 
     @Override
     public List<Extra> getExtras() {
-        return (List) extras;
+        return Lists.convert(extras);
     }
 
 }

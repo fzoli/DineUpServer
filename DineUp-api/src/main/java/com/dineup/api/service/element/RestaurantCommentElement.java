@@ -1,12 +1,13 @@
 package com.dineup.api.service.element;
 
 import com.dineup.api.dom.RestaurantComment;
+import java.io.Serializable;
 import java.util.Date;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "comment")
-public class RestaurantCommentElement implements RestaurantComment {
+public class RestaurantCommentElement implements RestaurantComment, Serializable {
     
     @XmlElement
     public String languageCode;

@@ -3,6 +3,7 @@ package com.dineup.entity;
 import com.dineup.dom.Category;
 import com.dineup.dom.CategoryLocale;
 import com.dineup.dom.Food;
+import com.dineup.util.Lists;
 
 import java.io.Serializable;
 import java.util.List;
@@ -68,12 +69,12 @@ public class CategoryEntity implements Category, Serializable {
 
     @Override
     public List<CategoryLocale> getLocales() {
-        return (List) locales;
+        return Lists.convert(locales);
     }
 
     @Override
     public List<Food> getFoods() {
-        return (List) foods;
+        return Lists.convert(foods);
     }
 
 }

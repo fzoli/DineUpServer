@@ -3,17 +3,26 @@ package com.dineup.api.service;
 import com.dineup.api.DineUpApi;
 import com.dineup.api.Service;
 import com.dineup.api.TargetConfig;
+import com.dineup.api.dom.Category;
 import com.dineup.api.dom.Coordinate;
+import com.dineup.api.dom.Extra;
+import com.dineup.api.dom.Food;
+import com.dineup.api.dom.Option;
 import com.dineup.api.dom.ProfileToken;
 import com.dineup.api.dom.Restaurant;
 import com.dineup.api.dom.RestaurantComment;
 import com.dineup.api.exception.DetailedException;
+import com.dineup.api.service.element.CategoryElement;
+import com.dineup.api.service.element.ExtraElement;
+import com.dineup.api.service.element.FoodElement;
+import com.dineup.api.service.element.OptionElement;
 import com.dineup.api.service.element.RestaurantCommentElement;
 import com.dineup.api.service.element.RestaurantElement;
 import com.dineup.api.service.element.ServiceElement;
 import com.dineup.service.rest.ElementConfigKeys;
 import com.dineup.service.rest.RequestPath;
 import com.dineup.service.rest.RestaurantKeys;
+import com.dineup.util.Lists;
 import com.sun.istack.internal.Nullable;
 import java.util.Collections;
 import java.util.List;
@@ -44,6 +53,26 @@ public class DineUpApiHandler implements DineUpApi {
     @Override
     public List<RestaurantComment> getRestaurantComments(Restaurant restaurant, @Nullable ProfileToken profileToken) throws DetailedException {
         return executor.execute(new GetRestaurantComments(restaurant.getId(), profileToken));
+    }
+    
+    @Override
+    public List<Category> getCategories(Restaurant restaurant) throws DetailedException {
+        return executor.execute(new GetCategories(restaurant.getId()));
+    }
+    
+    @Override
+    public List<Food> getFoods(Category category) throws DetailedException {
+        return executor.execute(new GetFoods(category.getId()));
+    }
+    
+    @Override
+    public List<Extra> getExtras(Food food) throws DetailedException {
+        return executor.execute(new GetExtras(food.getId()));
+    }
+    
+    @Override
+    public List<Option> getOptions(Extra extra) throws DetailedException {
+        return executor.execute(new GetOptions(extra.getId()));
     }
     
     private static class GetService extends Executable<Service> {
@@ -94,7 +123,8 @@ public class DineUpApiHandler implements DineUpApi {
         public List<Restaurant> parseResponse(Response response) {
             GenericType<List<RestaurantElement>> type = new GenericType<List<RestaurantElement>>(){};
             List<RestaurantElement> entity = response.readEntity(type);
-            return Collections.unmodifiableList((List) entity);
+            List<Restaurant> list = Lists.convert(entity);
+            return Collections.unmodifiableList(list);
         }
         
     }
@@ -133,7 +163,120 @@ public class DineUpApiHandler implements DineUpApi {
         public List<RestaurantComment> parseResponse(Response response) {
             GenericType<List<RestaurantCommentElement>> type = new GenericType<List<RestaurantCommentElement>>(){};
             List<RestaurantCommentElement> entity = response.readEntity(type);
-            return Collections.unmodifiableList((List) entity);
+            List<RestaurantComment> list = Lists.convert(entity);
+            return Collections.unmodifiableList(list);
+        }
+        
+    }
+    
+    private static class GetCategories extends Executable<List<Category>> {
+
+        private final int restaurantId;
+        
+        public GetCategories(int restaurantId) {
+            this.restaurantId = restaurantId;
+        }
+
+        @Override
+        public WebTarget appendPath(WebTarget target) {
+            return target.path(RequestPath.PATH_CATEGORIES);
+        }
+
+        @Override
+        public void putParameters(Map<String, Object> parameters) {
+            parameters.put(RestaurantKeys.RESTAURANT_ID, restaurantId);
+        }
+
+        @Override
+        public List<Category> parseResponse(Response response) {
+            GenericType<List<CategoryElement>> type = new GenericType<List<CategoryElement>>(){};
+            List<CategoryElement> entity = response.readEntity(type);
+            List<Category> list = Lists.convert(entity);
+            return Collections.unmodifiableList(list);
+        }
+        
+    }
+    
+    private static class GetFoods extends Executable<List<Food>> {
+
+        private final int categoryId;
+        
+        public GetFoods(int categoryId) {
+            this.categoryId = categoryId;
+        }
+
+        @Override
+        public WebTarget appendPath(WebTarget target) {
+            return target.path(RequestPath.PATH_FOODS);
+        }
+
+        @Override
+        public void putParameters(Map<String, Object> parameters) {
+            parameters.put(RestaurantKeys.CATEGORY_ID, categoryId);
+        }
+
+        @Override
+        public List<Food> parseResponse(Response response) {
+            GenericType<List<FoodElement>> type = new GenericType<List<FoodElement>>(){};
+            List<FoodElement> entity = response.readEntity(type);
+            List<Food> list = Lists.convert(entity);
+            return Collections.unmodifiableList(list);
+        }
+        
+    }
+    
+    private static class GetExtras extends Executable<List<Extra>> {
+
+        private final int foodId;
+        
+        public GetExtras(int foodId) {
+            this.foodId = foodId;
+        }
+
+        @Override
+        public WebTarget appendPath(WebTarget target) {
+            return target.path(RequestPath.PATH_EXTRAS);
+        }
+
+        @Override
+        public void putParameters(Map<String, Object> parameters) {
+            parameters.put(RestaurantKeys.FOOD_ID, foodId);
+        }
+
+        @Override
+        public List<Extra> parseResponse(Response response) {
+            GenericType<List<ExtraElement>> type = new GenericType<List<ExtraElement>>(){};
+            List<ExtraElement> entity = response.readEntity(type);
+            List<Extra> list = Lists.convert(entity);
+            return Collections.unmodifiableList(list);
+        }
+        
+    }
+    
+    private static class GetOptions extends Executable<List<Option>> {
+
+        private final int extraId;
+        
+        public GetOptions(int extraId) {
+            this.extraId = extraId;
+        }
+
+        @Override
+        public WebTarget appendPath(WebTarget target) {
+            return target.path(RequestPath.PATH_OPTIONS);
+        }
+
+        @Override
+        public void putParameters(Map<String, Object> parameters) {
+            parameters.put(RestaurantKeys.EXTRA_ID, extraId);
+        }
+
+        @Override
+        public List<Option> parseResponse(Response response) {
+            GenericType<List<OptionElement>> type = new GenericType<List<OptionElement>>(){};
+            List<OptionElement> entity = response.readEntity(type);
+            List<Option> list = Lists.convert(entity);
+            return Collections.unmodifiableList(list);
         }
         
     }

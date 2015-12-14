@@ -18,6 +18,7 @@ import com.dineup.entity.RestaurantCommentEntity;
 import com.dineup.entity.RestaurantCommentEntity_;
 import com.dineup.entity.RestaurantEntity;
 import com.dineup.entity.RestaurantEntity_;
+import com.dineup.util.Lists;
 import java.util.List;
 import javax.annotation.PreDestroy;
 import javax.ejb.Singleton;
@@ -50,7 +51,7 @@ public class LiveRestaurantDataSource implements RestaurantDataSource {
         Root<RestaurantEntity> root = query.from(RestaurantEntity.class);
         query.orderBy(builder.asc(root.get(RestaurantEntity_.id)));
         List<RestaurantEntity> resultList = getManager().createQuery(query).getResultList();
-        return (List) resultList;
+        return Lists.convert(resultList);
     }
 
     @Override
@@ -60,7 +61,7 @@ public class LiveRestaurantDataSource implements RestaurantDataSource {
         Root<RestaurantCommentEntity> root = query.from(RestaurantCommentEntity.class);
         query.where(builder.equal(root.get(RestaurantCommentEntity_.restaurant).get(RestaurantEntity_.id), restaurantId));
         List<RestaurantCommentEntity> resultList = getManager().createQuery(query).getResultList();
-        return (List) resultList;
+        return Lists.convert(resultList);
     }
     
     @Override
@@ -71,7 +72,7 @@ public class LiveRestaurantDataSource implements RestaurantDataSource {
         query.orderBy(builder.asc(root.get(CategoryEntity_.id)));
         query.where(builder.equal(root.get(CategoryEntity_.restaurant).get(RestaurantEntity_.id), restaurantId));
         List<CategoryEntity> resultList = getManager().createQuery(query).getResultList();
-        return (List) resultList;
+        return Lists.convert(resultList);
     }
 
     @Override
@@ -82,7 +83,7 @@ public class LiveRestaurantDataSource implements RestaurantDataSource {
         query.orderBy(builder.asc(root.get(FoodEntity_.id)));
         query.where(builder.equal(root.get(FoodEntity_.category).get(CategoryEntity_.id), categoryId));
         List<FoodEntity> resultList = getManager().createQuery(query).getResultList();
-        return (List) resultList;
+        return Lists.convert(resultList);
     }
 
     @Override
@@ -94,7 +95,7 @@ public class LiveRestaurantDataSource implements RestaurantDataSource {
         query.orderBy(builder.asc(root.get(ExtraEntity_.id)));
         query.where(builder.equal(join.get(FoodEntity_.id), foodId));
         List<ExtraEntity> resultList = getManager().createQuery(query).getResultList();
-        return (List) resultList;
+        return Lists.convert(resultList);
     }
 
     @Override
@@ -105,7 +106,7 @@ public class LiveRestaurantDataSource implements RestaurantDataSource {
         query.orderBy(builder.asc(root.get(OptionEntity_.id)));
         query.where(builder.equal(root.get(OptionEntity_.extra).get(ExtraEntity_.id), extraId));
         List<OptionEntity> resultList = getManager().createQuery(query).getResultList();
-        return (List) resultList;
+        return Lists.convert(resultList);
     }
 
 }

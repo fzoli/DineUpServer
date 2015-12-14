@@ -4,6 +4,7 @@ import com.dineup.dom.Extra;
 import com.dineup.dom.ExtraLocale;
 import com.dineup.dom.Food;
 import com.dineup.dom.Option;
+import com.dineup.util.Lists;
 
 import java.io.Serializable;
 import java.util.List;
@@ -78,16 +79,16 @@ public class ExtraEntity implements Extra, Serializable {
 
     @Override
     public List<ExtraLocale> getLocales() {
-        return (List) locales;
+        return Lists.convert(locales);
     }
 
     @Override
     public List<Option> getOptions() {
-        return (List) options;
+        return Lists.convert(options);
     }
 
     public List<Food> getFoods() {
-        return (List) foods;
+        return Lists.convert(foods);
     }
 
 }

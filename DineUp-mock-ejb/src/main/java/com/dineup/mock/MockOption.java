@@ -22,11 +22,13 @@ public class MockOption implements Option, MockDatas {
     }
     
     @Override
+    @SuppressWarnings("unchecked")
     public List<Price> getPrices() {
         return (List) Collections.singletonList(new MockPrice());
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<OptionLocale> getLocales() {
         return (List) Collections.singletonList(new MockOptionLocale(id));
     }

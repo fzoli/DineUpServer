@@ -30,11 +30,13 @@ public class MockFood implements Food, MockDatas {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<FoodLocale> getLocales() {
         return (List) Collections.singletonList(new MockFoodLocale(id));
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<Price> getPrices() {
         return (List) Collections.singletonList(new MockPrice());
     }

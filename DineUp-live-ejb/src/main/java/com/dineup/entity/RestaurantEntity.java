@@ -5,6 +5,7 @@ import com.dineup.dom.Coordinate;
 import com.dineup.dom.Restaurant;
 import com.dineup.dom.RestaurantComment;
 import com.dineup.dom.RestaurantLocale;
+import com.dineup.util.Lists;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
@@ -132,17 +133,17 @@ public class RestaurantEntity implements Restaurant, Serializable {
     
     @Override
     public List<RestaurantLocale> getLocales() {
-        return (List) locales;
+        return Lists.convert(locales);
     }
 
     @Override
     public List<RestaurantComment> getComments() {
-        return (List) comments;
+        return Lists.convert(comments);
     }
     
     @Override
     public List<Category> getCategories() {
-        return (List) categories;
+        return Lists.convert(categories);
     }
 
     public List<ExtraEntity> getExtras() {

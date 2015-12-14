@@ -2,14 +2,15 @@ package com.dineup.api.service.element;
 
 import com.dineup.api.Service;
 import com.dineup.api.service.BuildConfig;
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "service")
-public class ServiceElement implements Service {
+public class ServiceElement implements Service, Serializable {
     
     @XmlElement
-    int protocolVersion;
+    public int protocolVersion;
 
     public ServiceElement() {
     }
