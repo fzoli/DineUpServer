@@ -4,6 +4,8 @@ public interface Restaurant {
     
     public Integer getId();
     
+    public String getLanguageCode();
+    
     public Double getDistance();
 
     public String getType();

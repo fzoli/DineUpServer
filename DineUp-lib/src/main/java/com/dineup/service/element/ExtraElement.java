@@ -3,6 +3,7 @@ package com.dineup.service.element;
 import com.dineup.service.ElementContext;
 import com.dineup.dom.Extra;
 import com.dineup.dom.ExtraLocale;
+import com.dineup.dom.Locale;
 import com.dineup.service.ElementConfig;
 import com.dineup.service.element.converter.OptionElementConverter;
 import com.dineup.util.Converters;
@@ -34,6 +35,12 @@ public class ExtraElement {
     @XmlAttribute
     public Integer getId() {
         return extra.getId();
+    }
+    
+    @XmlElement
+    public String getLanguageCode() {
+        Locale l = getLocale();
+        return l == null ? null : l.getLanguageCode();
     }
     
     @XmlElement

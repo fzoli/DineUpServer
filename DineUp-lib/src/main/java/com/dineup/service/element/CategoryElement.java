@@ -2,6 +2,7 @@ package com.dineup.service.element;
 
 import com.dineup.dom.Category;
 import com.dineup.dom.CategoryLocale;
+import com.dineup.dom.Locale;
 import com.dineup.service.ElementContext;
 import com.dineup.service.ElementConfig;
 import com.dineup.service.element.converter.FoodElementConverter;
@@ -36,6 +37,12 @@ public class CategoryElement {
         return category.getId();
     }
 
+    @XmlElement
+    public String getLanguageCode() {
+        Locale l = getLocale();
+        return l == null ? null : l.getLanguageCode();
+    }
+    
     @XmlElement
     public String getName() {
         CategoryLocale l = getLocale();

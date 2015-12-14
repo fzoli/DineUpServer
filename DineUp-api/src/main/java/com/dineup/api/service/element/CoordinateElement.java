@@ -1,10 +1,11 @@
-package com.dineup.api.element;
+package com.dineup.api.service.element;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "coordinate")
-public class CoordinateElement {
+public class CoordinateElement implements Serializable {
 
     @XmlElement
     public double latitude;

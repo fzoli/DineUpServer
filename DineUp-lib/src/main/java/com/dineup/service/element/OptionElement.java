@@ -1,5 +1,6 @@
 package com.dineup.service.element;
 
+import com.dineup.dom.Locale;
 import com.dineup.service.ElementContext;
 import com.dineup.dom.Option;
 import com.dineup.dom.OptionLocale;
@@ -34,6 +35,12 @@ public class OptionElement {
     @XmlAttribute
     public Integer getId() {
         return option.getId();
+    }
+    
+    @XmlElement
+    public String getLanguageCode() {
+        Locale l = getLocale();
+        return l == null ? null : l.getLanguageCode();
     }
     
     @XmlElement

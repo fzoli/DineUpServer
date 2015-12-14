@@ -2,6 +2,7 @@ package com.dineup.service.element;
 
 import com.dineup.dom.Coordinate;
 import com.dineup.dom.Coordinates;
+import com.dineup.dom.Locale;
 import com.dineup.service.ElementContext;
 import com.dineup.dom.Restaurant;
 import com.dineup.dom.RestaurantComment;
@@ -43,6 +44,12 @@ public class RestaurantElement {
         return restaurant.getId();
     }
 
+    @XmlElement
+    public String getLanguageCode() {
+        Locale l = getLocale();
+        return l == null ? null : l.getLanguageCode();
+    }
+    
     @XmlElement
     public Double getDistance() {
         Coordinate restaurantCoordinate = restaurant.getCoordinate();

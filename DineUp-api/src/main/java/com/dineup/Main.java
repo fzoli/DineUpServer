@@ -20,7 +20,7 @@ public class Main {
                 .build();
         DineUpApi api = new DineUpApi(client, targetConfig);
         List<Restaurant> restaurants = api.getRestaurants(new Coordinate(5, 6));
-        System.out.println(restaurants);
+        System.out.println("Number of restaurants: " + restaurants.size());
     }
     
 }

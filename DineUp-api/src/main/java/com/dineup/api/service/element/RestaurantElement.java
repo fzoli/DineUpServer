@@ -1,16 +1,20 @@
-package com.dineup.api.element;
+package com.dineup.api.service.element;
 
 import com.dineup.api.dom.Coordinate;
 import com.dineup.api.dom.Restaurant;
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "restaurant")
-public class RestaurantElement implements Restaurant {
+public class RestaurantElement implements Restaurant, Serializable {
     
     @XmlAttribute
     public Integer id;
+    
+    @XmlElement
+    public String languageCode;
     
     @XmlElement
     public Double distance;
@@ -45,6 +49,11 @@ public class RestaurantElement implements Restaurant {
     @Override
     public Integer getId() {
         return id;
+    }
+
+    @Override
+    public String getLanguageCode() {
+        return languageCode;
     }
 
     @Override
@@ -95,6 +104,11 @@ public class RestaurantElement implements Restaurant {
     @Override
     public double getRating() {
         return rating;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Restaurant(id=%s)", id);
     }
     
     public RestaurantElement() {
