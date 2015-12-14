@@ -1,11 +1,13 @@
 package com.dineup.api.service;
 
 import com.dineup.api.DineUpApi;
+import com.dineup.api.Service;
 import com.dineup.api.TargetConfig;
 import com.dineup.api.dom.Coordinate;
 import com.dineup.api.dom.Restaurant;
 import com.dineup.api.exception.DetailedException;
 import com.dineup.api.service.element.RestaurantElement;
+import com.dineup.api.service.element.ServiceElement;
 import com.dineup.service.rest.ElementConfigKeys;
 import com.dineup.service.rest.RequestPath;
 import java.util.Collections;
@@ -27,6 +29,34 @@ public class DineUpApiHandler implements DineUpApi {
     @Override
     public List<Restaurant> getRestaurants(final Coordinate coordinate) throws DetailedException {
         return executor.execute(new GetRestaurants(coordinate));
+    }
+
+    @Override
+    public Service getService() throws DetailedException {
+        return executor.execute(new GetService());
+    }
+    
+    private static class GetService extends Executable<Service> {
+
+        public GetService() {
+        }
+
+        @Override
+        public WebTarget appendPath(WebTarget target) {
+            return target.path(RequestPath.PATH_SERVICE);
+        }
+
+        @Override
+        public void putParameters(Map<String, Object> parameters) {
+        }
+
+        @Override
+        public Service parseResponse(Response response) {
+            GenericType<ServiceElement> type = new GenericType<ServiceElement>(){};
+            ServiceElement entity = response.readEntity(type);
+            return entity;
+        }
+        
     }
     
     private static class GetRestaurants extends Executable<List<Restaurant>> {
@@ -53,8 +83,8 @@ public class DineUpApiHandler implements DineUpApi {
         @Override
         public List<Restaurant> parseResponse(Response response) {
             GenericType<List<RestaurantElement>> type = new GenericType<List<RestaurantElement>>(){};
-            List<RestaurantElement> restaurants = response.readEntity(type);
-            return Collections.unmodifiableList((List) restaurants);
+            List<RestaurantElement> entity = response.readEntity(type);
+            return Collections.unmodifiableList((List) entity);
         }
         
     }

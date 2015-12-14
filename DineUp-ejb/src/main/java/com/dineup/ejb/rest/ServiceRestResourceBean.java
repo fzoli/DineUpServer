@@ -1,5 +1,6 @@
 package com.dineup.ejb.rest;
 
+import com.dineup.BuildConfig;
 import com.dineup.service.element.ServiceElement;
 import javax.ejb.Singleton;
 import javax.ws.rs.core.Response;
@@ -9,7 +10,9 @@ public class ServiceRestResourceBean implements ServiceRestResource {
 
     @Override
     public Response getService() {
-        return Response.ok(new ServiceElement()).build();
+        ServiceElement serviceElement = new ServiceElement();
+        serviceElement.protocolVersion = BuildConfig.SERVICE_PROTOCOL_VERSION;
+        return Response.ok(serviceElement).build();
     }
     
 }

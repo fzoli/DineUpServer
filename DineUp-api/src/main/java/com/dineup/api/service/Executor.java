@@ -5,7 +5,9 @@ import com.dineup.api.exception.ClientException;
 import com.dineup.api.exception.DetailedException;
 import com.dineup.api.exception.ServiceException;
 import com.dineup.api.service.error.ErrorResolver;
+import com.dineup.api.service.error.exception.ServiceErrorException;
 import com.dineup.api.service.error.exception.NetworkConnectionException;
+import com.dineup.api.service.error.exception.ServiceNotFoundException;
 import com.dineup.api.service.error.exception.UnexpectedMessageException;
 import com.dineup.service.rest.ElementConfigKeys;
 import com.dineup.service.rest.HeaderKeys;
@@ -17,9 +19,13 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 import org.apache.commons.lang3.StringEscapeUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 class Executor {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(Executor.class);
+    
     private final Client client;
     private final TargetConfig targetConfig;
     private final ErrorResolver errorResolver;
@@ -69,6 +75,8 @@ class Executor {
         // Append the request with session parameters
         target = target.queryParam(ElementConfigKeys.LANGUAGE_CODE, targetConfig.getLanguageCode());
         
+        LOGGER.debug("Target: " + target.getUri());
+        
         // Execute request
         Response response;
         try {
@@ -79,14 +87,22 @@ class Executor {
         }
         
         // Handle server-side error
+        int statusCode = response.getStatus();
         String errorKey = response.getHeaderString(HeaderKeys.ERROR);
         if (!Strings.isEmptyText(errorKey)) {
-            int statusCode = response.getStatus();
             String errorMessage = StringEscapeUtils.unescapeJson(response.getHeaderString(HeaderKeys.ERROR_MESSAGE));
             String errorDescription = StringEscapeUtils.unescapeJson(response.getHeaderString(HeaderKeys.ERROR_DESCRIPTION));
             String localizedErrorMessage = StringEscapeUtils.unescapeJson(response.getHeaderString(HeaderKeys.LOCALIZED_ERROR_MESSAGE));
             String localizedErrorDescription = StringEscapeUtils.unescapeJson(response.getHeaderString(HeaderKeys.LOCALIZED_ERROR_DESCRIPTION));
             throw new ServiceException(statusCode, errorKey, errorMessage, localizedErrorMessage, errorDescription, localizedErrorDescription);
+        }
+        
+        // Check status code
+        switch (Response.Status.fromStatusCode(statusCode)) {
+            case INTERNAL_SERVER_ERROR:
+                throw new ServiceErrorException(response);
+            case NOT_FOUND:
+                throw new ServiceNotFoundException(response);
         }
         
         // Parse response

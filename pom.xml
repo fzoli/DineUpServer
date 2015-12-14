@@ -11,6 +11,7 @@
       <dineup.web.rest.root>/rest</dineup.web.rest.root>
       <dineup.ejb.soap.service_name>DineUpService</dineup.ejb.soap.service_name>
       <dineup.google.api_key>TODO</dineup.google.api_key>
+      <dineup.service.protocol_version>1</dineup.service.protocol_version>
   </properties>
   <profiles>
     <profile>
