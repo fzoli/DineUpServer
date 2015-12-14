@@ -3,11 +3,13 @@ package com.dineup.api.service;
 import com.dineup.api.TargetConfig;
 import com.dineup.api.dom.Coordinate;
 import com.dineup.api.dom.Restaurant;
+import com.dineup.api.exception.DetailedException;
 import com.dineup.api.service.element.RestaurantElement;
 import com.dineup.service.rest.ElementConfigKeys;
 import com.dineup.service.rest.RequestPath;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
@@ -21,30 +23,29 @@ public class DineUpApiHandler {
         this.executor = new Executor(client, targetConfig);
     }
     
-    public List<Restaurant> getRestaurants(final Coordinate coordinate) throws Exception {
+    public List<Restaurant> getRestaurants(final Coordinate coordinate) throws DetailedException {
         return executor.execute(new GetRestaurants(coordinate));
     }
     
-    private class GetRestaurants extends Executable<List<Restaurant>> {
+    private static class GetRestaurants extends Executable<List<Restaurant>> {
 
         private final Coordinate coordinate;
         
         public GetRestaurants(Coordinate coordinate) {
             this.coordinate = coordinate;
         }
-        
+
         @Override
-        public WebTarget createTarget(Client client, TargetConfig targetConfig) {
-            WebTarget target = client.target(targetConfig.getTarget())
-                .path(RequestPath.ROOT_JSON)
-                .path(RequestPath.PATH_RESTAURANTS)
-                .queryParam(ElementConfigKeys.LANGUAGE_CODE, targetConfig.getLanguageCode());
+        public WebTarget appendPath(WebTarget target) {
+            return target.path(RequestPath.PATH_RESTAURANTS);
+        }
+
+        @Override
+        public void putParameters(Map<String, Object> parameters) {
             if (coordinate != null) {
-                target = target
-                    .queryParam(ElementConfigKeys.LATITUDE, coordinate.getLatitude())
-                    .queryParam(ElementConfigKeys.LONGITUDE, coordinate.getLongitude());
+                parameters.put(ElementConfigKeys.LATITUDE, coordinate.getLatitude());
+                parameters.put(ElementConfigKeys.LONGITUDE, coordinate.getLongitude());
             }
-            return target;
         }
 
         @Override

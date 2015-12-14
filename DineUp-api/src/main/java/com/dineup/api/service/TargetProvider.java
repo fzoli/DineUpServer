@@ -1,9 +1,9 @@
 package com.dineup.api.service;
 
-import com.dineup.api.TargetConfig;
-import javax.ws.rs.client.Client;
+import java.util.Map;
 import javax.ws.rs.client.WebTarget;
 
 public interface TargetProvider {
-    public WebTarget createTarget(Client client, TargetConfig targetConfig);
+    public WebTarget appendPath(WebTarget target);
+    public void putParameters(Map<String, Object> parameters);
 }

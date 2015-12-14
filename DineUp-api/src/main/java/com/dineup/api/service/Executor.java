@@ -1,10 +1,18 @@
 package com.dineup.api.service;
 
 import com.dineup.api.TargetConfig;
-import com.dineup.api.exception.LocalizedException;
+import com.dineup.api.exception.ClientException;
+import com.dineup.api.exception.DetailedException;
 import com.dineup.api.exception.ServiceException;
+import com.dineup.api.service.error.ErrorResolver;
+import com.dineup.api.service.error.exception.NetworkConnectionException;
+import com.dineup.api.service.error.exception.UnexpectedMessageException;
+import com.dineup.service.rest.ElementConfigKeys;
 import com.dineup.service.rest.HeaderKeys;
+import com.dineup.service.rest.RequestPath;
 import com.dineup.util.Strings;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
@@ -14,6 +22,7 @@ class Executor {
 
     private final Client client;
     private final TargetConfig targetConfig;
+    private final ErrorResolver errorResolver;
     
     public Executor(Client client, TargetConfig targetConfig) {
         if (client == null) {
@@ -22,17 +31,43 @@ class Executor {
         if (targetConfig == null) {
             throw new IllegalArgumentException("targetConfig is null");
         }
+        this.errorResolver = new ErrorResolver(targetConfig.getLanguageCode());
         this.client = client;
         this.targetConfig = targetConfig;
     }
     
-    public <T> T execute(Executable<T> executable) throws Exception {
+    public <T> T execute(Executable<T> executable) throws DetailedException {
         return execute(executable, executable);
     }
     
-    public <T> T execute(TargetProvider targetProvider, ResponseParser<T> responseParser) throws Exception {
-        // Build request
-        WebTarget target = targetProvider.createTarget(client, targetConfig);
+    public <T> T execute(TargetProvider targetProvider, ResponseParser<T> responseParser) throws DetailedException {
+        try {
+            return _execute(targetProvider, responseParser);
+        }
+        catch (ServiceException | ClientException ex) {
+            throw ex;
+        }
+        catch (Exception ex) {
+            throw errorResolver.resolveError(ex);
+        }
+    }
+    
+    private <T> T _execute(TargetProvider targetProvider, ResponseParser<T> responseParser) throws Exception {
+        // Create the base request
+        WebTarget target = client.target(targetConfig.getTarget())
+                .path(RequestPath.ROOT_JSON);
+        
+        // Append the request with request path and parameters
+        target = targetProvider.appendPath(target);
+        Map<String, Object> parameters = new LinkedHashMap<>();
+        targetProvider.putParameters(parameters);
+        for (Map.Entry<String, Object> entry : parameters.entrySet()) {
+            target = target.queryParam(entry.getKey(), entry.getValue());
+        }
+        parameters.clear();
+        
+        // Append the request with session parameters
+        target = target.queryParam(ElementConfigKeys.LANGUAGE_CODE, targetConfig.getLanguageCode());
         
         // Execute request
         Response response;
@@ -40,7 +75,7 @@ class Executor {
             response = target.request().get();
         }
         catch (Exception ex) {
-            throw new LocalizedException("Connection error", "Hálózati hiba", ex); // TODO: localize
+            throw new NetworkConnectionException(ex);
         }
         
         // Handle server-side error
@@ -59,7 +94,7 @@ class Executor {
             return responseParser.parseResponse(response);
         }
         catch (Exception ex) {
-            throw new LocalizedException("Unexpected message format", "Nem várt üzenetformátum", ex); // TODO: localize
+            throw new UnexpectedMessageException(ex);
         }
     }
     
