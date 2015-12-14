@@ -1,6 +1,6 @@
 package com.dineup.api.dom;
 
-public class Coordinate {
+public final class Coordinate {
     
     private final double latitude;
     private final double longitude;

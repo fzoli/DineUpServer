@@ -5,7 +5,10 @@ import com.dineup.api.DineUpApiFactory;
 import com.dineup.api.Service;
 import com.dineup.api.TargetConfig;
 import com.dineup.api.dom.Coordinate;
+import com.dineup.api.dom.Profile;
+import com.dineup.api.dom.ProfileToken;
 import com.dineup.api.dom.Restaurant;
+import com.dineup.api.dom.RestaurantComment;
 import com.dineup.api.exception.DetailedException;
 import java.util.List;
 import javax.ws.rs.client.Client;
@@ -17,7 +20,7 @@ public class Example {
     
     private static final Logger LOGGER = LoggerFactory.getLogger(Example.class);
     
-    private DineUpApi api;
+    private final DineUpApi api;
     
     public Example() {
         Client client = ClientBuilder.newClient();
@@ -39,6 +42,11 @@ public class Example {
             }
             List<Restaurant> restaurants = api.getRestaurants(new Coordinate(5, 6));
             LOGGER.info("Number of restaurants: " + restaurants.size());
+            if (!restaurants.isEmpty()) {
+                Restaurant restaurant = restaurants.get(0);
+                List<RestaurantComment> comments = api.getRestaurantComments(restaurant, new ProfileToken("abcdef0123456789", Profile.Type.FACEBOOK));
+                LOGGER.info("Number of comments: " + comments.size());
+            }
         }
         catch (DetailedException ex) {
             LOGGER.error("Error: " + ex, ex);

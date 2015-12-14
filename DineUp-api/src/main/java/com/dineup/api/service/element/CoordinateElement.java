@@ -16,4 +16,9 @@ public class CoordinateElement implements Serializable {
     public CoordinateElement() {
     }
     
+    @Override
+    public String toString() {
+        return String.format("Coordinate(%s;%s)", latitude, longitude);
+    }
+    
 }

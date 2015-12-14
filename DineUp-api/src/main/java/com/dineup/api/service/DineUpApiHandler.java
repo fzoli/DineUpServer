@@ -4,12 +4,17 @@ import com.dineup.api.DineUpApi;
 import com.dineup.api.Service;
 import com.dineup.api.TargetConfig;
 import com.dineup.api.dom.Coordinate;
+import com.dineup.api.dom.ProfileToken;
 import com.dineup.api.dom.Restaurant;
+import com.dineup.api.dom.RestaurantComment;
 import com.dineup.api.exception.DetailedException;
+import com.dineup.api.service.element.RestaurantCommentElement;
 import com.dineup.api.service.element.RestaurantElement;
 import com.dineup.api.service.element.ServiceElement;
 import com.dineup.service.rest.ElementConfigKeys;
 import com.dineup.service.rest.RequestPath;
+import com.dineup.service.rest.RestaurantKeys;
+import com.sun.istack.internal.Nullable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -27,13 +32,18 @@ public class DineUpApiHandler implements DineUpApi {
     }
     
     @Override
+    public Service getService() throws DetailedException {
+        return executor.execute(new GetService());
+    }
+    
+    @Override
     public List<Restaurant> getRestaurants(final Coordinate coordinate) throws DetailedException {
         return executor.execute(new GetRestaurants(coordinate));
     }
 
     @Override
-    public Service getService() throws DetailedException {
-        return executor.execute(new GetService());
+    public List<RestaurantComment> getRestaurantComments(Restaurant restaurant, @Nullable ProfileToken profileToken) throws DetailedException {
+        return executor.execute(new GetRestaurantComments(restaurant.getId(), profileToken));
     }
     
     private static class GetService extends Executable<Service> {
@@ -84,6 +94,45 @@ public class DineUpApiHandler implements DineUpApi {
         public List<Restaurant> parseResponse(Response response) {
             GenericType<List<RestaurantElement>> type = new GenericType<List<RestaurantElement>>(){};
             List<RestaurantElement> entity = response.readEntity(type);
+            return Collections.unmodifiableList((List) entity);
+        }
+        
+    }
+    
+    private static class GetRestaurantComments extends Executable<List<RestaurantComment>> {
+
+        private final int restaurantId;
+        private final ProfileToken profileToken;
+        
+        public GetRestaurantComments(int restaurantId, ProfileToken profileToken) {
+            this.restaurantId = restaurantId;
+            this.profileToken = profileToken;
+        }
+
+        @Override
+        public WebTarget appendPath(WebTarget target) {
+            return target.path(RequestPath.PATH_RESTAURANT_COMMENTS);
+        }
+
+        @Override
+        public void putParameters(Map<String, Object> parameters) {
+            parameters.put(RestaurantKeys.RESTAURANT_ID, restaurantId);
+            if (profileToken != null) {
+                switch (profileToken.getType()) {
+                    case FACEBOOK:
+                        parameters.put(ElementConfigKeys.FACEBOOK_ACCESS_TOKEN, profileToken.getAccessToken());
+                        break;
+                    case GOOGLE_PLUS:
+                        parameters.put(ElementConfigKeys.GOOGLE_ACCESS_TOKEN, profileToken.getAccessToken());
+                        break;
+                }
+            }
+        }
+
+        @Override
+        public List<RestaurantComment> parseResponse(Response response) {
+            GenericType<List<RestaurantCommentElement>> type = new GenericType<List<RestaurantCommentElement>>(){};
+            List<RestaurantCommentElement> entity = response.readEntity(type);
             return Collections.unmodifiableList((List) entity);
         }
         

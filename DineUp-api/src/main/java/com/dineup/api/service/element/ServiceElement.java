@@ -29,4 +29,9 @@ public class ServiceElement implements Service {
         return getClientProtocolVersion() == getServerProtocolVersion();
     }
     
+    @Override
+    public String toString() {
+        return String.format("Service(protocolVersion=%s)", protocolVersion);
+    }
+    
 }
