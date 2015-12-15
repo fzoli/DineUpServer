@@ -7,8 +7,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class ServiceElement {
     
     @XmlElement
-    public int protocolVersion;
+    public String apiVersion;
 
+    @XmlElement
+    public boolean clientUpToDate;
+    
     public ServiceElement() {
     }
     

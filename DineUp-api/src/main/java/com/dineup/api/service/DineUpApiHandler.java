@@ -37,10 +37,12 @@ public class DineUpApiHandler implements DineUpApi {
 
     private final Executor executor;
     private final TargetConfig targetConfig;
+    private final String apiVersion;
     
-    public DineUpApiHandler(Client client, TargetConfig targetConfig) {
+    public DineUpApiHandler(Client client, TargetConfig targetConfig, String apiVersion) {
         this.executor = new Executor(client, targetConfig);
         this.targetConfig = targetConfig;
+        this.apiVersion = apiVersion;
     }
     
     @Override
@@ -85,7 +87,9 @@ public class DineUpApiHandler implements DineUpApi {
 
         @Override
         public WebTarget appendPath(WebTarget target) {
-            return target.path(RequestPath.PATH_SERVICE);
+            return target
+                    .path(apiVersion)
+                    .path(RequestPath.PATH_SERVICE);
         }
 
         @Override
@@ -111,7 +115,9 @@ public class DineUpApiHandler implements DineUpApi {
 
         @Override
         public WebTarget appendPath(WebTarget target) {
-            return target.path(RequestPath.PATH_RESTAURANTS);
+            return target
+                    .path(apiVersion)
+                    .path(RequestPath.PATH_RESTAURANTS);
         }
 
         @Override
@@ -144,7 +150,9 @@ public class DineUpApiHandler implements DineUpApi {
 
         @Override
         public WebTarget appendPath(WebTarget target) {
-            return target.path(RequestPath.PATH_RESTAURANT_COMMENTS);
+            return target
+                    .path(apiVersion)
+                    .path(RequestPath.PATH_RESTAURANT_COMMENTS);
         }
 
         @Override
@@ -194,7 +202,9 @@ public class DineUpApiHandler implements DineUpApi {
 
         @Override
         public WebTarget appendPath(WebTarget target) {
-            return target.path(RequestPath.PATH_CATEGORIES);
+            return target
+                    .path(apiVersion)
+                    .path(RequestPath.PATH_CATEGORIES);
         }
 
         @Override
@@ -222,7 +232,9 @@ public class DineUpApiHandler implements DineUpApi {
 
         @Override
         public WebTarget appendPath(WebTarget target) {
-            return target.path(RequestPath.PATH_FOODS);
+            return target
+                    .path(apiVersion)
+                    .path(RequestPath.PATH_FOODS);
         }
 
         @Override
@@ -250,7 +262,9 @@ public class DineUpApiHandler implements DineUpApi {
 
         @Override
         public WebTarget appendPath(WebTarget target) {
-            return target.path(RequestPath.PATH_EXTRAS);
+            return target
+                    .path(apiVersion)
+                    .path(RequestPath.PATH_EXTRAS);
         }
 
         @Override
@@ -278,7 +292,9 @@ public class DineUpApiHandler implements DineUpApi {
 
         @Override
         public WebTarget appendPath(WebTarget target) {
-            return target.path(RequestPath.PATH_OPTIONS);
+            return target
+                    .path(apiVersion)
+                    .path(RequestPath.PATH_OPTIONS);
         }
 
         @Override

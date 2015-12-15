@@ -1,17 +1,25 @@
 package com.dineup.ejb.rest;
 
-import com.dineup.BuildConfig;
 import com.dineup.service.element.ServiceElement;
+import com.dineup.service.ServiceConfig;
+import java.util.List;
 import javax.ejb.Singleton;
 import javax.ws.rs.core.Response;
 
 @Singleton
 public class ServiceRestResourceBean implements ServiceRestResource {
-
+    
     @Override
-    public Response getService() {
+    public Response getSupportedApiVersions() {
+        List<String> versions = ServiceConfig.SUPPORTED_API_VERSIONS;
+        return Response.ok(versions).build();
+    }
+    
+    @Override
+    public Response getService(String apiVersion) {
         ServiceElement serviceElement = new ServiceElement();
-        serviceElement.protocolVersion = BuildConfig.SERVICE_PROTOCOL_VERSION;
+        serviceElement.apiVersion = ServiceConfig.API_VERSION;
+        serviceElement.clientUpToDate = true; // TODO
         return Response.ok(serviceElement).build();
     }
     

@@ -1,6 +1,7 @@
 package com.dineup.rest.json;
 
 import com.dineup.ejb.rest.RestaurantRestResource;
+import com.dineup.rest.ApiVersion;
 import com.dineup.rest.BaseResource;
 import com.dineup.service.rest.RequestPath;
 import com.dineup.service.rest.RestaurantKeys;
@@ -15,7 +16,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @RequestScoped
-@Path(RequestPath.ROOT_JSON + RequestPath.PATH_CATEGORIES)
+@Path(RequestPath.ROOT_JSON + ApiVersion.ROOT + RequestPath.PATH_CATEGORIES)
 public class CategoryResource extends BaseResource {
     
     @Inject

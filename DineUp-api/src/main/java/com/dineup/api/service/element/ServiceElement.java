@@ -1,7 +1,8 @@
 package com.dineup.api.service.element;
 
+import com.dineup.api.ApiVersion;
 import com.dineup.api.Service;
-import com.dineup.api.service.BuildConfig;
+import com.dineup.api.service.convert.ApiVersionConverter;
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -10,29 +11,27 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class ServiceElement implements Service, Serializable {
     
     @XmlElement
-    public int protocolVersion;
+    public String apiVersion;
 
+    @XmlElement
+    public boolean clientUpToDate;
+    
     public ServiceElement() {
     }
 
     @Override
-    public int getClientProtocolVersion() {
-        return BuildConfig.SERVICE_PROTOCOL_VERSION;
+    public ApiVersion getApiVersion() {
+        return ApiVersionConverter.getInstance().convert(apiVersion);
     }
 
     @Override
-    public int getServerProtocolVersion() {
-        return protocolVersion;
-    }
-
-    @Override
-    public boolean isUpToDate() {
-        return getClientProtocolVersion() == getServerProtocolVersion();
+    public boolean isClientUpToDate() {
+        return clientUpToDate;
     }
     
     @Override
     public String toString() {
-        return String.format("Service(protocolVersion=%s)", protocolVersion);
+        return String.format("Service(apiVersion=%s)", apiVersion);
     }
     
 }

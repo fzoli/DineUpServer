@@ -5,5 +5,6 @@ import javax.ws.rs.core.Response;
 
 @Local
 public interface ServiceRestResource {
-    public Response getService();
+    public Response getSupportedApiVersions();
+    public Response getService(String apiVersion);
 }

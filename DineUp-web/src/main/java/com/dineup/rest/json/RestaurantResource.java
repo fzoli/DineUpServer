@@ -1,6 +1,7 @@
 package com.dineup.rest.json;
 
 import com.dineup.ejb.rest.RestaurantRestResource;
+import com.dineup.rest.ApiVersion;
 import com.dineup.rest.BaseResource;
 import com.dineup.service.rest.RequestPath;
 import javax.enterprise.context.RequestScoped;
@@ -13,7 +14,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @RequestScoped
-@Path(RequestPath.ROOT_JSON + RequestPath.PATH_RESTAURANTS)
+@Path(RequestPath.ROOT_JSON + ApiVersion.ROOT + RequestPath.PATH_RESTAURANTS)
 public class RestaurantResource extends BaseResource {
     
     @Inject

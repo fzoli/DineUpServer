@@ -24,23 +24,11 @@ public class Example {
     
     private static final Logger LOGGER = LoggerFactory.getLogger(Example.class);
     
-    private final DineUpApi api;
-    
-    public Example() {
-        Client client = ClientBuilder.newClient();
-        TargetConfig targetConfig = TargetConfig.newBuilder()
-                .serverUrl("http://localhost:8080/")
-                .webAppRoot("/DineUp")
-                .restRoot("/rest")
-                .languageCode("hu")
-                .build();
-        api = DineUpApiFactory.createInstance(client, targetConfig);
-    }
-    
     public void hello() {
         try {
+            DineUpApi api = createApi();
             Service service = api.getService();
-            if (!service.isUpToDate()) {
+            if (!service.isClientUpToDate()) {
                 LOGGER.info("Please upgrade the client.");
                 return;
             }
@@ -76,6 +64,17 @@ public class Example {
         catch (DetailedException ex) {
             LOGGER.error("Error: " + ex, ex);
         }
+    }
+    
+    private DineUpApi createApi() throws DetailedException {
+        Client client = ClientBuilder.newClient();
+        TargetConfig targetConfig = TargetConfig.newBuilder()
+                .serverUrl("http://localhost:8080/")
+                .webAppRoot("/DineUp")
+                .restRoot("/rest")
+                .languageCode("hu")
+                .build();
+        return new DineUpApiFactory(client, targetConfig).createInstance();
     }
     
     public static void main(String[] args) {

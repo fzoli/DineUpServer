@@ -19,7 +19,7 @@ public class Converters {
         }
         List<Out> outList = new ArrayList<>();
         for (In in : list) {
-            Out out = converter.convert(in);
+            Out out = convert(in, converter);
             if (out != null) {
                 outList.add(out);
             }
