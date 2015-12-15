@@ -1,0 +1,31 @@
+Eltérő kliens és szerver verziók kezelése
+-----------------------------------------
+
+Gond:
+- kliens oldalt nem létező element field
+- létező element field mindkét oldalon, de eltérő típus
+- megváltozott/törölt resource URL, amit a kliens nem követ le
+- új kötelező query paraméter
+
+Nem gond:
+- csak kliens oldalt létező element field
+- új opcionális query paraméter
+- megszűnt query paraméter, amit a régi kliensek küldenek
+- új resource, amiről a régi klienseknek nincs tudomása (nem használják)
+
+Megoldás:
+API verziók
+
+A kliens előbb lekéri a támogatott verziókat:
+GET: /rest/json/supportedApiVersions
+["v1.0","v1.1"]
+
+Aztán kiválasztja a legújabb általa is ismert verziót (mondjuk v1.1) és az alábbi módon küld további kéréseket:
+GET: /rest/json/v1.1/restaurants?language=hu
+[...]
+
+API verziót csak "gond" esetén kell emelni.
+"Nem gond" esetén elég updatelni a kliens API-t és bugfix versiont emelni.
+
+Ezzel a módszerrel nyugodtan lehet szervert és klienst frissíteni bármikor, mivel mindkét fél visszafelé kompatibilis.
+Tehát nem okoz gondot az elavult szerver és az elavult kliens sem.
