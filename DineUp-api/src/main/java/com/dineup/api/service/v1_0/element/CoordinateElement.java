@@ -1,4 +1,4 @@
-package com.dineup.api.service.element;
+package com.dineup.api.service.v1_0.element;
 
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlElement;

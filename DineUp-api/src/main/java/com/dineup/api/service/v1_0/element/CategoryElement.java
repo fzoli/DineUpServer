@@ -1,25 +1,27 @@
-package com.dineup.api.service.element;
+package com.dineup.api.service.v1_0.element;
 
-import com.dineup.api.dom.Extra;
+import com.dineup.api.dom.Category;
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
-public class ExtraElement implements Extra, Serializable {
-
+@XmlRootElement(name = "category")
+public class CategoryElement implements Category, Serializable {
+    
     @XmlAttribute
     public int id;
     
     @XmlElement
     public String languageCode;
-    
-    @XmlElement
-    public String type;
-    
+
     @XmlElement
     public String name;
     
-    public ExtraElement() {
+    @XmlElement
+    public String photoUrl;
+    
+    public CategoryElement() {
     }
 
     @Override
@@ -33,18 +35,18 @@ public class ExtraElement implements Extra, Serializable {
     }
 
     @Override
-    public String getType() {
-        return type;
+    public String getName() {
+        return name;
     }
 
     @Override
-    public String getName() {
-        return name;
+    public String getPhotoUrl() {
+        return photoUrl;
     }
     
     @Override
     public String toString() {
-        return String.format("Extra(id=%s)", id);
+        return String.format("Category(id=%s)", id);
     }
     
 }

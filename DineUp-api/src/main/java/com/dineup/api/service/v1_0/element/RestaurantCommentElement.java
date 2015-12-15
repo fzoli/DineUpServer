@@ -1,4 +1,4 @@
-package com.dineup.api.service.element;
+package com.dineup.api.service.v1_0.element;
 
 import com.dineup.api.dom.RestaurantComment;
 import java.io.Serializable;

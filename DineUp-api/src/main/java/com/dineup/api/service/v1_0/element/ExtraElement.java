@@ -1,14 +1,11 @@
-package com.dineup.api.service.element;
+package com.dineup.api.service.v1_0.element;
 
-import com.dineup.api.dom.Option;
-import com.dineup.api.dom.Price;
-import com.dineup.util.Lists;
+import com.dineup.api.dom.Extra;
 import java.io.Serializable;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 
-public class OptionElement implements Option, Serializable {
+public class ExtraElement implements Extra, Serializable {
 
     @XmlAttribute
     public int id;
@@ -17,12 +14,12 @@ public class OptionElement implements Option, Serializable {
     public String languageCode;
     
     @XmlElement
-    public String name;
+    public String type;
     
     @XmlElement
-    public List<PriceElement> prices;
+    public String name;
     
-    public OptionElement() {
+    public ExtraElement() {
     }
 
     @Override
@@ -36,18 +33,18 @@ public class OptionElement implements Option, Serializable {
     }
 
     @Override
-    public String getName() {
-        return name;
+    public String getType() {
+        return type;
     }
 
     @Override
-    public List<Price> getPrices() {
-        return Lists.convert(prices);
+    public String getName() {
+        return name;
     }
     
     @Override
     public String toString() {
-        return String.format("Option(id=%s)", id);
+        return String.format("Extra(id=%s)", id);
     }
     
 }

@@ -1,27 +1,28 @@
-package com.dineup.api.service.element;
+package com.dineup.api.service.v1_0.element;
 
-import com.dineup.api.dom.Category;
+import com.dineup.api.dom.Option;
+import com.dineup.api.dom.Price;
+import com.dineup.util.Lists;
 import java.io.Serializable;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "category")
-public class CategoryElement implements Category, Serializable {
-    
+public class OptionElement implements Option, Serializable {
+
     @XmlAttribute
     public int id;
     
     @XmlElement
     public String languageCode;
-
+    
     @XmlElement
     public String name;
     
     @XmlElement
-    public String photoUrl;
+    public List<PriceElement> prices;
     
-    public CategoryElement() {
+    public OptionElement() {
     }
 
     @Override
@@ -40,13 +41,13 @@ public class CategoryElement implements Category, Serializable {
     }
 
     @Override
-    public String getPhotoUrl() {
-        return photoUrl;
+    public List<Price> getPrices() {
+        return Lists.convert(prices);
     }
     
     @Override
     public String toString() {
-        return String.format("Category(id=%s)", id);
+        return String.format("Option(id=%s)", id);
     }
     
 }

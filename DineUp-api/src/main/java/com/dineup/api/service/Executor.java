@@ -22,7 +22,7 @@ import org.apache.commons.lang3.StringEscapeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-class Executor {
+public class Executor {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Executor.class);
     

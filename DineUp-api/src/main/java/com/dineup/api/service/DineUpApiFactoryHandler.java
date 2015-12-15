@@ -7,9 +7,11 @@ import com.dineup.api.exception.DetailedException;
 import com.dineup.api.service.convert.ApiVersionConverter;
 import com.dineup.api.service.error.ErrorResolver;
 import com.dineup.api.service.error.exception.UnsupportedApiException;
+import com.dineup.api.service.v1_0.ApiInitializer_v1_0;
 import com.dineup.service.rest.RequestPath;
 import com.dineup.util.Converters;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.client.Client;
@@ -25,6 +27,12 @@ public final class DineUpApiFactoryHandler {
     private final Executor executor;
     private final ErrorResolver errorResolver;
     
+    private final Map<ApiVersion, ApiInitializer> API_INITIALIZERS = new HashMap<ApiVersion, ApiInitializer>() {
+        {
+            put(ApiVersion.V1_0, ApiInitializer_v1_0.INSTANCE);
+        }
+    };
+    
     public DineUpApiFactoryHandler(Client client, TargetConfig targetConfig) {
         this.client = client;
         this.targetConfig = targetConfig;
@@ -33,7 +41,7 @@ public final class DineUpApiFactoryHandler {
     }
     
     public DineUpApi createInstance(ApiVersion version) {
-        return new DineUpApiHandler(client, targetConfig, version.getVersion());
+        return API_INITIALIZERS.get(version).init(client, targetConfig);
     }
     
     public DineUpApi createInstance() throws DetailedException {

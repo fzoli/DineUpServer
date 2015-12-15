@@ -1,5 +1,6 @@
-package com.dineup.api.service;
+package com.dineup.api.service.v1_0;
 
+import com.dineup.api.ApiVersion;
 import com.dineup.api.DineUpApi;
 import com.dineup.api.Service;
 import com.dineup.api.TargetConfig;
@@ -13,13 +14,15 @@ import com.dineup.api.dom.ProfileToken;
 import com.dineup.api.dom.Restaurant;
 import com.dineup.api.dom.RestaurantComment;
 import com.dineup.api.exception.DetailedException;
-import com.dineup.api.service.element.CategoryElement;
-import com.dineup.api.service.element.ExtraElement;
-import com.dineup.api.service.element.FoodElement;
-import com.dineup.api.service.element.OptionElement;
-import com.dineup.api.service.element.RestaurantCommentElement;
-import com.dineup.api.service.element.RestaurantElement;
-import com.dineup.api.service.element.ServiceElement;
+import com.dineup.api.service.Executable;
+import com.dineup.api.service.Executor;
+import com.dineup.api.service.v1_0.element.CategoryElement;
+import com.dineup.api.service.v1_0.element.ExtraElement;
+import com.dineup.api.service.v1_0.element.FoodElement;
+import com.dineup.api.service.v1_0.element.OptionElement;
+import com.dineup.api.service.v1_0.element.RestaurantCommentElement;
+import com.dineup.api.service.v1_0.element.RestaurantElement;
+import com.dineup.api.service.v1_0.element.ServiceElement;
 import com.dineup.service.rest.ElementConfigKeys;
 import com.dineup.service.rest.RequestPath;
 import com.dineup.service.rest.RestaurantKeys;
@@ -39,10 +42,10 @@ public class DineUpApiHandler implements DineUpApi {
     private final TargetConfig targetConfig;
     private final String apiVersion;
     
-    public DineUpApiHandler(Client client, TargetConfig targetConfig, String apiVersion) {
+    public DineUpApiHandler(Client client, TargetConfig targetConfig, ApiVersion apiVersion) {
         this.executor = new Executor(client, targetConfig);
         this.targetConfig = targetConfig;
-        this.apiVersion = apiVersion;
+        this.apiVersion = apiVersion.getVersion();
     }
     
     @Override
