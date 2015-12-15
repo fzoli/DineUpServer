@@ -1,0 +1,19 @@
+Van egy bug (elírás) a hk2-ben, ami JDK8-cal buildelve jön elő.
+A javításhoz a jdk teg intervallumát kell javítani a következőre: [1.8,)
+
+Példa:
+        <profile>
+            <id>javadoc-jdk8+</id>
+            <activation>
+                <jdk>[1.8,)</jdk>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <javadoc.options>-Xdoclint:none</javadoc.options>
+            </properties>
+        </profile>
+
+A fájl itt található:
+.m2/repository/org/glassfish/hk2/hk2-parent/2.4.0-b31/hk2-parent-2.4.0-b31.pom
+
+A profile definíció a fájl legvégén található.
