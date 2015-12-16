@@ -13,4 +13,9 @@ public class ServiceException extends DetailedException {
         return statusCode;
     }
     
+    @Override
+    public String toString() {
+        return String.format("%s(statusCode=%s, message=\"%s\", description=\"%s\")", getClass().getSimpleName(), getStatusCode(), getLocalizedMessage(), getLocalizedDescription());
+    }
+    
 }

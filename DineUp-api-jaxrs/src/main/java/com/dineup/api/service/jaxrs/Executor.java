@@ -5,10 +5,10 @@ import com.dineup.api.exception.ClientException;
 import com.dineup.api.exception.DetailedException;
 import com.dineup.api.exception.ServiceException;
 import com.dineup.api.service.error.ErrorResolver;
-import com.dineup.api.service.jaxrs.exception.ServiceErrorException;
-import com.dineup.api.service.jaxrs.exception.NetworkConnectionException;
-import com.dineup.api.service.jaxrs.exception.ServiceNotFoundException;
-import com.dineup.api.service.jaxrs.exception.UnexpectedMessageException;
+import com.dineup.api.service.error.exception.NetworkConnectionException;
+import com.dineup.api.service.error.exception.ServiceErrorException;
+import com.dineup.api.service.error.exception.ServiceNotFoundException;
+import com.dineup.api.service.error.exception.UnexpectedMessageException;
 import com.dineup.api.service.util.StringEscapeUtils;
 import com.dineup.service.rest.ElementConfigKeys;
 import com.dineup.service.rest.HeaderKeys;
@@ -100,9 +100,9 @@ public class Executor {
         // Check status code
         switch (Response.Status.fromStatusCode(statusCode)) {
             case INTERNAL_SERVER_ERROR:
-                throw new ServiceErrorException(response);
+                throw new ServiceErrorException();
             case NOT_FOUND:
-                throw new ServiceNotFoundException(response);
+                throw new ServiceNotFoundException();
         }
         
         // Parse response

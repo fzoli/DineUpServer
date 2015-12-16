@@ -4,6 +4,7 @@ import com.dineup.api.ApiVersion;
 import com.dineup.api.DineUpApi;
 import com.dineup.api.dom.Service;
 import com.dineup.api.ApiConfig;
+import com.dineup.api.ClientConfig;
 import com.dineup.api.annotation.Nullable;
 import com.dineup.api.dom.Category;
 import com.dineup.api.dom.Coordinate;
@@ -35,7 +36,6 @@ import java.lang.reflect.Type;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import org.apache.http.conn.ssl.SSLSocketFactory;
 
 public class DineUpApiHandler implements DineUpApi {
 
@@ -43,8 +43,8 @@ public class DineUpApiHandler implements DineUpApi {
     private final ApiConfig targetConfig;
     private final String apiVersion;
     
-    public DineUpApiHandler(SSLSocketFactory socketFactory, ApiConfig targetConfig, ApiVersion apiVersion) {
-        this.executor = new Executor(socketFactory, targetConfig);
+    public DineUpApiHandler(ClientConfig clientConfig, ApiConfig targetConfig, ApiVersion apiVersion) {
+        this.executor = new Executor(clientConfig, targetConfig);
         this.targetConfig = targetConfig;
         this.apiVersion = apiVersion.getVersion();
     }

@@ -1,4 +1,4 @@
-package com.dineup.api.service.jaxrs.exception;
+package com.dineup.api.service.error.exception;
 
 import com.dineup.api.service.error.ErrorDescription;
 import com.dineup.api.service.error.ErrorKey;

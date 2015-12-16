@@ -1,15 +1,17 @@
 package com.dineup.api.service.httpclient;
 
 import com.dineup.api.ApiConfig;
+import com.dineup.api.ClientConfig;
 import com.dineup.api.exception.ClientException;
 import com.dineup.api.exception.DetailedException;
 import com.dineup.api.exception.ServiceException;
 import com.dineup.api.service.error.ErrorResolver;
-import com.dineup.api.service.httpclient.exception.ServiceErrorException;
-import com.dineup.api.service.httpclient.exception.NetworkConnectionException;
-import com.dineup.api.service.httpclient.exception.ServiceNotFoundException;
-import com.dineup.api.service.httpclient.exception.UnexpectedMessageException;
+import com.dineup.api.service.error.exception.NetworkConnectionException;
+import com.dineup.api.service.error.exception.ServiceErrorException;
+import com.dineup.api.service.error.exception.ServiceNotFoundException;
+import com.dineup.api.service.error.exception.UnexpectedMessageException;
 import com.dineup.api.service.util.StringEscapeUtils;
+import com.dineup.api.service.util.urlbuilder.UrlBuilder;
 import com.dineup.service.rest.ElementConfigKeys;
 import com.dineup.service.rest.HeaderKeys;
 import com.dineup.service.rest.RequestPath;
@@ -24,14 +26,24 @@ import java.util.Map;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
+import org.apache.http.HttpVersion;
 import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpRequestBase;
-import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.client.params.ClientPNames;
+import org.apache.http.client.params.CookiePolicy;
+import org.apache.http.conn.ClientConnectionManager;
+import org.apache.http.conn.scheme.PlainSocketFactory;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.X509HostnameVerifier;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
 import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
+import org.apache.http.params.HttpProtocolParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,21 +52,51 @@ public class Executor {
     private static final Logger LOGGER = LoggerFactory.getLogger(Executor.class);
     
     private final HttpClient client;
-    private final ApiConfig targetConfig;
+    private final ApiConfig apiConfig;
+    private final ClientConfig clientConfig;
+    private final HttpSecurityConfig httpSecurityConfig;
     private final ErrorResolver errorResolver;
     private final Gson gson = GsonFactory.createInstance();
     
-    public Executor(SSLSocketFactory socketFactory, ApiConfig targetConfig) {
-        if (socketFactory == null) {
-            throw new IllegalArgumentException("socketFactory is null");
+    public Executor(ClientConfig clientConfig, ApiConfig apiConfig) {
+        if (clientConfig == null) {
+            throw new IllegalArgumentException("clientConfig is null");
         }
-        if (targetConfig == null) {
+        if (apiConfig == null) {
             throw new IllegalArgumentException("targetConfig is null");
         }
-        //this.client = HttpClientBuilder.create().setSSLSocketFactory(socketFactory).build(); // TODO: apply ssl context without builder; Android does not contain the builder :-(
-        this.client = new DefaultHttpClient();
-        this.errorResolver = new ErrorResolver(targetConfig.getLanguageCode());
-        this.targetConfig = targetConfig;
+        this.errorResolver = new ErrorResolver(apiConfig.getLanguageCode());
+        this.apiConfig = apiConfig;
+        this.clientConfig = clientConfig;
+        this.httpSecurityConfig = createHttpSecurityConfig();
+        this.client = createClient();
+    }
+    
+    private HttpClient createClient() {
+        HttpParams params = new BasicHttpParams();
+        HttpConnectionParams.setConnectionTimeout(params, 10 * 1000); // Connection timeout.
+        HttpConnectionParams.setSoTimeout(params, 20 * 1000); // Socket timeout.
+        HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
+        HttpProtocolParams.setContentCharset(params, "utf8");
+        params.setParameter(ClientPNames.COOKIE_POLICY, CookiePolicy.BEST_MATCH);
+        SchemeRegistry sr = new SchemeRegistry();
+        sr.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
+        sr.register(new Scheme("https", httpSecurityConfig.getSocketFactory(), 443));
+        ClientConnectionManager ccm = new ThreadSafeClientConnManager(params, sr);
+        return new DefaultHttpClient(ccm, params);
+    }
+    
+    private HttpSecurityConfig createHttpSecurityConfig() {
+        try {
+            HttpSecurityConfig securityConfig = HttpSecurityConfig.newStrictSecurityConfig((X509HostnameVerifier) clientConfig.getHostnameVerifier());
+            if (clientConfig.getKeyStore() != null) {
+                securityConfig = HttpSecurityConfig.newCustomConfig(clientConfig.getKeyStore(), (X509HostnameVerifier) clientConfig.getHostnameVerifier());
+            }
+            return securityConfig;
+        }
+        catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
     }
     
     public <T> T execute(Executable<T> executable) throws DetailedException {
@@ -75,24 +117,23 @@ public class Executor {
     
     private <T> T _execute(TargetProvider targetProvider, ResponseParser<T> responseParser) throws Exception {
         // Create the base request
-        StringBuilder target = Strings.buildConcat("/", targetConfig.getTarget(), RequestPath.ROOT_JSON);
+        StringBuilder target = Strings.buildConcat("/", apiConfig.getTarget(), RequestPath.ROOT_JSON);
         
         // Append the request with request path and parameters
         targetProvider.appendPath(target);
         Map<String, Object> parameters = new LinkedHashMap<>();
         targetProvider.putParameters(parameters);
         
-        HttpParams params = new BasicHttpParams();
+        UrlBuilder urlBuilder = UrlBuilder.fromString(target.toString());
         for (Map.Entry<String, Object> entry : parameters.entrySet()) {
-            params.setParameter(entry.getKey(), entry.getValue());
+            urlBuilder = urlBuilder.addParameter(entry.getKey(), entry.getValue().toString());
         }
         parameters.clear();
         
         // Append the request with session parameters
-        params.setParameter(ElementConfigKeys.LANGUAGE_CODE, targetConfig.getLanguageCode());
+        urlBuilder = urlBuilder.addParameter(ElementConfigKeys.LANGUAGE_CODE, apiConfig.getLanguageCode());
         
-        HttpRequestBase request = new HttpGet(target.toString());
-        request.setParams(params); // TODO: do not work :-(
+        HttpRequestBase request = new HttpGet(urlBuilder.toUri());
         
         LOGGER.debug("Target: " + request.toString());
         

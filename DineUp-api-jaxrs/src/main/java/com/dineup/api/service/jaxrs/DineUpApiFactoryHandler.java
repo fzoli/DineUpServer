@@ -7,7 +7,7 @@ import com.dineup.api.ClientConfig;
 import com.dineup.api.exception.DetailedException;
 import com.dineup.api.service.convert.ApiVersionConverter;
 import com.dineup.api.service.error.ErrorResolver;
-import com.dineup.api.service.jaxrs.exception.UnsupportedApiException;
+import com.dineup.api.service.error.exception.UnsupportedApiException;
 import com.dineup.api.service.jaxrs.v1_0.ApiInitializer_v1_0;
 import com.dineup.service.rest.RequestPath;
 import com.dineup.util.Converters;

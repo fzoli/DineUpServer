@@ -7,7 +7,7 @@ import com.dineup.api.ClientConfig;
 import com.dineup.api.exception.DetailedException;
 import com.dineup.api.service.convert.ApiVersionConverter;
 import com.dineup.api.service.error.ErrorResolver;
-import com.dineup.api.service.httpclient.exception.UnsupportedApiException;
+import com.dineup.api.service.error.exception.UnsupportedApiException;
 import com.dineup.api.service.httpclient.v1_0.ApiInitializer_v1_0;
 import com.dineup.service.rest.RequestPath;
 import com.dineup.util.Converters;
@@ -17,13 +17,12 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.apache.http.conn.ssl.X509HostnameVerifier;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 
 public final class DineUpApiFactoryHandler {
 
-    private final HttpSecurityConfig httpSecurityConfig;
+    private final ClientConfig clientConfig;
     private final ApiConfig targetConfig;
     
     private final Executor executor;
@@ -36,27 +35,14 @@ public final class DineUpApiFactoryHandler {
     };
     
     public DineUpApiFactoryHandler(ClientConfig clientConfig, ApiConfig targetConfig) {
-        this.httpSecurityConfig = createHttpSecurityConfig(clientConfig);
+        this.clientConfig = clientConfig;
         this.targetConfig = targetConfig;
-        this.executor = new Executor(httpSecurityConfig.getSocketFactory(), targetConfig);
+        this.executor = new Executor(clientConfig, targetConfig);
         this.errorResolver = new ErrorResolver(targetConfig.getLanguageCode());
     }
     
-    private HttpSecurityConfig createHttpSecurityConfig(ClientConfig config) {
-        try {
-            HttpSecurityConfig securityConfig = HttpSecurityConfig.newStrictSecurityConfig((X509HostnameVerifier) config.getHostnameVerifier());
-            if (config.getKeyStore() != null) {
-                securityConfig = HttpSecurityConfig.newCustomConfig(config.getKeyStore(), (X509HostnameVerifier) config.getHostnameVerifier());
-            }
-            return securityConfig;
-        }
-        catch (Exception ex) {
-            throw new RuntimeException(ex);
-        }
-    }
-    
     public DineUpApi createInstance(ApiVersion version) {
-        return API_INITIALIZERS.get(version).init(httpSecurityConfig.getSocketFactory(), targetConfig);
+        return API_INITIALIZERS.get(version).init(clientConfig, targetConfig);
     }
     
     public DineUpApi createInstance() throws DetailedException {
