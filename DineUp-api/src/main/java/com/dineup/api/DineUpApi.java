@@ -1,5 +1,6 @@
 package com.dineup.api;
 
+import com.dineup.api.dom.Service;
 import com.dineup.api.annotation.Nullable;
 import com.dineup.api.dom.Category;
 import com.dineup.api.dom.Coordinate;

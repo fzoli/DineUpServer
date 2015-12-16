@@ -1,21 +1,8 @@
 package com.dineup.api;
 
 import com.dineup.api.exception.DetailedException;
-import com.dineup.api.service.DineUpApiFactoryHandler;
-import javax.ws.rs.client.Client;
 
-public final class DineUpApiFactory {
-
-    private final DineUpApiFactoryHandler handler;
-    
-    /**
-     * Constructor.
-     * @param client the client that executes the requests and authenticates the server
-     * @param targetConfig the target configuration that points to the service
-     */
-    public DineUpApiFactory(Client client, TargetConfig targetConfig) {
-        handler = new DineUpApiFactoryHandler(client, targetConfig);
-    }
+public interface DineUpApiFactory {
     
     /**
      * Creates the API with the requested version.
@@ -25,9 +12,7 @@ public final class DineUpApiFactory {
      * @param version the requested version
      * @return the API with the requested version
      */
-    public DineUpApi createInstance(ApiVersion version) {
-        return handler.createInstance(version);
-    }
+    public DineUpApi createInstance(ApiVersion version);
     
     /**
      * Creates the latest usable API that the server supports.
@@ -35,8 +20,6 @@ public final class DineUpApiFactory {
      * @throws DetailedException if failed to communicate
      * with the server or the server does not support the API
      */
-    public DineUpApi createInstance() throws DetailedException {
-        return handler.createInstance();
-    }
+    public DineUpApi createInstance() throws DetailedException;
     
 }
