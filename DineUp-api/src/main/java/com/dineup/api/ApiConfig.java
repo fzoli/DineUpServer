@@ -1,6 +1,6 @@
 package com.dineup.api;
 
-import com.dineup.api.util.UrlValidator;
+import com.dineup.api.service.util.UrlValidator;
 import com.dineup.util.Strings;
 
 public class ApiConfig {

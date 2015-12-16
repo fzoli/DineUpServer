@@ -23,14 +23,26 @@ public class Strings {
     }
     
     public static String concat(String delimiter, String ... texts) {
-        return concat(delimiter, Arrays.asList(texts));
+        return buildConcat(delimiter, texts).toString();
     }
     
     public static String concat(String delimiter, List<String> texts) {
-        return concat(delimiter, texts, StringFormatter.INSTANCE);
+        return buildConcat(delimiter, texts).toString();
     }
     
     public static <T> String concat(String delimiter, List<T> items, Formatter<T> formatter) {
+        return buildConcat(delimiter, items, formatter).toString();
+    }
+    
+    public static StringBuilder buildConcat(String delimiter, String ... texts) {
+        return buildConcat(delimiter, Arrays.asList(texts));
+    }
+    
+    public static StringBuilder buildConcat(String delimiter, List<String> texts) {
+        return buildConcat(delimiter, texts, StringFormatter.INSTANCE);
+    }
+    
+    public static <T> StringBuilder buildConcat(String delimiter, List<T> items, Formatter<T> formatter) {
         StringBuilder builder = new StringBuilder();
         int size = items.size();
         for (int i = 0; i < size; i++) {
@@ -61,7 +73,7 @@ public class Strings {
                 builder.append(delimiter);
             }
         }
-        return builder.toString();
+        return builder;
     }
     
     public static interface Formatter<T> {

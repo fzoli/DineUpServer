@@ -9,7 +9,7 @@ import com.dineup.api.service.jaxrs.exception.ServiceErrorException;
 import com.dineup.api.service.jaxrs.exception.NetworkConnectionException;
 import com.dineup.api.service.jaxrs.exception.ServiceNotFoundException;
 import com.dineup.api.service.jaxrs.exception.UnexpectedMessageException;
-import com.dineup.api.util.StringEscapeUtils;
+import com.dineup.api.service.util.StringEscapeUtils;
 import com.dineup.service.rest.ElementConfigKeys;
 import com.dineup.service.rest.HeaderKeys;
 import com.dineup.service.rest.RequestPath;
