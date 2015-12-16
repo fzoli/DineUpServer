@@ -1,7 +1,7 @@
 package com.dineup.api;
 
+import com.dineup.api.util.UrlValidator;
 import com.dineup.util.Strings;
-import org.apache.commons.validator.routines.UrlValidator;
 
 public class ApiConfig {
 
@@ -10,11 +10,11 @@ public class ApiConfig {
     private final String restRoot;
     private final String languageCode;
 
-    private static final String[] validUrlSchemes = {"http", "https"};
-    private static final UrlValidator urlValidator = new UrlValidator(validUrlSchemes, UrlValidator.ALLOW_LOCAL_URLS);
+    private static final String[] VALID_URL_SCHEMES = {"http", "https"};
+    private static final UrlValidator URL_VALIDATOR = new UrlValidator(VALID_URL_SCHEMES, UrlValidator.ALLOW_LOCAL_URLS);
     
     private ApiConfig(Builder builder) {
-        if (!urlValidator.isValid(builder.serverUrl)) {
+        if (!URL_VALIDATOR.isValid(builder.serverUrl)) {
             throw new IllegalArgumentException("Invalid serverUrl");
         }
         if (builder.languageCode != null && builder.languageCode.length() != 2) {

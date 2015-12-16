@@ -9,6 +9,7 @@ import com.dineup.api.service.jaxrs.exception.ServiceErrorException;
 import com.dineup.api.service.jaxrs.exception.NetworkConnectionException;
 import com.dineup.api.service.jaxrs.exception.ServiceNotFoundException;
 import com.dineup.api.service.jaxrs.exception.UnexpectedMessageException;
+import com.dineup.api.util.StringEscapeUtils;
 import com.dineup.service.rest.ElementConfigKeys;
 import com.dineup.service.rest.HeaderKeys;
 import com.dineup.service.rest.RequestPath;
@@ -18,7 +19,6 @@ import java.util.Map;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
-import org.apache.commons.lang3.StringEscapeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

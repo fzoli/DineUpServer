@@ -28,7 +28,12 @@
             <artifactId>jersey-media-json-jackson</artifactId>
             <version>2.22.1</version>
         </dependency>
-        
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.7</version>
+            <type>jar</type>
+        </dependency>
         <dependency>
             <artifactId>DineUp-api</artifactId>
             <groupId>${project.groupId}</groupId>
