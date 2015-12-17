@@ -9,4 +9,5 @@ public interface Food {
     public String getDescription();
     public String getPhotoUrl();
     public List<Price> getPrices();
+    public double getRating();
 }
