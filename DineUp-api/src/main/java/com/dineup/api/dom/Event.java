@@ -1,6 +1,5 @@
 package com.dineup.api.dom;
 
-import java.util.Date;
 import java.util.List;
 
 import com.dineup.api.dom.Person.Gender;
@@ -21,8 +20,8 @@ public class Event {
 	private String description;
 	private RequestType requestType;
 	private ActivityType activityType;
-	private Date fromTime;
-	private Date toTime;
+	private Range range;
 	private Gender acceptedGenders; //unknow can mean both is accepted
-	private List<Join> joins;
+	private List<Join> joinsRequests;
+	private List<Join> acceptedJoins;
 }

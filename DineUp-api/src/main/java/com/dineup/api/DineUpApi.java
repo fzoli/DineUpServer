@@ -14,6 +14,7 @@ import com.dineup.api.dom.Option;
 import com.dineup.api.dom.Order;
 import com.dineup.api.dom.OrderRequest;
 import com.dineup.api.dom.ProfileToken;
+import com.dineup.api.dom.Range;
 import com.dineup.api.dom.Restaurant;
 import com.dineup.api.dom.RestaurantComment;
 import com.dineup.api.dom.RestaurantCommentRequest;
@@ -23,7 +24,7 @@ import com.dineup.api.exception.DetailedException;
 public interface DineUpApi {
 
     public Service getService() throws DetailedException;
-    public List<Restaurant> getRestaurants(@Nullable Coordinate coordinate) throws DetailedException;
+    public List<Restaurant> getRestaurants(@Nullable Coordinate coordinate) throws DetailedException; //TODO: filter on/off
     public List<RestaurantComment> getRestaurantComments(Restaurant restaurant, @Nullable ProfileToken profileToken) throws DetailedException;
     public List<Category> getCategories(Restaurant restaurant) throws DetailedException;
     public List<Food> getFoods(Category category) throws DetailedException;
@@ -35,13 +36,15 @@ public interface DineUpApi {
     
     public void sendOrder(OrderRequest orderRequest, ProfileToken profileToken) throws DetailedException;
     public List<Order> getOrders(ProfileToken profileToken) throws DetailedException;
-        
     
-    public void addEvent(Event event) throws DetailedException;
-    public List<Event> getEvents() throws DetailedException;
-    public List<Event> getMyEvents() throws DetailedException;
+    public void addEvent(EventRequest event, ProfileToken profileToken) throws DetailedException;
+    public void deleteEvent(EventRequest event, ProfileToken profileToken) throws DetailedException;
+    public List<Event> getEvents(@Nullable Restaurant restaurant, @Nullable Range range) throws DetailedException; //TODO: filtering refactor
+    public List<Event> getEvents(@Nullable Coordinate coordinate, @Nullable Range range) throws DetailedException; //TODO: filtering refactor
+    public List<Event> getCreatedEvents(ProfileToken profileToken) throws DetailedException;
     public void joinEvent(Event event, ProfileToken profileToken) throws DetailedException;
-    public List<Join> getJoinRequests(Event event, ProfileToken profileToken) throws DetailedException;
-    public void acceptJoin(Event event, Join join, ProfileToken profileToken) throws DetailedException;
+    public void leaveEvent(Event event, ProfileToken profileToken) throws DetailedException;
+    public void acceptJoin(Join join, ProfileToken profileToken) throws DetailedException;
+    public void deleteJoin(Join join, ProfileToken profileToken) throws DetailedException;
     
 }
