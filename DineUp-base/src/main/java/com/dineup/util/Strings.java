@@ -1,6 +1,8 @@
 package com.dineup.util;
 
-import java.util.Arrays;
+import com.dineup.util.string.Concatenator;
+import com.dineup.util.string.Formatter;
+import com.dineup.util.string.StringConcatenator;
 import java.util.List;
 
 public class Strings {
@@ -23,72 +25,21 @@ public class Strings {
     }
     
     public static String concat(String delimiter, String ... texts) {
-        return buildConcat(delimiter, texts).toString();
+        return new StringConcatenator(delimiter)
+                .addItems(texts)
+                .toString();
     }
     
     public static String concat(String delimiter, List<String> texts) {
-        return buildConcat(delimiter, texts).toString();
+        return new StringConcatenator(delimiter)
+                .addItems(texts)
+                .toString();
     }
     
     public static <T> String concat(String delimiter, List<T> items, Formatter<T> formatter) {
-        return buildConcat(delimiter, items, formatter).toString();
-    }
-    
-    public static StringBuilder buildConcat(String delimiter, String ... texts) {
-        return buildConcat(delimiter, Arrays.asList(texts));
-    }
-    
-    public static StringBuilder buildConcat(String delimiter, List<String> texts) {
-        return buildConcat(delimiter, texts, StringFormatter.INSTANCE);
-    }
-    
-    public static <T> StringBuilder buildConcat(String delimiter, List<T> items, Formatter<T> formatter) {
-        StringBuilder builder = new StringBuilder();
-        int size = items.size();
-        for (int i = 0; i < size; i++) {
-            T item = items.get(i);
-            
-            String text = formatter.format(item);
-            text = Strings.trim(text, delimiter);
-            if (Strings.isEmptyText(text)) {
-                continue;
-            }
-            
-            T nextItem;
-            String nextText = "";
-            int nextIndex = i + 1;
-            while (nextIndex < size) {
-                nextItem = items.get(nextIndex);
-                nextText = formatter.format(nextItem);
-                nextText = Strings.trim(nextText, delimiter);
-                if (!Strings.isEmptyText(nextText)) {
-                    break;
-                }
-                nextIndex++;
-            }
-            
-            builder.append(text);
-            
-            if (!Strings.isEmptyText(nextText)) {
-                builder.append(delimiter);
-            }
-        }
-        return builder;
-    }
-    
-    public static interface Formatter<T> {
-        public String format(T item);
-    }
-    
-    private static class StringFormatter implements Formatter<String> {
-        
-        public static final StringFormatter INSTANCE = new StringFormatter();
-        
-        @Override
-        public String format(String item) {
-            return item;
-        }
-   
+        return new Concatenator<>(delimiter, formatter)
+                .addItems(items)
+                .toString();
     }
     
 }

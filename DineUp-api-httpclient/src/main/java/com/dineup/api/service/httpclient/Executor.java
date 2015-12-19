@@ -16,6 +16,7 @@ import com.dineup.service.rest.ElementConfigKeys;
 import com.dineup.service.rest.HeaderKeys;
 import com.dineup.service.rest.RequestPath;
 import com.dineup.util.Strings;
+import com.dineup.util.string.StringConcatenator;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import java.io.InputStream;
@@ -117,7 +118,8 @@ public class Executor {
     
     private <T> T _execute(TargetProvider targetProvider, ResponseParser<T> responseParser) throws Exception {
         // Create the base request
-        StringBuilder target = Strings.buildConcat("/", apiConfig.getTarget(), RequestPath.ROOT_JSON);
+        StringConcatenator target = new StringConcatenator("/");
+        target.addItems(apiConfig.getTarget(), RequestPath.ROOT_JSON);
         
         // Append the request with request path and parameters
         targetProvider.appendPath(target);
@@ -128,6 +130,7 @@ public class Executor {
         for (Map.Entry<String, Object> entry : parameters.entrySet()) {
             urlBuilder = urlBuilder.addParameter(entry.getKey(), entry.getValue().toString());
         }
+        target.clear();
         parameters.clear();
         
         // Append the request with session parameters

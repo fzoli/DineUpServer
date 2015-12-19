@@ -11,6 +11,7 @@ import com.dineup.api.service.error.exception.UnsupportedApiException;
 import com.dineup.api.service.httpclient.v1_0.ApiInitializer_v1_0;
 import com.dineup.service.rest.RequestPath;
 import com.dineup.util.Converters;
+import com.dineup.util.string.StringConcatenator;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import java.util.Collections;
@@ -73,8 +74,8 @@ public final class DineUpApiFactoryHandler {
         }
 
         @Override
-        public void appendPath(StringBuilder path) {
-            path.append(RequestPath.PATH_SUPPORTED_API_VERSIONS);
+        public void appendPath(StringConcatenator path) {
+            path.addItem(RequestPath.PATH_SUPPORTED_API_VERSIONS);
         }
 
         @Override

@@ -29,6 +29,7 @@ import com.dineup.service.rest.RequestPath;
 import com.dineup.service.rest.RestaurantKeys;
 import com.dineup.util.Lists;
 import com.dineup.util.Strings;
+import com.dineup.util.string.StringConcatenator;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
@@ -90,8 +91,8 @@ public class DineUpApiHandler implements DineUpApi {
         }
 
         @Override
-        public void appendPath(StringBuilder path) { // TODO: replace string builder
-            path.append("/"+apiVersion).append(RequestPath.PATH_SERVICE);
+        public void appendPath(StringConcatenator path) {
+            path.addItems(apiVersion, RequestPath.PATH_SERVICE);
         }
 
         @Override
@@ -124,8 +125,8 @@ public class DineUpApiHandler implements DineUpApi {
         }
 
         @Override
-        public void appendPath(StringBuilder path) {
-            path.append("/"+apiVersion).append(RequestPath.PATH_RESTAURANTS);
+        public void appendPath(StringConcatenator path) {
+            path.addItems(apiVersion, RequestPath.PATH_RESTAURANTS);
         }
 
         @Override
@@ -149,8 +150,8 @@ public class DineUpApiHandler implements DineUpApi {
         }
 
         @Override
-        public void appendPath(StringBuilder path) {
-            path.append("/"+apiVersion).append(RequestPath.PATH_RESTAURANT_COMMENTS);
+        public void appendPath(StringConcatenator path) {
+            path.addItems(apiVersion, RequestPath.PATH_RESTAURANT_COMMENTS);
         }
 
         @Override
@@ -199,8 +200,8 @@ public class DineUpApiHandler implements DineUpApi {
         }
 
         @Override
-        public void appendPath(StringBuilder path) {
-            path.append("/"+apiVersion).append(RequestPath.PATH_CATEGORIES);
+        public void appendPath(StringConcatenator path) {
+            path.addItems(apiVersion, RequestPath.PATH_CATEGORIES);
         }
 
         @Override
@@ -227,8 +228,8 @@ public class DineUpApiHandler implements DineUpApi {
         }
 
         @Override
-        public void appendPath(StringBuilder path) {
-            path.append("/"+apiVersion).append(RequestPath.PATH_FOODS);
+        public void appendPath(StringConcatenator path) {
+            path.addItems(apiVersion, RequestPath.PATH_FOODS);
         }
 
         @Override
@@ -255,8 +256,8 @@ public class DineUpApiHandler implements DineUpApi {
         }
 
         @Override
-        public void appendPath(StringBuilder path) {
-            path.append("/"+apiVersion).append(RequestPath.PATH_EXTRAS);
+        public void appendPath(StringConcatenator path) {
+            path.addItems(apiVersion, RequestPath.PATH_EXTRAS);
         }
 
         @Override
@@ -283,8 +284,8 @@ public class DineUpApiHandler implements DineUpApi {
         }
 
         @Override
-        public void appendPath(StringBuilder path) {
-            path.append("/"+apiVersion).append(RequestPath.PATH_OPTIONS);
+        public void appendPath(StringConcatenator path) {
+            path.addItems(apiVersion, RequestPath.PATH_OPTIONS);
         }
 
         @Override
