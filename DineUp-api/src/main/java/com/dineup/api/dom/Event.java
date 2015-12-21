@@ -4,24 +4,26 @@ import java.util.List;
 
 import com.dineup.api.dom.Person.Gender;
 
-public class Event {
+public interface Event {
 	
-	public enum RequestType {
-		DATE, TALKING,
-	}
-	
-	public enum ActivityType {
-		BREAKFAST, LUNCH, DINNER, DRINK, PARTY
-	}
-	
-	private final int requestId;
-	private Profile profile;
-	private Restaurant restaurant;
-	private String description;
-	private RequestType requestType;
-	private ActivityType activityType;
-	private Range range;
-	private Gender acceptedGenders; //unknow can mean both is accepted
-	private List<Join> joinsRequests;
-	private List<Join> acceptedJoins;
+    public enum EventType {
+        DATE, TALKING,
+    }
+
+    public enum ActivityType {
+        BREAKFAST, LUNCH, DINNER, DRINK, PARTY
+    }
+
+    public int getId();
+    public Profile getProfile();
+    public Restaurant getRestaurant();
+    public String getDescription();
+    public String getLanguageCode();
+    public EventType getEventType();
+    public ActivityType getActivityType();
+    public TimeInterval getRange();
+    public Gender getAcceptedGender();
+    public List<Join> getJoinRequests();
+    public List<Join> getAcceptedJoins();
+        
 }

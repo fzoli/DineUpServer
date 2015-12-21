@@ -9,11 +9,12 @@ import com.dineup.api.dom.Option;
 import com.dineup.api.dom.Profile;
 import com.dineup.api.dom.ProfileToken;
 import com.dineup.api.dom.Restaurant;
-import com.dineup.api.dom.RestaurantComment;
 import com.dineup.api.exception.DetailedException;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.dineup.api.dom.Comment;
+import com.dineup.api.request.query.RestaurantQuery;
 
 public class Example {
     
@@ -27,13 +28,15 @@ public class Example {
                 LOGGER.info("Please upgrade the client.");
                 return;
             }
-            List<Restaurant> restaurants = api.getRestaurants(new Coordinate(5, 6));
+            List<Restaurant> restaurants = api.getRestaurants(RestaurantQuery.newQuery()
+                    .coordinate(new Coordinate(5, 6)).maxDistanceInMeters(10)
+                    .build());
             LOGGER.info("Number of restaurants: " + restaurants.size());
             if (restaurants.isEmpty()) {
                 return;
             }
             Restaurant restaurant = restaurants.get(0);
-            List<RestaurantComment> comments = api.getRestaurantComments(restaurant, new ProfileToken("abcdef0123456789", Profile.Type.FACEBOOK));
+            List<Comment> comments = api.getRestaurantComments(restaurant, new ProfileToken("abcdef0123456789", Profile.Type.FACEBOOK));
             LOGGER.info("Number of comments: " + comments.size());
             List<Category> categories = api.getCategories(restaurant);
             LOGGER.info("Number of categories: " + categories.size());

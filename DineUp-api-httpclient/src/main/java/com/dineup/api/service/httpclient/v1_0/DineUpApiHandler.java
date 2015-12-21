@@ -7,13 +7,11 @@ import com.dineup.api.ApiConfig;
 import com.dineup.api.ClientConfig;
 import com.dineup.api.annotation.Nullable;
 import com.dineup.api.dom.Category;
-import com.dineup.api.dom.Coordinate;
 import com.dineup.api.dom.Extra;
 import com.dineup.api.dom.Food;
 import com.dineup.api.dom.Option;
 import com.dineup.api.dom.ProfileToken;
 import com.dineup.api.dom.Restaurant;
-import com.dineup.api.dom.RestaurantComment;
 import com.dineup.api.exception.DetailedException;
 import com.dineup.api.service.httpclient.Executable;
 import com.dineup.api.service.httpclient.Executor;
@@ -37,6 +35,8 @@ import java.lang.reflect.Type;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import com.dineup.api.dom.Comment;
+import com.dineup.api.request.query.RestaurantQuery;
 
 public class DineUpApiHandler implements DineUpApi {
 
@@ -56,12 +56,12 @@ public class DineUpApiHandler implements DineUpApi {
     }
     
     @Override
-    public List<Restaurant> getRestaurants(final Coordinate coordinate) throws DetailedException {
-        return executor.execute(new GetRestaurants(coordinate));
+    public List<Restaurant> getRestaurants(RestaurantQuery query) throws DetailedException {
+        return executor.execute(new GetRestaurants(query));
     }
 
     @Override
-    public List<RestaurantComment> getRestaurantComments(Restaurant restaurant, @Nullable ProfileToken profileToken) throws DetailedException {
+    public List<Comment> getRestaurantComments(Restaurant restaurant, @Nullable ProfileToken profileToken) throws DetailedException {
         return executor.execute(new GetRestaurantComments(restaurant.getId(), profileToken));
     }
     
@@ -110,17 +110,23 @@ public class DineUpApiHandler implements DineUpApi {
     
     private class GetRestaurants extends Executable<List<Restaurant>> {
 
-        private final Coordinate coordinate;
+        private final RestaurantQuery query;
         
-        public GetRestaurants(Coordinate coordinate) {
-            this.coordinate = coordinate;
+        public GetRestaurants(RestaurantQuery query) {
+            this.query = query;
         }
 
         @Override
         public void putParameters(Map<String, Object> parameters) {
-            if (coordinate != null) {
-                parameters.put(ElementConfigKeys.LATITUDE, coordinate.getLatitude());
-                parameters.put(ElementConfigKeys.LONGITUDE, coordinate.getLongitude());
+            if (query == null) {
+                return;
+            }
+            if (query.getCoordinate() != null) {
+                parameters.put(ElementConfigKeys.LATITUDE, query.getCoordinate().getLatitude());
+                parameters.put(ElementConfigKeys.LONGITUDE, query.getCoordinate().getLongitude());
+            }
+            if (query.getMaxDistanceInMeters() != null) {
+                parameters.put(ElementConfigKeys.MAX_DISTANCE, query.getMaxDistanceInMeters());
             }
         }
 
@@ -139,7 +145,7 @@ public class DineUpApiHandler implements DineUpApi {
         
     }
     
-    private class GetRestaurantComments extends Executable<List<RestaurantComment>> {
+    private class GetRestaurantComments extends Executable<List<Comment>> {
 
         private final int restaurantId;
         private final ProfileToken profileToken;
@@ -170,11 +176,11 @@ public class DineUpApiHandler implements DineUpApi {
         }
 
         @Override
-        public List<RestaurantComment> parseResponse(Gson gson, JsonReader jsonReader) {
+        public List<Comment> parseResponse(Gson gson, JsonReader jsonReader) {
             Type entityType = new TypeToken<List<RestaurantCommentElement>>() {}.getType();
             List<RestaurantCommentElement> entity = gson.fromJson(jsonReader, entityType);
             format(entity);
-            List<RestaurantComment> list = Lists.convert(entity);
+            List<Comment> list = Lists.convert(entity);
             return Collections.unmodifiableList(list);
         }
         

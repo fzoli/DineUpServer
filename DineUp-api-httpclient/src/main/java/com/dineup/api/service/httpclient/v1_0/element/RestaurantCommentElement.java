@@ -1,10 +1,10 @@
 package com.dineup.api.service.httpclient.v1_0.element;
 
-import com.dineup.api.dom.RestaurantComment;
 import java.io.Serializable;
 import java.util.Date;
+import com.dineup.api.dom.Comment;
 
-public class RestaurantCommentElement implements RestaurantComment, Serializable {
+public class RestaurantCommentElement implements Comment, Serializable {
 
     public String languageCode;
     public String message;

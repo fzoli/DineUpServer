@@ -26,6 +26,9 @@ public class FoodElement implements Food, Serializable {
     public String photoUrl;
     
     @XmlElement
+    public double rating;
+    
+    @XmlElement
     public List<PriceElement> prices;
     
     public FoodElement() {
@@ -54,6 +57,11 @@ public class FoodElement implements Food, Serializable {
     @Override
     public String getPhotoUrl() {
         return photoUrl;
+    }
+
+    @Override
+    public double getRating() {
+        return rating;
     }
 
     @Override

@@ -13,6 +13,7 @@ public class FoodElement implements Food, Serializable {
     public String name;
     public String description;
     public String photoUrl;
+    public double rating;
     public List<PriceElement> prices;
     
     public FoodElement() {
@@ -41,6 +42,11 @@ public class FoodElement implements Food, Serializable {
     @Override
     public String getPhotoUrl() {
         return photoUrl;
+    }
+
+    @Override
+    public double getRating() {
+        return rating;
     }
 
     @Override
