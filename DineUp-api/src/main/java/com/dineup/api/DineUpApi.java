@@ -29,8 +29,8 @@ public interface DineUpApi {
     public List<Comment> getRestaurantComments(Restaurant restaurant, @Nullable ProfileToken profileToken) throws DetailedException;
     public List<Comment> getFoodComments(Food food, @Nullable ProfileToken profileToken) throws DetailedException;
     
-    public void sendRestaurantComment(RestaurantCommentRequest restaurantCommentRequest, ProfileToken profileToken) throws DetailedException;
-    public void sendFoodComment(FoodCommentRequest foodCommentRequest, ProfileToken profileToken) throws DetailedException;        
+    public Comment sendRestaurantComment(RestaurantCommentRequest restaurantCommentRequest, ProfileToken profileToken) throws DetailedException;
+    public Comment sendFoodComment(FoodCommentRequest foodCommentRequest, ProfileToken profileToken) throws DetailedException;        
     
     /*
     public List<Order> getOrders(ProfileToken profileToken) throws DetailedException;

@@ -26,7 +26,6 @@ import com.dineup.service.rest.ElementConfigKeys;
 import com.dineup.service.rest.RequestPath;
 import com.dineup.service.rest.RestaurantKeys;
 import com.dineup.util.Lists;
-import com.dineup.util.Strings;
 import com.dineup.util.string.StringConcatenator;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -36,6 +35,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import com.dineup.api.dom.Comment;
+import com.dineup.api.request.FoodCommentRequest;
+import com.dineup.api.request.RestaurantCommentRequest;
 import com.dineup.api.request.query.RestaurantQuery;
 
 public class DineUpApiHandler implements DineUpApi {
@@ -76,6 +77,11 @@ public class DineUpApiHandler implements DineUpApi {
     }
     
     @Override
+    public List<Comment> getFoodComments(Food food, ProfileToken profileToken) throws DetailedException {
+        throw new UnsupportedOperationException("Not supported yet."); // TODO
+    }
+    
+    @Override
     public List<Extra> getExtras(Food food) throws DetailedException {
         return executor.execute(new GetExtras(food.getId()));
     }
@@ -83,6 +89,16 @@ public class DineUpApiHandler implements DineUpApi {
     @Override
     public List<Option> getOptions(Extra extra) throws DetailedException {
         return executor.execute(new GetOptions(extra.getId()));
+    }
+
+    @Override
+    public Comment sendRestaurantComment(RestaurantCommentRequest restaurantCommentRequest, ProfileToken profileToken) throws DetailedException {
+        throw new UnsupportedOperationException("Not supported yet."); // TODO
+    }
+
+    @Override
+    public Comment sendFoodComment(FoodCommentRequest foodCommentRequest, ProfileToken profileToken) throws DetailedException {
+        throw new UnsupportedOperationException("Not supported yet."); // TODO
     }
     
     private class GetService extends Executable<Service> {
@@ -163,16 +179,7 @@ public class DineUpApiHandler implements DineUpApi {
         @Override
         public void putParameters(Map<String, Object> parameters) {
             parameters.put(RestaurantKeys.RESTAURANT_ID, restaurantId);
-            if (profileToken != null) {
-                switch (profileToken.getType()) {
-                    case FACEBOOK:
-                        parameters.put(ElementConfigKeys.FACEBOOK_ACCESS_TOKEN, profileToken.getAccessToken());
-                        break;
-                    case GOOGLE_PLUS:
-                        parameters.put(ElementConfigKeys.GOOGLE_ACCESS_TOKEN, profileToken.getAccessToken());
-                        break;
-                }
-            }
+            Utils.putProfileParameters(parameters, profileToken);
         }
 
         @Override
@@ -186,12 +193,7 @@ public class DineUpApiHandler implements DineUpApi {
         
         private void format(List<RestaurantCommentElement> entity) {
             for (RestaurantCommentElement element : entity) {
-                if (element.profile != null) {
-                    String photoUrl = element.profile.photoUrl;
-                    if (photoUrl != null && photoUrl.startsWith("/")) {
-                        element.profile.photoUrl = Strings.concat("/", targetConfig.getServerUrl(), photoUrl);
-                    }
-                }
+                Utils.completeProfileElement(element.profile, targetConfig);
             }
         }
         
