@@ -3,6 +3,8 @@ package com.dineup.ejb.db;
 import com.dineup.dom.*;
 import com.dineup.ejb.profile.ProfileManagerFactory;
 import com.dineup.mock.*;
+import com.dineup.util.Filter;
+import com.dineup.util.Lists;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,11 +22,12 @@ public class MockRestaurantDataSource implements RestaurantDataSource, MockDatas
     }
 
     @Override
-    public List<Restaurant> getRestaurants() {
+    public List<Restaurant> getRestaurants(Filter<Restaurant> ... filters) {
         List<Restaurant> list = new ArrayList<>(NUMBER_OF_RESTAURANTS);
         for (int i = 0; i < NUMBER_OF_RESTAURANTS; i++) {
             list.add(new MockRestaurant(this, i));
         }
+        Lists.filter(list, filters);
         return Collections.unmodifiableList(list);
     }
 

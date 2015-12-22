@@ -1,5 +1,6 @@
 package com.dineup.ejb.rest;
 
+import com.dineup.dom.Area;
 import com.dineup.dom.Category;
 import com.dineup.service.ElementContext;
 import com.dineup.dom.Extra;
@@ -8,6 +9,7 @@ import com.dineup.dom.Option;
 import com.dineup.service.rest.HeaderKeys;
 import com.dineup.dom.Restaurant;
 import com.dineup.dom.RestaurantComment;
+import com.dineup.dom.filter.RestaurantDistanceFilter;
 import com.dineup.ejb.db.RestaurantDataSource;
 import com.dineup.ejb.error.ErrorResponseFactory;
 import com.dineup.ejb.profile.ProfileManagerFactory;
@@ -54,7 +56,10 @@ public class RestaurantRestResourceBean implements RestaurantRestResource, Heade
     public Response getRestaurants(ElementConfig elementConfig) {
         try {
             elementConfig.validate();
-            List<Restaurant> objects = dataSource.getRestaurants();
+            Area area = elementConfig.createArea();
+            List<Restaurant> objects = dataSource.getRestaurants(
+                    new RestaurantDistanceFilter(area)
+            );
             List<RestaurantElement> elements = Converters.convertList(objects, new RestaurantElementConverter(createElementContext(), elementConfig));
             GenericEntity<List<RestaurantElement>> entity = new GenericEntity<List<RestaurantElement>>(elements) {};
             return Response.ok(entity).build();

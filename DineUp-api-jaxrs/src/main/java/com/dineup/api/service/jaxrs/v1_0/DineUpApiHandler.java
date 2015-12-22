@@ -34,6 +34,8 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 import com.dineup.api.dom.Comment;
+import com.dineup.api.request.FoodCommentRequest;
+import com.dineup.api.request.RestaurantCommentRequest;
 import com.dineup.api.request.query.RestaurantQuery;
 
 public class DineUpApiHandler implements DineUpApi {
@@ -74,6 +76,11 @@ public class DineUpApiHandler implements DineUpApi {
     }
     
     @Override
+    public List<Comment> getFoodComments(Food food, ProfileToken profileToken) throws DetailedException {
+        throw new UnsupportedOperationException("Not supported yet."); // TODO
+    }
+    
+    @Override
     public List<Extra> getExtras(Food food) throws DetailedException {
         return executor.execute(new GetExtras(food.getId()));
     }
@@ -81,6 +88,16 @@ public class DineUpApiHandler implements DineUpApi {
     @Override
     public List<Option> getOptions(Extra extra) throws DetailedException {
         return executor.execute(new GetOptions(extra.getId()));
+    }
+
+    @Override
+    public Comment sendRestaurantComment(RestaurantCommentRequest restaurantCommentRequest, ProfileToken profileToken) throws DetailedException {
+        throw new UnsupportedOperationException("Not supported yet."); // TODO
+    }
+
+    @Override
+    public Comment sendFoodComment(FoodCommentRequest foodCommentRequest, ProfileToken profileToken) throws DetailedException {
+        throw new UnsupportedOperationException("Not supported yet."); // TODO
     }
     
     private class GetService extends Executable<Service> {
@@ -133,7 +150,7 @@ public class DineUpApiHandler implements DineUpApi {
                 parameters.put(ElementConfigKeys.LONGITUDE, query.getCoordinate().getLongitude());
             }
             if (query.getMaxDistanceInMeters() != null) {
-                parameters.put(ElementConfigKeys.MAX_DISTANCE, query.getMaxDistanceInMeters());
+                parameters.put(ElementConfigKeys.RADIUS, query.getMaxDistanceInMeters());
             }
         }
 

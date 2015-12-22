@@ -24,12 +24,16 @@ public class BaseResource {
     @QueryParam(ElementConfigKeys.LONGITUDE)
     private Double longitude;
     
+    @QueryParam(ElementConfigKeys.RADIUS)
+    private Double radius;
+    
     public ElementConfig createElementConfig() {
         return ElementConfig.newBuilder()
                 .languageCode(languageCode)
                 .withNestedObjects(withNestedObjects)
                 .latitude(latitude)
                 .longitude(longitude)
+                .radius(radius)
                 .facebookAccessToken(facebookAccessToken)
                 .googleAccessToken(googleAccessToken)
                 .build();

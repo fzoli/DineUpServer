@@ -29,7 +29,7 @@ public class Example {
                 return;
             }
             List<Restaurant> restaurants = api.getRestaurants(RestaurantQuery.newQuery()
-                    .coordinate(new Coordinate(5, 6)).maxDistanceInMeters(10)
+                    .coordinate(new Coordinate(5, 6)).maxDistanceInMeters(10000000)
                     .build());
             LOGGER.info("Number of restaurants: " + restaurants.size());
             if (restaurants.isEmpty()) {

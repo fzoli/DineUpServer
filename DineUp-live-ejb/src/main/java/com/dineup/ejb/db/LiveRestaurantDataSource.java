@@ -18,6 +18,7 @@ import com.dineup.entity.RestaurantCommentEntity;
 import com.dineup.entity.RestaurantCommentEntity_;
 import com.dineup.entity.RestaurantEntity;
 import com.dineup.entity.RestaurantEntity_;
+import com.dineup.util.Filter;
 import com.dineup.util.Lists;
 import java.util.List;
 import javax.annotation.PreDestroy;
@@ -45,13 +46,15 @@ public class LiveRestaurantDataSource implements RestaurantDataSource {
     }
     
     @Override
-    public List<Restaurant> getRestaurants() {
+    public List<Restaurant> getRestaurants(Filter<Restaurant> ... filters) {
         CriteriaBuilder builder = getManager().getCriteriaBuilder();
         CriteriaQuery<RestaurantEntity> query = builder.createQuery(RestaurantEntity.class);
         Root<RestaurantEntity> root = query.from(RestaurantEntity.class);
         query.orderBy(builder.asc(root.get(RestaurantEntity_.id)));
         List<RestaurantEntity> resultList = getManager().createQuery(query).getResultList();
-        return Lists.convert(resultList);
+        List<Restaurant> list = Lists.convert(resultList);
+        Lists.filter(list, filters);
+        return list;
     }
 
     @Override

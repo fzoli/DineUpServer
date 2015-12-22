@@ -1,5 +1,6 @@
 package com.dineup.service;
 
+import com.dineup.dom.Area;
 import com.dineup.dom.Coordinate;
 import com.dineup.dom.Locale;
 import com.dineup.dom.Locales;
@@ -7,6 +8,7 @@ import com.dineup.dom.LocalizedObject;
 import com.dineup.dom.Profile;
 import com.dineup.ejb.profile.ProfileDescriptor;
 import com.dineup.service.error.exception.IncompleteCoordinateException;
+import com.dineup.service.error.exception.IncompleteAreaException;
 
 /**
  * Request scope dependencies used by Elements.
@@ -15,6 +17,7 @@ public class ElementConfig {
     
     private final String languageCode;
     private final Double latitude, longitude;
+    private final Double radius;
     private final boolean withNestedObjects;
     private final String facebookAccessToken, googleAccessToken;
 
@@ -26,6 +29,7 @@ public class ElementConfig {
         languageCode = builder.languageCode;
         latitude = builder.latitude;
         longitude = builder.longitude;
+        radius = builder.radius;
         withNestedObjects = builder.withNestedObjects;
         facebookAccessToken = builder.facebookAccessToken;
         googleAccessToken = builder.googleAccessToken;
@@ -34,6 +38,9 @@ public class ElementConfig {
     public void validate() {
         if (latitude == null ^ longitude == null) {
             throw new IncompleteCoordinateException();
+        }
+        if (latitude == null && radius != null) {
+            throw new IncompleteAreaException();
         }
     }
     
@@ -61,6 +68,13 @@ public class ElementConfig {
             return new Coordinate(latitude, longitude);
         }
         return null;
+    }
+    
+    public Area createArea() {
+        if (radius == null) {
+            return null;
+        }
+        return new Area(createCoordinate(), radius);
     }
     
     /*public ProfileDescriptor createProfileDescriptor() {
@@ -107,6 +121,7 @@ public class ElementConfig {
         
         private String languageCode;
         private Double latitude, longitude;
+        private Double radius;
         private boolean withNestedObjects;
         private String facebookAccessToken;
         private String googleAccessToken;
@@ -151,6 +166,11 @@ public class ElementConfig {
         
         public Builder longitude(Double longitude) {
             this.longitude = longitude;
+            return this;
+        }
+        
+        public Builder radius(Double radius) {
+            this.radius = radius;
             return this;
         }
         

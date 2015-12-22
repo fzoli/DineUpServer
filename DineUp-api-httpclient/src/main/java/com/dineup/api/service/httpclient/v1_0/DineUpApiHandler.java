@@ -142,7 +142,7 @@ public class DineUpApiHandler implements DineUpApi {
                 parameters.put(ElementConfigKeys.LONGITUDE, query.getCoordinate().getLongitude());
             }
             if (query.getMaxDistanceInMeters() != null) {
-                parameters.put(ElementConfigKeys.MAX_DISTANCE, query.getMaxDistanceInMeters());
+                parameters.put(ElementConfigKeys.RADIUS, query.getMaxDistanceInMeters());
             }
         }
 
