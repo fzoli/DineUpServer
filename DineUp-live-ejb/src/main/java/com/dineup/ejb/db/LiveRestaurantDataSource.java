@@ -5,7 +5,6 @@ import com.dineup.dom.Extra;
 import com.dineup.dom.Food;
 import com.dineup.dom.Option;
 import com.dineup.dom.Restaurant;
-import com.dineup.dom.RestaurantComment;
 import com.dineup.entity.CategoryEntity;
 import com.dineup.entity.CategoryEntity_;
 import com.dineup.entity.ExtraEntity;
@@ -29,6 +28,9 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.ListJoin;
 import javax.persistence.criteria.Root;
+import com.dineup.dom.Comment;
+import com.dineup.entity.FoodCommentEntity;
+import com.dineup.entity.FoodCommentEntity_;
 
 @Singleton
 public class LiveRestaurantDataSource implements RestaurantDataSource {
@@ -58,7 +60,7 @@ public class LiveRestaurantDataSource implements RestaurantDataSource {
     }
 
     @Override
-    public List<RestaurantComment> getRestaurantComments(int restaurantId) {
+    public List<Comment> getRestaurantComments(int restaurantId) {
         CriteriaBuilder builder = getManager().getCriteriaBuilder();
         CriteriaQuery<RestaurantCommentEntity> query = builder.createQuery(RestaurantCommentEntity.class);
         Root<RestaurantCommentEntity> root = query.from(RestaurantCommentEntity.class);
@@ -89,6 +91,16 @@ public class LiveRestaurantDataSource implements RestaurantDataSource {
         return Lists.convert(resultList);
     }
 
+    @Override
+    public List<Comment> getFoodComments(int foodId) {
+        CriteriaBuilder builder = getManager().getCriteriaBuilder();
+        CriteriaQuery<FoodCommentEntity> query = builder.createQuery(FoodCommentEntity.class);
+        Root<FoodCommentEntity> root = query.from(FoodCommentEntity.class);
+        query.where(builder.equal(root.get(FoodCommentEntity_.food).get(FoodEntity_.id), foodId));
+        List<FoodCommentEntity> resultList = getManager().createQuery(query).getResultList();
+        return Lists.convert(resultList);
+    }
+    
     @Override
     public List<Extra> getExtras(int foodId) {
         CriteriaBuilder builder = getManager().getCriteriaBuilder();

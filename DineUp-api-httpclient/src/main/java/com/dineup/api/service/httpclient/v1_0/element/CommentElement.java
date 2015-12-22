@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import com.dineup.api.dom.Comment;
 
-public class RestaurantCommentElement implements Comment, Serializable {
+public class CommentElement implements Comment, Serializable {
 
     public String languageCode;
     public String message;
@@ -12,7 +12,7 @@ public class RestaurantCommentElement implements Comment, Serializable {
     public double rating;
     public Date time;
 
-    public RestaurantCommentElement() {
+    public CommentElement() {
     }
 
     @Override
@@ -42,7 +42,7 @@ public class RestaurantCommentElement implements Comment, Serializable {
     
     @Override
     public String toString() {
-        return String.format("RestaurantComment(rating=%s)", rating);
+        return String.format("Comment(rating=%s)", rating);
     }
     
 }

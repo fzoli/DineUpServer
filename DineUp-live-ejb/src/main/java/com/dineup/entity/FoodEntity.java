@@ -1,5 +1,6 @@
 package com.dineup.entity;
 
+import com.dineup.dom.Comment;
 import com.dineup.dom.Extra;
 import com.dineup.dom.Food;
 import com.dineup.dom.FoodLocale;
@@ -44,6 +45,9 @@ public class FoodEntity implements Food, Serializable {
     @OneToMany(mappedBy = "food")
     private List<FoodPriceEntity> prices;
     
+    @OneToMany(mappedBy = "food")
+    private List<FoodCommentEntity> comments;
+    
     @ManyToMany
     @JoinTable(
       name="food_extras",
@@ -82,6 +86,11 @@ public class FoodEntity implements Food, Serializable {
     @Override
     public List<Extra> getExtras() {
         return Lists.convert(extras);
+    }
+
+    @Override
+    public List<Comment> getComments() {
+        return Lists.convert(comments);
     }
 
 }

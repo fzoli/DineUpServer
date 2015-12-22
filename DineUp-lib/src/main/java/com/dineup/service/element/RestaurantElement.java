@@ -5,18 +5,18 @@ import com.dineup.dom.Coordinates;
 import com.dineup.dom.Locale;
 import com.dineup.service.ElementContext;
 import com.dineup.dom.Restaurant;
-import com.dineup.dom.RestaurantComment;
-import com.dineup.dom.RestaurantComments;
+import com.dineup.dom.Comments;
 import com.dineup.dom.RestaurantLocale;
 import com.dineup.service.ElementConfig;
 import com.dineup.service.element.converter.CategoryElementConverter;
 import com.dineup.service.element.converter.CoordinateElementConverter;
-import com.dineup.service.element.converter.RestaurantCommentElementConverter;
+import com.dineup.service.element.converter.CommentElementConverter;
 import com.dineup.util.Converters;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import com.dineup.dom.Comment;
 
 @XmlRootElement(name = "restaurant")
 public class RestaurantElement {
@@ -114,12 +114,12 @@ public class RestaurantElement {
     }
     
     @XmlElement
-    public List<RestaurantCommentElement> getComments() {
+    public List<CommentElement> getComments() {
         if (!elementConfig.withNestedObjects()) {
             return null;
         }
-        List<RestaurantComment> sortedComments = RestaurantComments.getSortedComments(restaurant.getComments(), elementConfig.getPreferredLanguageCode());
-        return Converters.convertList(sortedComments, new RestaurantCommentElementConverter(elementContext, elementConfig));
+        List<Comment> sortedComments = Comments.getSortedComments(restaurant.getComments(), elementConfig.getPreferredLanguageCode());
+        return Converters.convertList(sortedComments, new CommentElementConverter(elementContext, elementConfig));
     }
     
 }

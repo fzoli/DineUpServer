@@ -8,7 +8,6 @@ import com.dineup.dom.Food;
 import com.dineup.dom.Option;
 import com.dineup.service.rest.HeaderKeys;
 import com.dineup.dom.Restaurant;
-import com.dineup.dom.RestaurantComment;
 import com.dineup.dom.filter.RestaurantDistanceFilter;
 import com.dineup.ejb.db.RestaurantDataSource;
 import com.dineup.ejb.error.ErrorResponseFactory;
@@ -18,14 +17,14 @@ import com.dineup.service.element.CategoryElement;
 import com.dineup.service.element.ExtraElement;
 import com.dineup.service.element.FoodElement;
 import com.dineup.service.element.OptionElement;
-import com.dineup.service.element.RestaurantCommentElement;
+import com.dineup.service.element.CommentElement;
 import com.dineup.service.element.RestaurantElement;
 import javax.ws.rs.core.Response;
 import com.dineup.service.element.converter.CategoryElementConverter;
 import com.dineup.service.element.converter.ExtraElementConverter;
 import com.dineup.service.element.converter.FoodElementConverter;
 import com.dineup.service.element.converter.OptionElementConverter;
-import com.dineup.service.element.converter.RestaurantCommentElementConverter;
+import com.dineup.service.element.converter.CommentElementConverter;
 import com.dineup.service.element.converter.RestaurantElementConverter;
 import com.dineup.service.error.exception.UnspecifiedIdentifierException;
 import com.dineup.util.Converters;
@@ -33,6 +32,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ws.rs.core.GenericEntity;
+import com.dineup.dom.Comment;
 
 @Singleton
 public class RestaurantRestResourceBean implements RestaurantRestResource, HeaderKeys {
@@ -76,9 +76,9 @@ public class RestaurantRestResourceBean implements RestaurantRestResource, Heade
                 throw new UnspecifiedIdentifierException("Unspecified restaurantId");
             }
             elementConfig.validate();
-            List<RestaurantComment> objects = dataSource.getRestaurantComments(restaurantId);
-            List<RestaurantCommentElement> elements = Converters.convertList(objects, new RestaurantCommentElementConverter(createElementContext(), elementConfig));
-            GenericEntity<List<RestaurantCommentElement>> entity = new GenericEntity<List<RestaurantCommentElement>>(elements) {};
+            List<Comment> objects = dataSource.getRestaurantComments(restaurantId);
+            List<CommentElement> elements = Converters.convertList(objects, new CommentElementConverter(createElementContext(), elementConfig));
+            GenericEntity<List<CommentElement>> entity = new GenericEntity<List<CommentElement>>(elements) {};
             return Response.ok(entity).build();
         }
         catch (Exception ex) {
@@ -113,6 +113,23 @@ public class RestaurantRestResourceBean implements RestaurantRestResource, Heade
             List<Food> objects = dataSource.getFoods(categoryId);
             List<FoodElement> elements = Converters.convertList(objects, new FoodElementConverter(createElementContext(), elementConfig));
             GenericEntity<List<FoodElement>> entity = new GenericEntity<List<FoodElement>>(elements) {};
+            return Response.ok(entity).build();
+        }
+        catch (Exception ex) {
+            return createErrorResponse(elementConfig, ex);
+        }
+    }
+    
+    @Override
+    public Response getFoodComments(ElementConfig elementConfig, Integer foodId) {
+        try {
+            if (foodId == null) {
+                throw new UnspecifiedIdentifierException("Unspecified foodId");
+            }
+            elementConfig.validate();
+            List<Comment> objects = dataSource.getFoodComments(foodId);
+            List<CommentElement> elements = Converters.convertList(objects, new CommentElementConverter(createElementContext(), elementConfig));
+            GenericEntity<List<CommentElement>> entity = new GenericEntity<List<CommentElement>>(elements) {};
             return Response.ok(entity).build();
         }
         catch (Exception ex) {

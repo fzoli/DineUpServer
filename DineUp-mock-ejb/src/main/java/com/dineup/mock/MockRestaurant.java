@@ -4,11 +4,11 @@ import com.dineup.ejb.db.MockDatas;
 import com.dineup.dom.Category;
 import com.dineup.dom.Coordinate;
 import com.dineup.dom.Restaurant;
-import com.dineup.dom.RestaurantComment;
 import com.dineup.dom.RestaurantLocale;
 import com.dineup.ejb.db.RestaurantDataSource;
 import java.util.Collections;
 import java.util.List;
+import com.dineup.dom.Comment;
 
 public class MockRestaurant implements Restaurant, MockDatas {
     
@@ -67,7 +67,7 @@ public class MockRestaurant implements Restaurant, MockDatas {
     }
 
     @Override
-    public List<RestaurantComment> getComments() {
+    public List<Comment> getComments() {
         return dataSource.getRestaurantComments(id);
     }
     

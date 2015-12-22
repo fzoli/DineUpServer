@@ -9,6 +9,7 @@ public interface RequestPath {
 
     String PATH_RESTAURANTS = "/restaurants";
     String PATH_RESTAURANT_COMMENTS = "/restaurantComments";
+    String PATH_FOOD_COMMENTS = "/foodComments";
     String PATH_CATEGORIES = "/categories";
     String PATH_FOODS = "/foods";
     String PATH_EXTRAS = "/extras";

@@ -1,5 +1,6 @@
 package com.dineup.mock;
 
+import com.dineup.dom.Comment;
 import com.dineup.ejb.db.MockDatas;
 import com.dineup.dom.Extra;
 import com.dineup.dom.Food;
@@ -44,6 +45,11 @@ public class MockFood implements Food, MockDatas {
     @Override
     public List<Extra> getExtras() {
         return dataSource.getExtras(id);
+    }
+    
+    @Override
+    public List<Comment> getComments() {
+        return dataSource.getFoodComments(id);
     }
     
 }

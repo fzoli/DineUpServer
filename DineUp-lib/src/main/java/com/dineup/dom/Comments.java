@@ -5,23 +5,23 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class RestaurantComments {
+public class Comments {
 
-    public static List<RestaurantComment> getSortedComments(final List<RestaurantComment> comments, final String preferredLanguageCode) {
+    public static List<Comment> getSortedComments(final List<Comment> comments, final String preferredLanguageCode) {
         // Create a modifiable copy of comments.
-        List<RestaurantComment> list = new ArrayList<>(comments);
+        List<Comment> list = new ArrayList<>(comments);
         // First sort by time.
-        Collections.sort(list, new Comparator<RestaurantComment>() {
+        Collections.sort(list, new Comparator<Comment>() {
             @Override
-            public int compare(RestaurantComment o1, RestaurantComment o2) {
+            public int compare(Comment o1, Comment o2) {
                 return o1.getTime().compareTo(o2.getTime());
             }
         });
         // Then move the comments of the requested language to the beginning of the list.
         if (preferredLanguageCode != null) {
-            Collections.sort(list, new Comparator<RestaurantComment>() {
+            Collections.sort(list, new Comparator<Comment>() {
                 @Override
-                public int compare(RestaurantComment o1, RestaurantComment o2) {
+                public int compare(Comment o1, Comment o2) {
                     int o1Prio = o1.getLanguageCode().equalsIgnoreCase(preferredLanguageCode) ? -1 : 1;
                     int o2Prio = o2.getLanguageCode().equalsIgnoreCase(preferredLanguageCode) ? -1 : 1;
                     return Integer.compare(o1Prio, o2Prio);
@@ -31,7 +31,7 @@ public class RestaurantComments {
         return list;
     }
     
-    private RestaurantComments() {
+    private Comments() {
     }
     
 }

@@ -6,6 +6,7 @@ public interface MockDatas {
     int NUMBER_OF_RESTAURANT_COMMENTS = 10;
     int NUMBER_OF_CATEGORIES = 20;
     int NUMBER_OF_FOODS = 40;
+    int NUMBER_OF_FOOD_COMMENTS = 5;
     int NUMBER_OF_EXTRAS = 10;
     int NUMBER_OF_OPTIONS = 10;
     

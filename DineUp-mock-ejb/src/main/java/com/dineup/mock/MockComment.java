@@ -2,21 +2,21 @@ package com.dineup.mock;
 
 import com.dineup.dom.Person;
 import com.dineup.dom.Profile;
-import com.dineup.dom.RestaurantComment;
 import com.dineup.ejb.db.MockDatas;
 import com.dineup.ejb.db.RestaurantDataSource;
 import com.dineup.ejb.profile.ProfileManagerFactory;
 import java.util.Calendar;
 import java.util.Date;
+import com.dineup.dom.Comment;
 
-public class MockRestaurantComment implements RestaurantComment, MockDatas {
+public class MockComment implements Comment, MockDatas {
 
     private final RestaurantDataSource dataSource;
     private final ProfileManagerFactory factory;
     private final int id;
     
     
-    public MockRestaurantComment(RestaurantDataSource dataSource, ProfileManagerFactory factory, int id) {
+    public MockComment(RestaurantDataSource dataSource, ProfileManagerFactory factory, int id) {
         this.factory = factory;
         this.dataSource = dataSource;
         this.id = id;

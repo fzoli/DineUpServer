@@ -3,7 +3,6 @@ package com.dineup.entity;
 import com.dineup.dom.Category;
 import com.dineup.dom.Coordinate;
 import com.dineup.dom.Restaurant;
-import com.dineup.dom.RestaurantComment;
 import com.dineup.dom.RestaurantLocale;
 import com.dineup.util.Lists;
 import java.io.Serializable;
@@ -15,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import com.dineup.dom.Comment;
 
 @Entity
 @Table(name = "restaurant")
@@ -137,7 +137,7 @@ public class RestaurantEntity implements Restaurant, Serializable {
     }
 
     @Override
-    public List<RestaurantComment> getComments() {
+    public List<Comment> getComments() {
         return Lists.convert(comments);
     }
     

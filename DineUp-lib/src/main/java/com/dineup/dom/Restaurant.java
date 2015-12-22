@@ -11,5 +11,5 @@ public interface Restaurant extends LocalizedObject<RestaurantLocale> {
     public Coordinate getCoordinate();
     public double getRating();
     public List<Category> getCategories();
-    public List<RestaurantComment> getComments();
+    public List<Comment> getComments();
 }

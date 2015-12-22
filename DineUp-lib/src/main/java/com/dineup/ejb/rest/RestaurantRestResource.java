@@ -10,6 +10,7 @@ public interface RestaurantRestResource {
     public Response getRestaurantComments(ElementConfig elementConfig, Integer restaurantId);
     public Response getCategories(ElementConfig elementConfig, Integer restaurantId);
     public Response getFoods(ElementConfig elementConfig, Integer categoryId);
+    public Response getFoodComments(ElementConfig elementConfig, Integer foodId);
     public Response getExtras(ElementConfig elementConfig, Integer foodId);
     public Response getOptions(ElementConfig elementConfig, Integer extraId);
 }

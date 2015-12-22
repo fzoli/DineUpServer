@@ -14,8 +14,8 @@ import javax.persistence.Temporal;
 import com.dineup.dom.Comment;
 
 @Entity
-@Table(name = "restaurant_comment")
-public class RestaurantCommentEntity implements Comment, Serializable {
+@Table(name = "food_comment")
+public class FoodCommentEntity implements Comment, Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -25,8 +25,8 @@ public class RestaurantCommentEntity implements Comment, Serializable {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "restaurant", nullable = false)
-    private RestaurantEntity restaurant;
+    @JoinColumn(name = "food", nullable = false)
+    private FoodEntity food;
     
     @ManyToOne
     @JoinColumn(name = "profile", nullable = false)

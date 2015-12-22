@@ -32,10 +32,10 @@ public class MockRestaurantDataSource implements RestaurantDataSource, MockDatas
     }
 
     @Override
-    public List<RestaurantComment> getRestaurantComments(int restaurantId) {
-        List<RestaurantComment> list = new ArrayList<>(NUMBER_OF_RESTAURANT_COMMENTS);
+    public List<Comment> getRestaurantComments(int restaurantId) {
+        List<Comment> list = new ArrayList<>(NUMBER_OF_RESTAURANT_COMMENTS);
         for (int i = 0; i < NUMBER_OF_RESTAURANT_COMMENTS; i++) {
-            list.add(new MockRestaurantComment(this, profileManagerFactory, i));
+            list.add(new MockComment(this, profileManagerFactory, i));
         }
         return Collections.unmodifiableList(list);
     }
@@ -54,6 +54,15 @@ public class MockRestaurantDataSource implements RestaurantDataSource, MockDatas
         List<Food> list = new ArrayList<>(NUMBER_OF_FOODS);
         for (int i = 0; i < NUMBER_OF_FOODS; i++) {
             list.add(new MockFood(this, i));
+        }
+        return Collections.unmodifiableList(list);
+    }
+    
+    @Override
+    public List<Comment> getFoodComments(int foodId) {
+        List<Comment> list = new ArrayList<>(NUMBER_OF_FOOD_COMMENTS);
+        for (int i = 0; i < NUMBER_OF_FOOD_COMMENTS; i++) {
+            list.add(new MockComment(this, profileManagerFactory, i));
         }
         return Collections.unmodifiableList(list);
     }

@@ -7,4 +7,5 @@ public interface Food extends LocalizedObject<FoodLocale> {
     public String getPhotoUrl();
     public List<Price> getPrices();
     public List<Extra> getExtras();
+    public List<Comment> getComments();
 }

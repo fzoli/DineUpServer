@@ -19,7 +19,7 @@ import com.dineup.api.service.httpclient.v1_0.element.CategoryElement;
 import com.dineup.api.service.httpclient.v1_0.element.ExtraElement;
 import com.dineup.api.service.httpclient.v1_0.element.FoodElement;
 import com.dineup.api.service.httpclient.v1_0.element.OptionElement;
-import com.dineup.api.service.httpclient.v1_0.element.RestaurantCommentElement;
+import com.dineup.api.service.httpclient.v1_0.element.CommentElement;
 import com.dineup.api.service.httpclient.v1_0.element.RestaurantElement;
 import com.dineup.api.service.httpclient.v1_0.element.ServiceElement;
 import com.dineup.service.rest.ElementConfigKeys;
@@ -78,7 +78,7 @@ public class DineUpApiHandler implements DineUpApi {
     
     @Override
     public List<Comment> getFoodComments(Food food, ProfileToken profileToken) throws DetailedException {
-        throw new UnsupportedOperationException("Not supported yet."); // TODO
+        return executor.execute(new GetFoodComments(food.getId(), profileToken));
     }
     
     @Override
@@ -184,15 +184,53 @@ public class DineUpApiHandler implements DineUpApi {
 
         @Override
         public List<Comment> parseResponse(Gson gson, JsonReader jsonReader) {
-            Type entityType = new TypeToken<List<RestaurantCommentElement>>() {}.getType();
-            List<RestaurantCommentElement> entity = gson.fromJson(jsonReader, entityType);
+            Type entityType = new TypeToken<List<CommentElement>>() {}.getType();
+            List<CommentElement> entity = gson.fromJson(jsonReader, entityType);
             format(entity);
             List<Comment> list = Lists.convert(entity);
             return Collections.unmodifiableList(list);
         }
         
-        private void format(List<RestaurantCommentElement> entity) {
-            for (RestaurantCommentElement element : entity) {
+        private void format(List<CommentElement> entity) {
+            for (CommentElement element : entity) {
+                Utils.completeProfileElement(element.profile, targetConfig);
+            }
+        }
+        
+    }
+    
+    private class GetFoodComments extends Executable<List<Comment>> {
+
+        private final int foodId;
+        private final ProfileToken profileToken;
+        
+        public GetFoodComments(int foodId, ProfileToken profileToken) {
+            this.foodId = foodId;
+            this.profileToken = profileToken;
+        }
+
+        @Override
+        public void appendPath(StringConcatenator path) {
+            path.addItems(apiVersion, RequestPath.PATH_FOOD_COMMENTS);
+        }
+
+        @Override
+        public void putParameters(Map<String, Object> parameters) {
+            parameters.put(RestaurantKeys.FOOD_ID, foodId);
+            Utils.putProfileParameters(parameters, profileToken);
+        }
+
+        @Override
+        public List<Comment> parseResponse(Gson gson, JsonReader jsonReader) {
+            Type entityType = new TypeToken<List<CommentElement>>() {}.getType();
+            List<CommentElement> entity = gson.fromJson(jsonReader, entityType);
+            format(entity);
+            List<Comment> list = Lists.convert(entity);
+            return Collections.unmodifiableList(list);
+        }
+        
+        private void format(List<CommentElement> entity) {
+            for (CommentElement element : entity) {
                 Utils.completeProfileElement(element.profile, targetConfig);
             }
         }

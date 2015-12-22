@@ -1,10 +1,13 @@
 package com.dineup.service.element;
 
+import com.dineup.dom.Comment;
 import com.dineup.service.ElementContext;
 import com.dineup.dom.Food;
 import com.dineup.dom.FoodLocale;
 import com.dineup.dom.Locale;
+import com.dineup.dom.Comments;
 import com.dineup.service.ElementConfig;
+import com.dineup.service.element.converter.CommentElementConverter;
 import com.dineup.service.element.converter.ExtraElementConverter;
 import com.dineup.service.element.converter.PriceElementConverter;
 import com.dineup.util.Converters;
@@ -72,6 +75,15 @@ public class FoodElement {
             return null;
         }
         return Converters.convertList(food.getExtras(), new ExtraElementConverter(elementContext, elementConfig));
+    }
+    
+    @XmlElement
+    public List<CommentElement> getComments() {
+        if (!elementConfig.withNestedObjects()) {
+            return null;
+        }
+        List<Comment> sortedComments = Comments.getSortedComments(food.getComments(), elementConfig.getPreferredLanguageCode());
+        return Converters.convertList(sortedComments, new CommentElementConverter(elementContext, elementConfig));
     }
     
 }
