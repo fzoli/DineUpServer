@@ -38,6 +38,7 @@ import com.dineup.api.dom.Comment;
 import com.dineup.api.request.FoodCommentRequest;
 import com.dineup.api.request.RestaurantCommentRequest;
 import com.dineup.api.request.query.RestaurantQuery;
+import com.dineup.util.Strings;
 
 public class DineUpApiHandler implements DineUpApi {
 
@@ -92,13 +93,13 @@ public class DineUpApiHandler implements DineUpApi {
     }
 
     @Override
-    public Comment sendRestaurantComment(RestaurantCommentRequest restaurantCommentRequest, ProfileToken profileToken) throws DetailedException {
-        throw new UnsupportedOperationException("Not supported yet."); // TODO
+    public int addRestaurantComment(RestaurantCommentRequest restaurantCommentRequest, ProfileToken profileToken) throws DetailedException {
+        return executor.execute(new AddRestaurantComment(restaurantCommentRequest, profileToken));
     }
 
     @Override
-    public Comment sendFoodComment(FoodCommentRequest foodCommentRequest, ProfileToken profileToken) throws DetailedException {
-        throw new UnsupportedOperationException("Not supported yet."); // TODO
+    public int addFoodComment(FoodCommentRequest foodCommentRequest, ProfileToken profileToken) throws DetailedException {
+        return executor.execute(new AddFoodComment(foodCommentRequest, profileToken));
     }
     
     private class GetService extends Executable<Service> {
@@ -345,6 +346,72 @@ public class DineUpApiHandler implements DineUpApi {
             List<OptionElement> entity = gson.fromJson(jsonReader, entityType);
             List<Option> list = Lists.convert(entity);
             return Collections.unmodifiableList(list);
+        }
+        
+    }
+    
+    private class AddRestaurantComment extends Executable<Integer> {
+
+        private final RestaurantCommentRequest restaurantCommentRequest;
+        private final ProfileToken profileToken;
+        
+        public AddRestaurantComment(RestaurantCommentRequest restaurantCommentRequest, ProfileToken profileToken) {
+            this.restaurantCommentRequest = restaurantCommentRequest;
+            this.profileToken = profileToken;
+        }
+
+        @Override
+        public void appendPath(StringConcatenator path) {
+            path.addItems(apiVersion, RequestPath.PATH_ADD_RESTAURANT_COMMENT);
+        }
+
+        @Override
+        public void putParameters(Map<String, Object> parameters) {
+            parameters.put(RestaurantKeys.RESTAURANT_ID, restaurantCommentRequest.getRestaurant().getId());
+            parameters.put(RestaurantKeys.RATING, restaurantCommentRequest.getRating());
+            if (!Strings.isEmptyText(restaurantCommentRequest.getMessage())) {
+                parameters.put(RestaurantKeys.MESSAGE, restaurantCommentRequest.getMessage());
+            }
+            Utils.putProfileParameters(parameters, profileToken);
+        }
+
+        @Override
+        public Integer parseResponse(Gson gson, JsonReader jsonReader) {
+            Integer id = gson.fromJson(jsonReader, Integer.class);
+            return id;
+        }
+        
+    }
+    
+    private class AddFoodComment extends Executable<Integer> {
+
+        private final FoodCommentRequest foodCommentRequest;
+        private final ProfileToken profileToken;
+        
+        public AddFoodComment(FoodCommentRequest foodCommentRequest, ProfileToken profileToken) {
+            this.foodCommentRequest = foodCommentRequest;
+            this.profileToken = profileToken;
+        }
+
+        @Override
+        public void appendPath(StringConcatenator path) {
+            path.addItems(apiVersion, RequestPath.PATH_ADD_FOOD_COMMENT);
+        }
+
+        @Override
+        public void putParameters(Map<String, Object> parameters) {
+            parameters.put(RestaurantKeys.FOOD_ID, foodCommentRequest.getFood().getId());
+            parameters.put(RestaurantKeys.RATING, foodCommentRequest.getRating());
+            if (!Strings.isEmptyText(foodCommentRequest.getMessage())) {
+                parameters.put(RestaurantKeys.MESSAGE, foodCommentRequest.getMessage());
+            }
+            Utils.putProfileParameters(parameters, profileToken);
+        }
+
+        @Override
+        public Integer parseResponse(Gson gson, JsonReader jsonReader) {
+            Integer id = gson.fromJson(jsonReader, Integer.class);
+            return id;
         }
         
     }

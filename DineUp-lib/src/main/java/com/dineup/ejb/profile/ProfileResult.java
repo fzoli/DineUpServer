@@ -1,10 +1,12 @@
 package com.dineup.ejb.profile;
 
 import com.dineup.dom.Person;
+import com.dineup.dom.Profile;
 import java.util.Date;
 
 public class ProfileResult {
 
+    private final Profile.Type type;
     private final String userId;
     private final Person.Gender gender;
     private final Date birthDate;
@@ -13,6 +15,7 @@ public class ProfileResult {
     private final String lastName;
 
     private ProfileResult(Builder builder) {
+        type = builder.type;
         userId = builder.userId;
         gender = builder.gender;
         birthDate = builder.birthDate;
@@ -23,6 +26,10 @@ public class ProfileResult {
 
     public static Builder newBuilder() {
         return new Builder();
+    }
+
+    public Profile.Type getType() {
+        return type;
     }
 
     public String getUserId() {
@@ -51,6 +58,7 @@ public class ProfileResult {
 
     public static final class Builder {
 
+        private Profile.Type type;
         private String userId;
         private Person.Gender gender;
         private Date birthDate;
@@ -61,6 +69,11 @@ public class ProfileResult {
         private Builder() {
         }
 
+        public Builder type(Profile.Type type) {
+            this.type = type;
+            return this;
+        }
+        
         public Builder userId(String userId) {
             this.userId = userId;
             return this;

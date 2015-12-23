@@ -15,7 +15,7 @@ public class ServiceException extends DetailedException {
     
     @Override
     public String toString() {
-        return String.format("%s(statusCode=%s, message=\"%s\", description=\"%s\")", getClass().getSimpleName(), getStatusCode(), getLocalizedMessage(), getLocalizedDescription());
+        return String.format("%s(key=%s, statusCode=%s, message=\"%s\", description=\"%s\")", getClass().getSimpleName(), getKey(), getStatusCode(), getLocalizedMessage(), getLocalizedDescription());
     }
     
 }

@@ -16,4 +16,8 @@ public interface RequestPath {
     String PATH_OPTIONS = "/options";
     
     String PATH_GOOGLE_PROFILE_PHOTO = "/GoogleProfilePhoto";
+    
+    String PATH_ADD_RESTAURANT_COMMENT = "/addRestaurantComment";
+    String PATH_ADD_FOOD_COMMENT = "/addFoodComment";
+    
 }

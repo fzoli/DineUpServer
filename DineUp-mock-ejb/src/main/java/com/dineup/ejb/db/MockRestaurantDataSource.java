@@ -1,6 +1,8 @@
 package com.dineup.ejb.db;
 
 import com.dineup.dom.*;
+import com.dineup.ejb.db.data.FoodCommentData;
+import com.dineup.ejb.db.data.RestaurantCommentData;
 import com.dineup.ejb.profile.ProfileManagerFactory;
 import com.dineup.mock.*;
 import com.dineup.util.Filter;
@@ -21,6 +23,15 @@ public class MockRestaurantDataSource implements RestaurantDataSource, MockDatas
     public MockRestaurantDataSource() {
     }
 
+    public Profile getProfile(int profileId) {
+        return new MockProfile(this, profileManagerFactory, profileId);
+    }
+    
+    @Override
+    public Restaurant getRestaurant(int restaurantId) {
+        return new MockRestaurant(this, restaurantId);
+    }
+    
     @Override
     public List<Restaurant> getRestaurants(Filter<Restaurant> ... filters) {
         List<Restaurant> list = new ArrayList<>(NUMBER_OF_RESTAURANTS);
@@ -49,6 +60,11 @@ public class MockRestaurantDataSource implements RestaurantDataSource, MockDatas
         return Collections.unmodifiableList(list);
     }
 
+    @Override
+    public Food getFood(int foodId) {
+        return new MockFood(this, foodId);
+    }
+    
     @Override
     public List<Food> getFoods(int categoryId) {
         List<Food> list = new ArrayList<>(NUMBER_OF_FOODS);
@@ -85,4 +101,14 @@ public class MockRestaurantDataSource implements RestaurantDataSource, MockDatas
         return Collections.unmodifiableList(list);
     }
     
+    @Override
+    public int addRestaurantComment(RestaurantCommentData commentData) {
+        throw new UnsupportedOperationException("Not supported yet."); // TODO
+    }
+    
+    @Override
+    public int addFoodComment(FoodCommentData commentData) {
+        throw new UnsupportedOperationException("Not supported yet."); // TODO
+    }
+
 }

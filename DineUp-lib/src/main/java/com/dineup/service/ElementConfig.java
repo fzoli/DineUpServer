@@ -77,7 +77,7 @@ public class ElementConfig {
         return new Area(createCoordinate(), radius);
     }
     
-    /*public ProfileDescriptor createProfileDescriptor() {
+    public ProfileDescriptor createRequestProfileDescriptor() {
         if (facebookAccessToken != null) {
             return createProfileDescriptor(Profile.Type.FACEBOOK);
         }
@@ -85,7 +85,7 @@ public class ElementConfig {
             return createProfileDescriptor(Profile.Type.GOOGLE_PLUS);
         }
         return null;
-    }*/
+    }
     
     public ProfileDescriptor createProfileDescriptor(Profile.Type profileType) {
         if (profileType == null) {

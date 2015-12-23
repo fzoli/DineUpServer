@@ -5,4 +5,7 @@ public interface RestaurantKeys {
     String CATEGORY_ID = "categoryId";
     String FOOD_ID = "foodId";
     String EXTRA_ID = "extraId";
+    
+    String MESSAGE = "message";
+    String RATING = "rating";
 }

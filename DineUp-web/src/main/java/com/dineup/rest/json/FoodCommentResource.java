@@ -3,6 +3,7 @@ package com.dineup.rest.json;
 import com.dineup.ejb.rest.RestaurantRestResource;
 import com.dineup.rest.ApiVersion;
 import com.dineup.rest.BaseResource;
+import com.dineup.service.request.CommentRequest;
 import com.dineup.service.rest.RequestPath;
 import com.dineup.service.rest.RestaurantKeys;
 import javax.enterprise.context.RequestScoped;
@@ -16,7 +17,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @RequestScoped
-@Path(RequestPath.ROOT_JSON + ApiVersion.ROOT + RequestPath.PATH_FOOD_COMMENTS)
+@Path(RequestPath.ROOT_JSON + ApiVersion.ROOT)
 public class FoodCommentResource extends BaseResource {
     
     @Inject
@@ -25,16 +26,47 @@ public class FoodCommentResource extends BaseResource {
     @QueryParam(RestaurantKeys.FOOD_ID)
     private Integer foodId;
     
+    @QueryParam(RestaurantKeys.MESSAGE)
+    private String message;
+    
+    @QueryParam(RestaurantKeys.RATING)
+    private Double rating;
+    
     @GET
+    @Path(RequestPath.PATH_FOOD_COMMENTS)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getResponseByGet() {
         return resource.getFoodComments(createElementConfig(), foodId);
     }
     
     @POST
+    @Path(RequestPath.PATH_FOOD_COMMENTS)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getResponseByPost() {
         return resource.getFoodComments(createElementConfig(), foodId);
+    }
+    
+    @GET
+    @Path(RequestPath.PATH_ADD_FOOD_COMMENT)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addCommentByGet() {
+        return addComment();
+    }
+    
+    @POST
+    @Path(RequestPath.PATH_ADD_FOOD_COMMENT)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addCommentByPost() {
+        return addComment();
+    }
+    
+    private Response addComment() {
+        return resource.addFoodComment(createElementConfig(), CommentRequest.newBuilder()
+                .id(foodId)
+                .publicProfile(true)
+                .message(message)
+                .rating(rating)
+                .build());
     }
     
 }

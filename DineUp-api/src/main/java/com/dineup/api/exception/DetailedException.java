@@ -39,7 +39,7 @@ public class DetailedException extends LocalizedException {
 
     @Override
     public String toString() {
-        return String.format("%s(message=\"%s\", description=\"%s\")", getClass().getSimpleName(), getLocalizedMessage(), getLocalizedDescription());
+        return String.format("%s(key=%s, message=\"%s\", description=\"%s\")", getClass().getSimpleName(), getKey(), getLocalizedMessage(), getLocalizedDescription());
     }
     
 }

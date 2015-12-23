@@ -14,6 +14,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.dineup.api.dom.Comment;
+import com.dineup.api.request.FoodCommentRequest;
+import com.dineup.api.request.RestaurantCommentRequest;
 import com.dineup.api.request.query.RestaurantQuery;
 
 public class Example {
@@ -28,6 +30,7 @@ public class Example {
                 LOGGER.info("Please upgrade the client.");
                 return;
             }
+            ProfileToken profileToken = new ProfileToken("abcdef0123456789", Profile.Type.FACEBOOK);
             List<Restaurant> restaurants = api.getRestaurants(RestaurantQuery.newQuery()
                     .coordinate(new Coordinate(5, 6)).maxDistanceInMeters(10000000)
                     .build());
@@ -36,8 +39,8 @@ public class Example {
                 return;
             }
             Restaurant restaurant = restaurants.get(0);
-            List<Comment> comments = api.getRestaurantComments(restaurant, new ProfileToken("abcdef0123456789", Profile.Type.FACEBOOK));
-            LOGGER.info("Number of comments: " + comments.size());
+            List<Comment> restaurantComments = api.getRestaurantComments(restaurant, profileToken);
+            LOGGER.info("Number of restaurant comments: " + restaurantComments.size());
             List<Category> categories = api.getCategories(restaurant);
             LOGGER.info("Number of categories: " + categories.size());
             if (categories.isEmpty()) {
@@ -50,6 +53,8 @@ public class Example {
                 return;
             }
             Food food = foods.get(0);
+            List<Comment> foodComments = api.getFoodComments(food, profileToken);
+            LOGGER.info("Number of food comments: " + foodComments.size());
             List<Extra> extras = api.getExtras(food);
             LOGGER.info("Number of extras: " + extras.size());
             if (extras.isEmpty()) {
@@ -58,6 +63,18 @@ public class Example {
             Extra extra = extras.get(0);
             List<Option> options = api.getOptions(extra);
             LOGGER.info("Number of options: " + options.size());
+            int createdRestaurantCommentId = api.addRestaurantComment(RestaurantCommentRequest.newBuilder()
+                    .restaurant(restaurant)
+                    .rating(3)
+                    .message("test")
+                    .build(), profileToken);
+            LOGGER.info("Created restaurant comment ID: " + createdRestaurantCommentId);
+            int createdFoodCommentId = api.addFoodComment(FoodCommentRequest.newBuilder()
+                    .food(food)
+                    .rating(3)
+                    .message("test")
+                    .build(), profileToken);
+            LOGGER.info("Created food comment ID: " + createdFoodCommentId);
         }
         catch (DetailedException ex) {
             LOGGER.error("Error: " + ex, ex);

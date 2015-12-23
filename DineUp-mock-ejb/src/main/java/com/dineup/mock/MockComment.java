@@ -1,6 +1,5 @@
 package com.dineup.mock;
 
-import com.dineup.dom.Person;
 import com.dineup.dom.Profile;
 import com.dineup.ejb.db.MockDatas;
 import com.dineup.ejb.db.RestaurantDataSource;
@@ -15,7 +14,6 @@ public class MockComment implements Comment, MockDatas {
     private final ProfileManagerFactory factory;
     private final int id;
     
-    
     public MockComment(RestaurantDataSource dataSource, ProfileManagerFactory factory, int id) {
         this.factory = factory;
         this.dataSource = dataSource;
@@ -23,66 +21,13 @@ public class MockComment implements Comment, MockDatas {
     }
 
     @Override
+    public Integer getId() {
+        return id;
+    }
+    
+    @Override
     public Profile getProfile() {
-        return new Profile() {
-            
-            @Override
-            public Date getLastSync() {
-                return new Date();
-            }
-
-            @Override
-            public String getUserId() {
-                return "UID"+id;
-            }
-
-            @Override
-            public Profile.Type getType() {
-                return id % 2 == 0 ? Type.GOOGLE_PLUS : Type.FACEBOOK;
-            }
-
-            @Override
-            public Person getPerson() {
-                return new Person() {
-                    @Override
-                    public Person.Name getName() {
-                        return new Name() {
-
-                            @Override
-                            public String getFirstName() {
-                                return "First";
-                            }
-
-                            @Override
-                            public String getMiddleName() {
-                                return "Middle";
-                            }
-
-                            @Override
-                            public String getLastName() {
-                                return "Last";
-                            }
-                        };
-                    }
-
-                    @Override
-                    public Person.Gender getGender() {
-                        return Gender.MALE;
-                    }
-
-                    @Override
-                    public Date getBirthDate() {
-                        Calendar c = Calendar.getInstance();
-                        c.setTimeInMillis(0);
-                        c.set(Calendar.YEAR, 1989);
-                        c.set(Calendar.MONTH, Calendar.OCTOBER);
-                        c.set(Calendar.DAY_OF_MONTH, 27);
-                        return c.getTime();
-                    }
-                };
-            }
-            
-        };
+        return new MockProfile(dataSource, factory, id);
     }
 
     @Override
@@ -115,5 +60,5 @@ public class MockComment implements Comment, MockDatas {
         c.add(Calendar.DAY_OF_MONTH, -1 * id);
         return c.getTime();
     }
-    
+
 }

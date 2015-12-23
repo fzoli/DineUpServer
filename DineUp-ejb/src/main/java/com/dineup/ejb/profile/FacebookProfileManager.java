@@ -36,7 +36,7 @@ final class FacebookProfileManager implements ProfileManager {
     
     @Override
     public ProfileResult getProfile() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not supported yet."); // TODO
     }
 
 }

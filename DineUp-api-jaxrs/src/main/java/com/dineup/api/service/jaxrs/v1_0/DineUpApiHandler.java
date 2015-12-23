@@ -91,12 +91,12 @@ public class DineUpApiHandler implements DineUpApi {
     }
 
     @Override
-    public Comment sendRestaurantComment(RestaurantCommentRequest restaurantCommentRequest, ProfileToken profileToken) throws DetailedException {
+    public int addRestaurantComment(RestaurantCommentRequest restaurantCommentRequest, ProfileToken profileToken) throws DetailedException {
         throw new UnsupportedOperationException("Not supported yet."); // TODO
     }
 
     @Override
-    public Comment sendFoodComment(FoodCommentRequest foodCommentRequest, ProfileToken profileToken) throws DetailedException {
+    public int addFoodComment(FoodCommentRequest foodCommentRequest, ProfileToken profileToken) throws DetailedException {
         throw new UnsupportedOperationException("Not supported yet."); // TODO
     }
     

@@ -29,8 +29,18 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.ListJoin;
 import javax.persistence.criteria.Root;
 import com.dineup.dom.Comment;
+import com.dineup.dom.Profile;
+import com.dineup.ejb.db.data.BaseCommentData;
+import com.dineup.ejb.db.data.FoodCommentData;
+import com.dineup.ejb.db.data.RestaurantCommentData;
+import com.dineup.ejb.profile.ProfileResult;
+import com.dineup.entity.BaseCommentEntity;
 import com.dineup.entity.FoodCommentEntity;
 import com.dineup.entity.FoodCommentEntity_;
+import com.dineup.entity.ProfileEntity;
+import com.dineup.entity.ProfileEntity_;
+import java.util.Date;
+import javax.persistence.NoResultException;
 
 @Singleton
 public class LiveRestaurantDataSource implements RestaurantDataSource {
@@ -47,6 +57,40 @@ public class LiveRestaurantDataSource implements RestaurantDataSource {
         return manager;
     }
     
+    public Profile getProfile(String userId, Profile.Type profileType) {
+        CriteriaBuilder builder = getManager().getCriteriaBuilder();
+        CriteriaQuery<ProfileEntity> query = builder.createQuery(ProfileEntity.class);
+        Root<ProfileEntity> root = query.from(ProfileEntity.class);
+        query.where(
+            builder.and(
+                builder.equal(root.get(ProfileEntity_.userId), userId),
+                builder.equal(root.get(ProfileEntity_.type), profileType)
+            )
+        );
+        try {
+            ProfileEntity result = getManager().createQuery(query).getSingleResult();
+            return result;
+        }
+        catch (NoResultException ex) {
+            return null;
+        }
+    }
+    
+    @Override
+    public Restaurant getRestaurant(int restaurantId) {
+        CriteriaBuilder builder = getManager().getCriteriaBuilder();
+        CriteriaQuery<RestaurantEntity> query = builder.createQuery(RestaurantEntity.class);
+        Root<RestaurantEntity> root = query.from(RestaurantEntity.class);
+        query.where(builder.equal(root.get(RestaurantEntity_.id), restaurantId));
+        try {
+            RestaurantEntity result = getManager().createQuery(query).getSingleResult();
+            return result;
+        }
+        catch (NoResultException ex) {
+            return null;
+        }
+    }
+
     @Override
     public List<Restaurant> getRestaurants(Filter<Restaurant> ... filters) {
         CriteriaBuilder builder = getManager().getCriteriaBuilder();
@@ -80,6 +124,21 @@ public class LiveRestaurantDataSource implements RestaurantDataSource {
         return Lists.convert(resultList);
     }
 
+    @Override
+    public Food getFood(int foodId) {
+        CriteriaBuilder builder = getManager().getCriteriaBuilder();
+        CriteriaQuery<FoodEntity> query = builder.createQuery(FoodEntity.class);
+        Root<FoodEntity> root = query.from(FoodEntity.class);
+        query.where(builder.equal(root.get(FoodEntity_.id), foodId));
+        try {
+            FoodEntity result = getManager().createQuery(query).getSingleResult();
+            return result;
+        }
+        catch (NoResultException ex) {
+            return null;
+        }
+    }
+    
     @Override
     public List<Food> getFoods(int categoryId) {
         CriteriaBuilder builder = getManager().getCriteriaBuilder();
@@ -124,4 +183,50 @@ public class LiveRestaurantDataSource implements RestaurantDataSource {
         return Lists.convert(resultList);
     }
 
+    @Override
+    public int addRestaurantComment(RestaurantCommentData commentData) {
+        RestaurantCommentEntity commentEntity = new RestaurantCommentEntity();
+        loadBaseComment(commentEntity, commentData);
+        commentEntity.setRestaurant((RestaurantEntity) commentData.getRestaurant());
+        getManager().persist(commentEntity);
+        return commentEntity.getId();
+    }
+    
+    @Override
+    public int addFoodComment(FoodCommentData commentData) {
+        FoodCommentEntity commentEntity = new FoodCommentEntity();
+        loadBaseComment(commentEntity, commentData);
+        commentEntity.setFood((FoodEntity) commentData.getFood());
+        getManager().persist(commentEntity);
+        return commentEntity.getId();
+    }
+
+    private void loadBaseComment(BaseCommentEntity commentEntity, BaseCommentData commentData) {
+        ProfileResult profileResult = commentData.getProfileResult();
+        ProfileEntity profileEntity = updateProfile(profileResult);
+        commentEntity.setLanguageCode(commentData.getLanguageCode());
+        commentEntity.setMessage(commentData.getMessage());
+        commentEntity.setProfile(profileEntity);
+        commentEntity.setPublicProfile(commentData.isPublicProfile());
+        commentEntity.setRating(commentData.getRating());
+        commentEntity.setTime(commentData.getTime());
+    }
+    
+    private ProfileEntity updateProfile(ProfileResult profileResult) {
+        ProfileEntity profileEntity = (ProfileEntity) getProfile(profileResult.getUserId(), profileResult.getType());
+        if (profileEntity == null) {
+            profileEntity = new ProfileEntity();
+        }
+        profileEntity.setLastSync(new Date());
+        profileEntity.setType(profileResult.getType());
+        profileEntity.setUserId(profileResult.getUserId());
+        profileEntity.getPerson().setGender(profileResult.getGender());
+        profileEntity.getPerson().setBirthDate(profileResult.getBirthDate());
+        profileEntity.getPerson().getName().setFirstName(profileResult.getFirstName());
+        profileEntity.getPerson().getName().setLastName(profileResult.getLastName());
+        profileEntity.getPerson().getName().setMiddleName(profileResult.getMiddleName());
+        getManager().persist(profileEntity);
+        return profileEntity;
+    }
+    
 }

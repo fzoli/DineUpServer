@@ -16,7 +16,11 @@ public final class LanguageDetector {
         initOnce();
         Detector detector = DetectorFactory.create();
         detector.append(text);
-        return detector.detect();
+        String result = detector.detect();
+        if (result != null && result.equalsIgnoreCase("unknown")) {
+            return null;
+        }
+        return result;
     }
     
     private boolean initialized = false;

@@ -33,6 +33,16 @@ import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ws.rs.core.GenericEntity;
 import com.dineup.dom.Comment;
+import com.dineup.ejb.db.data.FoodCommentData;
+import com.dineup.ejb.db.data.RestaurantCommentData;
+import com.dineup.ejb.profile.ProfileManager;
+import com.dineup.ejb.profile.ProfileResult;
+import com.dineup.language.LanguageDetector;
+import com.dineup.service.error.exception.ObjectNotFoundException;
+import com.dineup.service.error.exception.ProfileLoadFailedException;
+import com.dineup.service.error.exception.UnspecifiedUserTokenException;
+import com.dineup.service.request.CommentRequest;
+import java.util.Date;
 
 @Singleton
 public class RestaurantRestResourceBean implements RestaurantRestResource, HeaderKeys {
@@ -171,8 +181,84 @@ public class RestaurantRestResourceBean implements RestaurantRestResource, Heade
         }
     }
     
+    @Override
+    public Response addRestaurantComment(ElementConfig elementConfig, CommentRequest commentRequest) {
+        try {
+            elementConfig.validate();
+            commentRequest.validate();
+            ProfileManager profileManager = profileManagerFactory.createManager(elementConfig.createRequestProfileDescriptor());
+            if (profileManager == null) {
+                throw new UnspecifiedUserTokenException();
+            }
+            ProfileResult profileResult;
+            try {
+                profileResult = profileManager.getProfile();
+            }
+            catch (Exception ex) {
+                throw new ProfileLoadFailedException();
+            }
+            Restaurant restaurant = dataSource.getRestaurant(commentRequest.getId());
+            if (restaurant == null) {
+                throw new ObjectNotFoundException("Restaurant not found");
+            }
+            int commentId = dataSource.addRestaurantComment(RestaurantCommentData.newBuilder()
+                .restaurant(restaurant)
+                .message(commentRequest.getMessage())
+                .languageCode(LanguageDetector.getInstance().getLanguageCode(commentRequest.getMessage()))
+                .rating(commentRequest.getRating())
+                .profileResult(profileResult)
+                .publicProfile(commentRequest.isPublicProfile())
+                .time(now())
+                .build());
+            return Response.ok(commentId).build();
+        }
+        catch (Exception ex) {
+            return createErrorResponse(elementConfig, ex);
+        }
+    }
+    
+    @Override
+    public Response addFoodComment(ElementConfig elementConfig, CommentRequest commentRequest) {
+        try {
+            elementConfig.validate();
+            commentRequest.validate();
+            ProfileManager profileManager = profileManagerFactory.createManager(elementConfig.createRequestProfileDescriptor());
+            if (profileManager == null) {
+                throw new UnspecifiedUserTokenException();
+            }
+            ProfileResult profileResult;
+            try {
+                profileResult = profileManager.getProfile();
+            }
+            catch (Exception ex) {
+                throw new ProfileLoadFailedException();
+            }
+            Food food = dataSource.getFood(commentRequest.getId());
+            if (food == null) {
+                throw new ObjectNotFoundException("Food not found");
+            }
+            int commentId = dataSource.addFoodComment(FoodCommentData.newBuilder()
+                .food(food)
+                .message(commentRequest.getMessage())
+                .languageCode(LanguageDetector.getInstance().getLanguageCode(commentRequest.getMessage()))
+                .rating(commentRequest.getRating())
+                .profileResult(profileResult)
+                .publicProfile(commentRequest.isPublicProfile())
+                .time(now())
+                .build());
+            return Response.ok(commentId).build();
+        }
+        catch (Exception ex) {
+            return createErrorResponse(elementConfig, ex);
+        }
+    }
+    
     private Response createErrorResponse(ElementConfig elementConfig, Exception ex) {
         return errorResponseFactory.createResponse(ex, elementConfig.getLanguageCode());
     }
 
+    private Date now() {
+        return new Date();
+    }
+    
 }
