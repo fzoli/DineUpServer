@@ -4,13 +4,13 @@ import com.dineup.BuildConfig;
 import com.dineup.dom.Profile;
 import com.dineup.service.rest.ProfileKeys;
 import com.dineup.service.rest.RequestPath;
-import javax.annotation.Nullable;
+import com.dineup.util.Strings;
 
 final class GoogleProfileManager implements ProfileManager {
 
     private final String accessToken;
     
-    public GoogleProfileManager(@Nullable String accessToken) {
+    public GoogleProfileManager(String accessToken) {
         this.accessToken = accessToken;
     }
 
@@ -29,7 +29,7 @@ final class GoogleProfileManager implements ProfileManager {
         if (userId == null) {
             return null;
         }
-        return BuildConfig.WEB_CONTEXT_ROOT + BuildConfig.WEB_REST_ROOT + RequestPath.PATH_GOOGLE_PROFILE_PHOTO + "?" + ProfileKeys.USER_ID + "=" + userId;
+        return Strings.concat("/", "/", BuildConfig.WEB_CONTEXT_ROOT, BuildConfig.WEB_REST_ROOT, RequestPath.PATH_GOOGLE_PROFILE_PHOTO + "?" + ProfileKeys.USER_ID + "=" + userId);
     }
 
     @Override
@@ -37,7 +37,8 @@ final class GoogleProfileManager implements ProfileManager {
         String requestUrl = String.format("https://www.googleapis.com/plus/v1/people/%s?fields=image&key=%s", userId, BuildConfig.GOOGLE_API_KEY);
         // TODO:
         // Parse response: {"image": {"url": "https://lh3.googleusercontent.com/-OkM...AANA/ltpH4BFZ2as/photo.jpg?sz=50"}}
-        return "https://lh3.googleusercontent.com/-OkM...AANA/ltpH4BFZ2as/photo.jpg?sz=50";
+        // return "https://lh3.googleusercontent.com/-OkM...AANA/ltpH4BFZ2as/photo.jpg?sz=50";
+        throw new UnsupportedOperationException("Not supported yet."); // TODO
     }
     
     @Override

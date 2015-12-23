@@ -8,7 +8,7 @@ public class ProfileManagerFactoryBean implements ProfileManagerFactory {
     @Override
     public ProfileManager createManager(ProfileDescriptor profileDescriptor) {
         if (profileDescriptor != null) {
-            ProfileManager manager = safeCreateManager(profileDescriptor);
+            ProfileManager manager = _createManager(profileDescriptor);
             if (manager != null && manager.getProfileType() != profileDescriptor.getProfileType()) {
                 throw new IllegalStateException("Profile missmatch. Fix code!");
             }
@@ -17,7 +17,7 @@ public class ProfileManagerFactoryBean implements ProfileManagerFactory {
         return null;
     }
     
-    private ProfileManager safeCreateManager(ProfileDescriptor profileDescriptor) {
+    private ProfileManager _createManager(ProfileDescriptor profileDescriptor) {
         switch (profileDescriptor.getProfileType()) {
             case FACEBOOK:
                 return new FacebookProfileManager(profileDescriptor.getAccessToken());

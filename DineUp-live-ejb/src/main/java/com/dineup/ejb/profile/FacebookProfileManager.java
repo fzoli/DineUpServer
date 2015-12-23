@@ -1,13 +1,12 @@
 package com.dineup.ejb.profile;
 
 import com.dineup.dom.Profile;
-import javax.annotation.Nullable;
 
 final class FacebookProfileManager implements ProfileManager {
 
     private final String accessToken;
     
-    public FacebookProfileManager(@Nullable String accessToken) {
+    public FacebookProfileManager(String accessToken) {
         this.accessToken = accessToken;
     }
 
