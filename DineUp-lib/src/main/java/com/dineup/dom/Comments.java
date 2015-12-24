@@ -22,13 +22,20 @@ public class Comments {
             Collections.sort(list, new Comparator<Comment>() {
                 @Override
                 public int compare(Comment o1, Comment o2) {
-                    int o1Prio = o1.getLanguageCode().equalsIgnoreCase(preferredLanguageCode) ? -1 : 1;
-                    int o2Prio = o2.getLanguageCode().equalsIgnoreCase(preferredLanguageCode) ? -1 : 1;
+                    int o1Prio = getLanguageCode(o1).equalsIgnoreCase(preferredLanguageCode) ? -1 : 1;
+                    int o2Prio = getLanguageCode(o2).equalsIgnoreCase(preferredLanguageCode) ? -1 : 1;
                     return Integer.compare(o1Prio, o2Prio);
                 }
             });
         }
         return list;
+    }
+    
+    private static String getLanguageCode(Comment comment) {
+        if (comment == null || comment.getMessage() == null) {
+            return null;
+        }
+        return comment.getMessage().getLanguageCode();
     }
     
     private Comments() {

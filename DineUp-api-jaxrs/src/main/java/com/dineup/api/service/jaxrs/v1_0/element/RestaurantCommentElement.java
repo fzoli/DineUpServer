@@ -10,10 +10,7 @@ import com.dineup.api.dom.Comment;
 public class RestaurantCommentElement implements Comment, Serializable {
     
     @XmlElement
-    public String languageCode;
-    
-    @XmlElement
-    public String message;
+    public MessageElement message;
     
     @XmlElement
     public ProfileElement profile;
@@ -28,12 +25,7 @@ public class RestaurantCommentElement implements Comment, Serializable {
     }
 
     @Override
-    public String getLanguageCode() {
-        return languageCode;
-    }
-
-    @Override
-    public String getMessage() {
+    public MessageElement getMessage() {
         return message;
     }
 

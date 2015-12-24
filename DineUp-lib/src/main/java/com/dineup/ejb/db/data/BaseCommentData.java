@@ -1,5 +1,6 @@
 package com.dineup.ejb.db.data;
 
+import com.dineup.dom.Message;
 import com.dineup.ejb.profile.ProfileResult;
 
 import java.util.Date;
@@ -9,8 +10,7 @@ public class BaseCommentData {
     private final ProfileResult profileResult;
     private final boolean publicProfile;
     private final double rating;
-    private final String message;
-    private final String languageCode;
+    private final Message message;
     private final Date time;
 
     protected BaseCommentData(BaseBuilder builder) {
@@ -18,7 +18,6 @@ public class BaseCommentData {
         publicProfile = builder.publicProfile;
         rating = builder.rating;
         message = builder.message;
-        languageCode = builder.languageCode;
         time = builder.time;
     }
 
@@ -34,12 +33,8 @@ public class BaseCommentData {
         return rating;
     }
 
-    public String getMessage() {
+    public Message getMessage() {
         return message;
-    }
-
-    public String getLanguageCode() {
-        return languageCode;
     }
 
     public Date getTime() {
@@ -50,8 +45,7 @@ public class BaseCommentData {
         private ProfileResult profileResult;
         private boolean publicProfile;
         private double rating;
-        private String message;
-        private String languageCode;
+        private Message message;
         private Date time;
 
         protected BaseBuilder() {
@@ -72,13 +66,8 @@ public class BaseCommentData {
             return (T) this;
         }
 
-        public T message(String message) {
+        public T message(Message message) {
             this.message = message;
-            return (T) this;
-        }
-
-        public T languageCode(String languageCode) {
-            this.languageCode = languageCode;
             return (T) this;
         }
 

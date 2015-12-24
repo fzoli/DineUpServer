@@ -7,7 +7,6 @@ public interface Comment {
     public Profile getProfile();
     public boolean isProfilePublic();
     public double getRating();
-    public String getMessage();
-    public String getLanguageCode();
+    public Message getMessage();
     public Date getTime();
 }

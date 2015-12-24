@@ -8,6 +8,7 @@ import java.util.Date;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import com.dineup.dom.Comment;
+import com.dineup.service.element.converter.MessageElementConverter;
 
 @XmlRootElement(name = "comment")
 public class CommentElement {
@@ -26,13 +27,8 @@ public class CommentElement {
     }
     
     @XmlElement
-    public String getMessage() {
-        return comment.getMessage();
-    }
-    
-    @XmlElement
-    public String getLanguageCode() {
-        return comment.getLanguageCode();
+    public MessageElement getMessage() {
+        return Converters.convert(comment.getMessage(), new MessageElementConverter(elementContext, elementConfig));
     }
     
     @XmlElement

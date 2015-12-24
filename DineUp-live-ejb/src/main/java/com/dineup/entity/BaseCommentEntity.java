@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import com.dineup.dom.Comment;
+import com.dineup.dom.Message;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
@@ -33,11 +34,11 @@ public abstract class BaseCommentEntity implements Comment {
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date time;
     
-    @Column(name = "message")
-    private String message;
+    @Column(name = "message_text")
+    private String messageText;
     
-    @Column(name = "language_code")
-    private String languageCode;
+    @Column(name = "message_language_code")
+    private String messageLanguageCode;
 
     @Override
     public Integer getId() {
@@ -72,23 +73,21 @@ public abstract class BaseCommentEntity implements Comment {
     }
 
     @Override
-    public String getMessage() {
-        return message;
+    public Message getMessage() {
+        return new Message(messageText, messageLanguageCode);
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMessage(Message message) {
+        if (message == null) {
+            messageText = null;
+            messageLanguageCode = null;
+        }
+        else {
+            messageText = message.getText();
+            messageLanguageCode = message.getLanguageCode();
+        }
     }
-
-    @Override
-    public String getLanguageCode() {
-        return languageCode;
-    }
-
-    public void setLanguageCode(String languageCode) {
-        this.languageCode = languageCode;
-    }
-
+    
     @Override
     public Date getTime() {
         return time;

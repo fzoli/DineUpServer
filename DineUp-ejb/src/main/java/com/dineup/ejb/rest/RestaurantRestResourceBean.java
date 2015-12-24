@@ -33,6 +33,7 @@ import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ws.rs.core.GenericEntity;
 import com.dineup.dom.Comment;
+import com.dineup.dom.Message;
 import com.dineup.ejb.db.data.FoodCommentData;
 import com.dineup.ejb.db.data.RestaurantCommentData;
 import com.dineup.ejb.profile.ProfileManager;
@@ -203,8 +204,10 @@ public class RestaurantRestResourceBean implements RestaurantRestResource, Heade
             }
             int commentId = dataSource.addRestaurantComment(RestaurantCommentData.newBuilder()
                 .restaurant(restaurant)
-                .message(commentRequest.getMessage())
-                .languageCode(LanguageDetector.getInstance().getLanguageCode(commentRequest.getMessage()))
+                .message(new Message(
+                    commentRequest.getMessage(),
+                    LanguageDetector.getInstance().getLanguageCode(commentRequest.getMessage())
+                ))
                 .rating(commentRequest.getRating())
                 .profileResult(profileResult)
                 .publicProfile(commentRequest.isPublicProfile())
@@ -239,8 +242,10 @@ public class RestaurantRestResourceBean implements RestaurantRestResource, Heade
             }
             int commentId = dataSource.addFoodComment(FoodCommentData.newBuilder()
                 .food(food)
-                .message(commentRequest.getMessage())
-                .languageCode(LanguageDetector.getInstance().getLanguageCode(commentRequest.getMessage()))
+                .message(new Message(
+                    commentRequest.getMessage(),
+                    LanguageDetector.getInstance().getLanguageCode(commentRequest.getMessage())
+                ))
                 .rating(commentRequest.getRating())
                 .profileResult(profileResult)
                 .publicProfile(commentRequest.isPublicProfile())

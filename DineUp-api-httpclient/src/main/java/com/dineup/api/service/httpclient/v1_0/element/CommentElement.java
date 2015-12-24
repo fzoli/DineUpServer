@@ -6,8 +6,7 @@ import com.dineup.api.dom.Comment;
 
 public class CommentElement implements Comment, Serializable {
 
-    public String languageCode;
-    public String message;
+    public MessageElement message;
     public ProfileElement profile;
     public double rating;
     public Date time;
@@ -16,12 +15,7 @@ public class CommentElement implements Comment, Serializable {
     }
 
     @Override
-    public String getLanguageCode() {
-        return languageCode;
-    }
-
-    @Override
-    public String getMessage() {
+    public MessageElement getMessage() {
         return message;
     }
 

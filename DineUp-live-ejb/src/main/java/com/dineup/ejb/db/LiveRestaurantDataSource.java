@@ -204,7 +204,6 @@ public class LiveRestaurantDataSource implements RestaurantDataSource {
     private void loadBaseComment(BaseCommentEntity commentEntity, BaseCommentData commentData) {
         ProfileResult profileResult = commentData.getProfileResult();
         ProfileEntity profileEntity = updateProfile(profileResult);
-        commentEntity.setLanguageCode(commentData.getLanguageCode());
         commentEntity.setMessage(commentData.getMessage());
         commentEntity.setProfile(profileEntity);
         commentEntity.setPublicProfile(commentData.isPublicProfile());

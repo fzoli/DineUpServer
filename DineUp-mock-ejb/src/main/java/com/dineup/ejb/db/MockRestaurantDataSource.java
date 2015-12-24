@@ -103,12 +103,12 @@ public class MockRestaurantDataSource implements RestaurantDataSource, MockDatas
     
     @Override
     public int addRestaurantComment(RestaurantCommentData commentData) {
-        throw new UnsupportedOperationException("Not supported yet."); // TODO
+        return 0;
     }
     
     @Override
     public int addFoodComment(FoodCommentData commentData) {
-        throw new UnsupportedOperationException("Not supported yet."); // TODO
+        return 0;
     }
 
 }

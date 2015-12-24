@@ -7,6 +7,7 @@ import com.dineup.ejb.profile.ProfileManagerFactory;
 import java.util.Calendar;
 import java.util.Date;
 import com.dineup.dom.Comment;
+import com.dineup.dom.Message;
 
 public class MockComment implements Comment, MockDatas {
 
@@ -41,16 +42,14 @@ public class MockComment implements Comment, MockDatas {
     }
 
     @Override
-    public String getMessage() {
+    public Message getMessage() {
         if (id % 2 == 0) {
-            return String.format("Test message %s", id);
+            return new Message(String.format("Test message %s", id), "en");
+        }
+        if (id % 3 == 0) {
+            return new Message(String.format("Teszt üzenet %s", id), "hu");
         }
         return null;
-    }
-
-    @Override
-    public String getLanguageCode() {
-        return "en";
     }
 
     @Override
