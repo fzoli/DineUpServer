@@ -35,7 +35,7 @@ public final class DineUpApiFactoryHandler {
     
     public DineUpApiFactoryHandler(ApiConfig apiConfig) {
         this.apiConfig = apiConfig;
-        this.executor = new Executor(apiConfig);
+        this.executor = new Executor(apiConfig, null);
         this.errorResolver = new ErrorResolver(apiConfig.getLanguageCode());
     }
     

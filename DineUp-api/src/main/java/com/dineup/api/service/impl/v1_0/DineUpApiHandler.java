@@ -44,9 +44,7 @@ import com.dineup.api.service.dom.ServiceFood;
 import com.dineup.api.service.dom.ServiceRestaurant;
 import com.dineup.util.Strings;
 import com.dineup.common.dom.Coordinates;
-import java.util.Date;
 import java.util.ListIterator;
-import com.dineup.api.service.dom.ServiceModificationDates;
 import com.dineup.api.service.impl.CacheableExecutable;
 
 public class DineUpApiHandler implements DineUpApi {
@@ -54,27 +52,13 @@ public class DineUpApiHandler implements DineUpApi {
     private final Executor executor;
     private final ApiConfig apiConfig;
     private final String apiVersion;
+    private final DineUpCacheManager cacheManager;
     
     public DineUpApiHandler(ApiConfig apiConfig, ApiVersion apiVersion) {
-        this.executor = new Executor(apiConfig);
-        this.apiConfig = apiConfig;
+        this.cacheManager = apiConfig.getCacheManager();
+        this.executor = new Executor(apiConfig, apiVersion);
         this.apiVersion = apiVersion.getVersion();
-    }
-    
-    private ServiceModificationDates getModificationDates() throws DetailedException {
-        // TODO
-        return new ServiceModificationDates() {
-
-            @Override
-            public Date restaurants() {
-                return null; 
-            }
-
-            @Override
-            public Date restaurant(int restaurantId) {
-                return null;
-            }
-        };
+        this.apiConfig = apiConfig;
     }
     
     @Override
@@ -86,7 +70,7 @@ public class DineUpApiHandler implements DineUpApi {
     public List<Restaurant> getRestaurants(RestaurantQuery query) throws DetailedException {
         List<Restaurant> list = execute(new GetRestaurants());
         if (query == null || query.getCoordinate() == null) {
-            return list;
+            return Collections.unmodifiableList(list);
         }
         ListIterator<Restaurant> it = list.listIterator();
         while (it.hasNext()) {
@@ -142,12 +126,16 @@ public class DineUpApiHandler implements DineUpApi {
 
     @Override
     public int addRestaurantComment(RestaurantCommentRequest restaurantCommentRequest, ProfileToken profileToken) throws DetailedException {
-        return execute(new AddRestaurantComment(restaurantCommentRequest, profileToken));
+        int id = execute(new AddRestaurantComment(restaurantCommentRequest, profileToken));
+        executor.deleteCache(cacheManager.getRestaurantComments(restaurantCommentRequest.getRestaurant(), profileToken));
+        return id;
     }
 
     @Override
     public int addFoodComment(FoodCommentRequest foodCommentRequest, ProfileToken profileToken) throws DetailedException {
-        return execute(new AddFoodComment(foodCommentRequest, profileToken));
+        int id = execute(new AddFoodComment(foodCommentRequest, profileToken));
+        executor.deleteCache(cacheManager.getFoodComments(foodCommentRequest.getFood(), profileToken));
+        return id;
     }
     
     private <T> T execute(Executable<T> executable) throws DetailedException {
@@ -155,37 +143,10 @@ public class DineUpApiHandler implements DineUpApi {
     }
     
     private <T> T execute(CacheableExecutable<T> executable) throws DetailedException {
-        return execute(executable, executable);
+        return executor.execute(executable);
     }
     
-    private <T> T execute(Executable<T> executable, CacheableExecutable<T> cacheable) throws DetailedException {
-        Date remoteLastModified = cacheable.getModificationDate(getModificationDates());
-        DineUpCache cache = cacheable.getCache(apiConfig.getCacheManager());
-        DineUpCache.CacheResult<T> result = null;
-        try {
-            result = cache.get();
-        }
-        catch (Exception ex) {
-            // Failed to load the cache. Not important.
-        }
-        if (result != null) {
-            boolean upToDate = remoteLastModified != null && result.lastModified() != null && result.lastModified().getTime() >= remoteLastModified.getTime();
-            boolean compatibleApi = result.apiVersion() != null && result.apiVersion().equals(apiVersion);
-            if (upToDate && compatibleApi) {
-                return result.data();
-            }
-        }
-        T data = execute(executable);
-        try {
-            cache.set(data, apiVersion, apiConfig.getLanguageCode());
-        }
-        catch (Exception ex) {
-            // Failed to cache the loaded data. Not important.
-        }
-        return data;
-    }
-    
-    private class GetService implements Executable<Service> {
+    private class GetService implements CacheableExecutable<Service> {
 
         public GetService() {
         }
@@ -204,6 +165,11 @@ public class DineUpApiHandler implements DineUpApi {
             Type entityType = new TypeToken<ServiceElement>() {}.getType();
             ServiceElement entity = gson.fromJson(jsonReader, entityType);
             return entity;
+        }
+
+        @Override
+        public DineUpCache<Service> getCache() {
+            return cacheManager.getService();
         }
         
     }
@@ -227,13 +193,8 @@ public class DineUpApiHandler implements DineUpApi {
         }
 
         @Override
-        public DineUpCache<List<Restaurant>> getCache(DineUpCacheManager cacheManager) {
+        public DineUpCache<List<Restaurant>> getCache() {
             return cacheManager.getRestaurants();
-        }
-
-        @Override
-        public Date getModificationDate(ServiceModificationDates dates) {
-            return dates.restaurants();
         }
         
     }
@@ -272,13 +233,8 @@ public class DineUpApiHandler implements DineUpApi {
         }
         
         @Override
-        public DineUpCache<List<Category>> getCache(DineUpCacheManager cacheManager) {
+        public DineUpCache<List<Category>> getCache() {
             return cacheManager.getCategories(restaurant);
-        }
-
-        @Override
-        public Date getModificationDate(ServiceModificationDates dates) {
-            return dates.restaurant(restaurant.getId());
         }
         
     }
@@ -317,13 +273,8 @@ public class DineUpApiHandler implements DineUpApi {
         }
         
         @Override
-        public DineUpCache<List<Food>> getCache(DineUpCacheManager cacheManager) {
+        public DineUpCache<List<Food>> getCache() {
             return cacheManager.getFoods(category);
-        }
-
-        @Override
-        public Date getModificationDate(ServiceModificationDates dates) {
-            return dates.restaurant(((ServiceCategory) category).getRestaurantId());
         }
         
     }
@@ -362,13 +313,8 @@ public class DineUpApiHandler implements DineUpApi {
         }
         
         @Override
-        public DineUpCache<List<Extra>> getCache(DineUpCacheManager cacheManager) {
+        public DineUpCache<List<Extra>> getCache() {
             return cacheManager.getExtras(food);
-        }
-
-        @Override
-        public Date getModificationDate(ServiceModificationDates dates) {
-            return dates.restaurant(((ServiceFood)food).getRestaurantId());
         }
         
     }
@@ -407,18 +353,13 @@ public class DineUpApiHandler implements DineUpApi {
         }
 
         @Override
-        public DineUpCache<List<Option>> getCache(DineUpCacheManager cacheManager) {
+        public DineUpCache<List<Option>> getCache() {
             return cacheManager.getOptions(extra);
-        }
-
-        @Override
-        public Date getModificationDate(ServiceModificationDates dates) {
-            return dates.restaurant(((ServiceExtra)extra).getRestaurantId());
         }
         
     }
     
-    private class GetRestaurantComments implements Executable<List<Comment>> {
+    private class GetRestaurantComments implements CacheableExecutable<List<Comment>> {
 
         private final Restaurant restaurant;
         private final ProfileToken profileToken;
@@ -453,10 +394,15 @@ public class DineUpApiHandler implements DineUpApi {
                 Utils.completeProfileElement(element.profile, apiConfig);
             }
         }
+
+        @Override
+        public DineUpCache<List<Comment>> getCache() {
+            return cacheManager.getRestaurantComments(restaurant, profileToken);
+        }
         
     }
     
-    private class GetFoodComments implements Executable<List<Comment>> {
+    private class GetFoodComments implements CacheableExecutable<List<Comment>> {
 
         private final Food food;
         private final ProfileToken profileToken;
@@ -490,6 +436,11 @@ public class DineUpApiHandler implements DineUpApi {
             for (CommentElement element : entity) {
                 Utils.completeProfileElement(element.profile, apiConfig);
             }
+        }
+
+        @Override
+        public DineUpCache<List<Comment>> getCache() {
+            return cacheManager.getFoodComments(food, profileToken);
         }
         
     }

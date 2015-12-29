@@ -8,6 +8,13 @@ public interface DineUpCache<T> {
         public T data();
         public Date lastModified();
         public String apiVersion();
+        public String languageCode();
+    }
+    
+    public interface CacheRequest<T> {
+        public T data();
+        public String apiVersion();
+        public String languageCode();
     }
     
     /**
@@ -16,12 +23,8 @@ public interface DineUpCache<T> {
      */
     public CacheResult<T> get() throws Exception;
     
-    /**
-     * @param data the data to store or null to delete the cache
-     * @param apiVersion api version of the data
-     * @param languageCode language of the data
-     * @throws java.lang.Exception if failed to set the result
-     */
-    public void set(T data, String apiVersion, String languageCode) throws Exception;
+    public void set(CacheRequest<T> request);
+    
+    public void delete();
     
 }

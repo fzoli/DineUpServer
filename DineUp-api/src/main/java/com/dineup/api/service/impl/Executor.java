@@ -1,6 +1,8 @@
 package com.dineup.api.service.impl;
 
 import com.dineup.api.ApiConfig;
+import com.dineup.api.ApiVersion;
+import com.dineup.api.DineUpCache;
 import com.dineup.api.SecurityConfig;
 import com.dineup.api.exception.ClientException;
 import com.dineup.api.exception.DetailedException;
@@ -54,16 +56,15 @@ public class Executor {
     
     private final HttpClient client;
     private final ApiConfig apiConfig;
+    private final ApiVersion apiVersion;
     private final HttpSecurityConfig httpSecurityConfig;
     private final ErrorResolver errorResolver;
     private final Gson gson = GsonFactory.createInstance();
     
-    public Executor(ApiConfig apiConfig) {
-        if (apiConfig == null) {
-            throw new IllegalArgumentException("targetConfig is null");
-        }
+    public Executor(ApiConfig apiConfig, ApiVersion apiVersion) {
         this.errorResolver = new ErrorResolver(apiConfig.getLanguageCode());
         this.apiConfig = apiConfig;
+        this.apiVersion = apiVersion;
         this.httpSecurityConfig = createHttpSecurityConfig();
         this.client = createClient();
     }
@@ -99,13 +100,75 @@ public class Executor {
         }
     }
     
-    public <T> T execute(Executable<T> executable) throws DetailedException {
-        return execute(executable, executable);
+    public void deleteCache(DineUpCache<?> cache) {
+        try {
+            cache.delete();
+        }
+        catch (Exception ex) {
+            LOGGER.error("Failed to delete the cache", ex);
+        }
     }
     
-    public <T> T execute(TargetProvider targetProvider, ResponseParser<T> responseParser) throws DetailedException {
+    private <T> DineUpCache.CacheRequest<T> cacheRequest(final T data, final String apiVersion, final String languageCode) {
+        return new DineUpCache.CacheRequest<T>() {
+
+            @Override
+            public T data() {
+                return data;
+            }
+
+            @Override
+            public String apiVersion() {
+                return apiVersion;
+            }
+
+            @Override
+            public String languageCode() {
+                return languageCode;
+            }
+        };
+    }
+    
+    public <T> T execute(Executable<T> executable) throws DetailedException {
+        return load(executable, executable);
+    }
+    
+    public <T> T execute(CacheableExecutable<T> executable) throws DetailedException {
+        return load(executable, executable, executable);
+    }
+    
+    private <T> T load(TargetProvider targetProvider, ResponseParser<T> responseParser, Cacheable<T> cacheable) throws DetailedException {
+        DineUpCache cache = cacheable.getCache();
+        DineUpCache.CacheResult<T> result = null;
         try {
-            return _execute(targetProvider, responseParser);
+            result = cache.get();
+        }
+        catch (Exception ex) {
+            LOGGER.error("Failed to load the cache", ex);
+        }
+        if (result != null) {
+            String currentApiVersion = apiVersion == null ? null : apiVersion.getVersion();
+            long age = result.lastModified() != null ? System.currentTimeMillis() - result.lastModified().getTime() : -1;
+            boolean live = age >= 0 && age <= apiConfig.getCacheLifetime();
+            boolean compatibleApi = result.apiVersion() != null && result.apiVersion().equals(currentApiVersion);
+            boolean sameLanguage = result.languageCode() != null && result.languageCode().equalsIgnoreCase(apiConfig.getLanguageCode());
+            if (live && compatibleApi && sameLanguage) {
+                return result.data();
+            }
+        }
+        T data = load(targetProvider, responseParser);
+        try {
+            cache.set(cacheRequest(data, apiVersion.getVersion(), apiConfig.getLanguageCode()));
+        }
+        catch (Exception ex) {
+            LOGGER.error("Failed to cache the loaded data", ex);
+        }
+        return data;
+    }
+    
+    private <T> T load(TargetProvider targetProvider, ResponseParser<T> responseParser) throws DetailedException {
+        try {
+            return download(targetProvider, responseParser);
         }
         catch (ServiceException | ClientException ex) {
             throw ex;
@@ -115,7 +178,7 @@ public class Executor {
         }
     }
     
-    private <T> T _execute(TargetProvider targetProvider, ResponseParser<T> responseParser) throws Exception {
+    private <T> T download(TargetProvider targetProvider, ResponseParser<T> responseParser) throws Exception {
         // Create the base request
         StringConcatenator target = new StringConcatenator("/");
         target.addItems(apiConfig.getTarget().toString(), RequestPath.ROOT_JSON);
@@ -137,7 +200,7 @@ public class Executor {
         
         HttpRequestBase request = new HttpGet(urlBuilder.toUri());
         
-        LOGGER.debug("Target: " + request.toString());
+        LOGGER.debug("Target: " + request.getURI());
         
         // Execute request
         HttpResponse response;

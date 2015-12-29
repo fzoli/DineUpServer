@@ -6,12 +6,14 @@ public class ApiConfig {
 
     private final SecurityConfig securityConfig;
     private final DineUpCacheManager cacheManager;
+    private final long cacheLifetime;
     private final Target target;
     private final String languageCode;
 
     private ApiConfig(Builder builder) {
         securityConfig = builder.securityConfig;
         cacheManager = builder.cacheManager;
+        cacheLifetime = builder.cacheLifetime;
         target = builder.target;
         languageCode = builder.languageCode;
     }
@@ -27,6 +29,10 @@ public class ApiConfig {
     public DineUpCacheManager getCacheManager() {
         return cacheManager;
     }
+
+    public long getCacheLifetime() {
+        return cacheLifetime;
+    }
     
     public Target getTarget() {
         return target;
@@ -40,6 +46,7 @@ public class ApiConfig {
         
         private SecurityConfig securityConfig;
         private DineUpCacheManager cacheManager;
+        private long cacheLifetime;
         private Target target;
         private String languageCode;
 
@@ -53,6 +60,11 @@ public class ApiConfig {
         
         public Builder cacheManager(DineUpCacheManager cacheManager) {
             this.cacheManager = cacheManager;
+            return this;
+        }
+        
+        public Builder cacheLifetime(long cacheLifetime) {
+            this.cacheLifetime = cacheLifetime;
             return this;
         }
         
@@ -89,6 +101,9 @@ public class ApiConfig {
             }
             if (languageCode != null && languageCode.length() != LANGUAGE_CODE_LENGTH) {
                 throw new IllegalArgumentException("Invalid languageCode");
+            }
+            if (cacheLifetime < 0) {
+                throw new IllegalArgumentException("Cache lifetime must be positive number");
             }
         }
         

@@ -3,14 +3,27 @@ package com.dineup.api.service.impl;
 import com.dineup.api.DineUpCache;
 import com.dineup.api.DineUpCacheManager;
 import com.dineup.api.dom.Category;
+import com.dineup.api.dom.Comment;
 import com.dineup.api.dom.Extra;
 import com.dineup.api.dom.Food;
 import com.dineup.api.dom.Option;
+import com.dineup.api.dom.ProfileToken;
 import com.dineup.api.dom.Restaurant;
+import com.dineup.api.dom.Service;
 import java.util.List;
 
 public class DineUpNoCacheManager implements DineUpCacheManager {
 
+    @Override
+    public void invalidate() {
+        
+    }
+    
+    @Override
+    public DineUpCache<Service> getService() {
+        return noCache();
+    }
+    
     @Override
     public DineUpCache<List<Restaurant>> getRestaurants() {
         return noCache();
@@ -36,6 +49,16 @@ public class DineUpNoCacheManager implements DineUpCacheManager {
         return noCache();
     }
     
+    @Override
+    public DineUpCache<List<Comment>> getRestaurantComments(Restaurant restaurant, ProfileToken token) {
+        return noCache();
+    }
+
+    @Override
+    public DineUpCache<List<Comment>> getFoodComments(Food food, ProfileToken token) {
+        return noCache();
+    }
+    
     private <T> DineUpCache<T> noCache() {
         return new DineUpCache<T>() {
 
@@ -45,11 +68,16 @@ public class DineUpNoCacheManager implements DineUpCacheManager {
             }
             
             @Override
-            public void set(T data, String apiVersion, String languageCode) throws Exception {
+            public void set(CacheRequest<T> request) {
+                
+            }
+
+            @Override
+            public void delete() {
                 
             }
 
         };
     }
-    
+
 }
