@@ -1,7 +1,7 @@
 package com.dineup.entity;
 
 import com.dineup.dom.Category;
-import com.dineup.dom.Coordinate;
+import com.dineup.common.dom.Coordinate;
 import com.dineup.dom.Restaurant;
 import com.dineup.dom.RestaurantLocale;
 import com.dineup.util.Lists;

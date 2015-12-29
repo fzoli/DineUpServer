@@ -27,6 +27,16 @@ public class Lists {
             }
 
             @Override
+            public boolean remove(Object o) {
+                return list.remove(o);
+            }
+
+            @Override
+            public TCastTo remove(int index) {
+                return list.remove(index);
+            }
+            
+            @Override
             public int size() {
                 return list.size();
             }

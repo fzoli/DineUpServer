@@ -1,7 +1,7 @@
 package com.dineup.service.element;
 
-import com.dineup.dom.Coordinate;
-import com.dineup.dom.Coordinates;
+import com.dineup.common.dom.Coordinate;
+import com.dineup.common.dom.Coordinates;
 import com.dineup.dom.Locale;
 import com.dineup.service.ElementContext;
 import com.dineup.dom.Restaurant;

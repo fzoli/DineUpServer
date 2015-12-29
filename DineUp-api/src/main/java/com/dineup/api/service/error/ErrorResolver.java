@@ -11,10 +11,10 @@ public class ErrorResolver {
         this.languageCode = languageCode;
     }
     
-    public DetailedException resolveError(Exception ex) throws DetailedException {
+    public DetailedException resolveError(Exception ex) {
         ErrorDetailResolver detailResolver = ErrorDetailResolver.getInstance();
         ErrorDetail detail = detailResolver.resolveError(ex, languageCode);
-        throw new ClientException(
+        return new ClientException(
                 detail.getKey().name(), 
                 detail.getMessage().getMessage(), 
                 detail.getLocalizedMessage().getMessage(), 

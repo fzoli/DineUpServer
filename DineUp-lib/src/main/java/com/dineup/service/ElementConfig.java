@@ -1,7 +1,7 @@
 package com.dineup.service;
 
-import com.dineup.dom.Area;
-import com.dineup.dom.Coordinate;
+import com.dineup.common.dom.Area;
+import com.dineup.common.dom.Coordinate;
 import com.dineup.dom.Locale;
 import com.dineup.dom.Locales;
 import com.dineup.dom.LocalizedObject;

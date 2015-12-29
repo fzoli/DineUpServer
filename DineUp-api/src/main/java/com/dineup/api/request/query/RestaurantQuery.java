@@ -1,6 +1,6 @@
 package com.dineup.api.request.query;
 
-import com.dineup.api.dom.Coordinate;
+import com.dineup.common.dom.Coordinate;
 
 /**
  * Restaurant query.

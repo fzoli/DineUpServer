@@ -1,28 +1,18 @@
 package com.dineup.api;
 
-import com.dineup.api.service.util.UrlValidator;
-import com.dineup.util.Strings;
+import com.dineup.api.service.impl.DineUpNoCacheManager;
 
 public class ApiConfig {
 
-    private final String serverUrl;
-    private final String webAppRoot;
-    private final String restRoot;
+    private final SecurityConfig securityConfig;
+    private final DineUpCacheManager cacheManager;
+    private final Target target;
     private final String languageCode;
 
-    private static final String[] VALID_URL_SCHEMES = {"http", "https"};
-    private static final UrlValidator URL_VALIDATOR = new UrlValidator(VALID_URL_SCHEMES, UrlValidator.ALLOW_LOCAL_URLS);
-    
     private ApiConfig(Builder builder) {
-        if (!URL_VALIDATOR.isValid(builder.serverUrl)) {
-            throw new IllegalArgumentException("Invalid serverUrl");
-        }
-        if (builder.languageCode != null && builder.languageCode.length() != 2) {
-            throw new IllegalArgumentException("Invalid languageCode");
-        }
-        serverUrl = builder.serverUrl;
-        webAppRoot = builder.webAppRoot;
-        restRoot = builder.restRoot;
+        securityConfig = builder.securityConfig;
+        cacheManager = builder.cacheManager;
+        target = builder.target;
         languageCode = builder.languageCode;
     }
 
@@ -30,58 +20,76 @@ public class ApiConfig {
         return new Builder();
     }
 
-    public String getServerUrl() {
-        return serverUrl;
+    public SecurityConfig getSecurityConfig() {
+        return securityConfig;
     }
 
-    public String getWebAppRoot() {
-        return webAppRoot;
+    public DineUpCacheManager getCacheManager() {
+        return cacheManager;
     }
-
-    public String getRestRoot() {
-        return restRoot;
+    
+    public Target getTarget() {
+        return target;
     }
 
     public String getLanguageCode() {
         return languageCode;
     }
     
-    public String getTarget() {
-        return Strings.concat("/", getServerUrl(), getWebAppRoot(), getRestRoot());
-    }
-    
     public static final class Builder {
         
-        private String serverUrl;
-        private String webAppRoot;
-        private String restRoot;
+        private SecurityConfig securityConfig;
+        private DineUpCacheManager cacheManager;
+        private Target target;
         private String languageCode;
 
         private Builder() {
         }
-
+        
+        public Builder securityConfig(SecurityConfig securityConfig) {
+            this.securityConfig = securityConfig;
+            return this;
+        }
+        
+        public Builder cacheManager(DineUpCacheManager cacheManager) {
+            this.cacheManager = cacheManager;
+            return this;
+        }
+        
+        public Builder target(Target target) {
+            this.target = target;
+            return this;
+        }
+        
         public Builder languageCode(String languageCode) {
             this.languageCode = languageCode;
             return this;
         }
         
-        public Builder serverUrl(String serverUrl) {
-            this.serverUrl = serverUrl;
-            return this;
+        public com.dineup.api.ApiConfig build() {
+            complete();
+            validate();
+            return new ApiConfig(this);
+        }
+    
+        private static final int LANGUAGE_CODE_LENGTH = 2;
+        
+        private void complete() {
+            if (securityConfig == null) {
+                securityConfig = SecurityConfig.newBuilder().build();
+            }
+            if (cacheManager == null) {
+                cacheManager = new DineUpNoCacheManager();
+            }
         }
         
-        public Builder webAppRoot(String webAppRoot) {
-            this.webAppRoot = webAppRoot;
-            return this;
-        }
-
-        public Builder restRoot(String restRoot) {
-            this.restRoot = restRoot;
-            return this;
-        }
-
-        public com.dineup.api.ApiConfig build() {
-            return new ApiConfig(this);
+        private void validate() {
+            if (target == null) {
+                throw new IllegalArgumentException("Target is not specified");
+            }
+            if (languageCode != null && languageCode.length() != LANGUAGE_CODE_LENGTH) {
+                throw new IllegalArgumentException("Invalid languageCode");
+            }
         }
         
     }

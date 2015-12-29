@@ -2,7 +2,7 @@ package com.dineup.mock;
 
 import com.dineup.ejb.db.MockDatas;
 import com.dineup.dom.Category;
-import com.dineup.dom.Coordinate;
+import com.dineup.common.dom.Coordinate;
 import com.dineup.dom.Restaurant;
 import com.dineup.dom.RestaurantLocale;
 import com.dineup.ejb.db.RestaurantDataSource;

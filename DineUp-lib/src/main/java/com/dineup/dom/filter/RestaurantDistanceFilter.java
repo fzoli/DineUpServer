@@ -1,7 +1,7 @@
 package com.dineup.dom.filter;
 
 import com.dineup.util.Filter;
-import com.dineup.dom.Area;
+import com.dineup.common.dom.Area;
 import com.dineup.dom.Restaurant;
 
 public class RestaurantDistanceFilter implements Filter<Restaurant> {

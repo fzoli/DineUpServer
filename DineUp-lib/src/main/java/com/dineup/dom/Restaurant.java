@@ -1,5 +1,6 @@
 package com.dineup.dom;
 
+import com.dineup.common.dom.Coordinate;
 import java.util.List;
 
 public interface Restaurant extends LocalizedObject<RestaurantLocale> {

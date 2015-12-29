@@ -1,5 +1,7 @@
 package com.dineup.api.dom;
 
+import com.dineup.common.dom.Coordinate;
+
 public interface Restaurant {
     
     public int getId();

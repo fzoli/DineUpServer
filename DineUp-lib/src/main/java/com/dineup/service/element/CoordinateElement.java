@@ -1,6 +1,6 @@
 package com.dineup.service.element;
 
-import com.dineup.dom.Coordinate;
+import com.dineup.common.dom.Coordinate;
 import com.dineup.service.ElementContext;
 import com.dineup.service.ElementConfig;
 import javax.xml.bind.annotation.XmlElement;

@@ -1,6 +1,6 @@
 package com.dineup.ejb.rest;
 
-import com.dineup.dom.Area;
+import com.dineup.common.dom.Area;
 import com.dineup.dom.Category;
 import com.dineup.service.ElementContext;
 import com.dineup.dom.Extra;

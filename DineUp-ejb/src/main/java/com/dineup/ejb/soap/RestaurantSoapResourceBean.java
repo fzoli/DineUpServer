@@ -1,6 +1,6 @@
 package com.dineup.ejb.soap;
 
-import com.dineup.dom.Coordinate;
+import com.dineup.common.dom.Coordinate;
 import com.dineup.service.ElementContext;
 import com.dineup.dom.Restaurant;
 import com.dineup.ejb.db.RestaurantDataSource;

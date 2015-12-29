@@ -32,8 +32,6 @@
   <modules>
     <module>DineUp-base</module>
     <module>DineUp-api</module>
-    <module>DineUp-api-jaxrs</module>
-    <module>DineUp-api-httpclient</module>
     <module>DineUp-ear</module>
     <module>DineUp-lib</module>
     <module>DineUp-web</module>

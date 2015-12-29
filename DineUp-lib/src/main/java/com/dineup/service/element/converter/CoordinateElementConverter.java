@@ -1,6 +1,6 @@
 package com.dineup.service.element.converter;
 
-import com.dineup.dom.Coordinate;
+import com.dineup.common.dom.Coordinate;
 import com.dineup.service.ElementContext;
 import com.dineup.service.ElementConfig;
 import com.dineup.service.element.CoordinateElement;
